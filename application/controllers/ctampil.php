@@ -5,6 +5,10 @@ class ctampil extends CI_Controller {
     {
         $this->load->view('landingpage/dashboard');
     }
+    function pengelola()
+    {
+        $this->load->view('pengelola/dashboard');
+    }
     function login()
 		{
 			$this->load->view('auth/login');	
