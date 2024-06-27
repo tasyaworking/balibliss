@@ -43,7 +43,7 @@
             </div>
             <button type="submit" class="login__button">Login</button>
             <div class="login__register">
-                Don't have an account? <a href="<?= base_url('index.php/cauth/register') ?>">Register</a>
+                Don't have an account? <a href="<?= base_url('cauth/register') ?>">Register</a>
             </div>
         </form>
     </div>

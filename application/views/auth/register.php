@@ -41,7 +41,7 @@
     
             <button type="submit" class="login__button">Register</button>
             <div class="login__register">
-            already a member! <a href="<?= base_url('index.php/cauth/login') ?>">Login</a>
+            already a member! <a href="<?= base_url('cauth/login') ?>">Login</a>
             </div>
         </form>
     </div>
