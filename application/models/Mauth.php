@@ -30,6 +30,7 @@ class Mauth extends CI_Model {
         $query = $this->db->get('tb_pengguna');
         return $query->num_rows() > 0;
     }
+
     public function no_hp_exists($no_hp) {
         $this->db->where('no_hp', $no_hp);
         $query = $this->db->get('tb_pengguna');

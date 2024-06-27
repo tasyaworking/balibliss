@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="login">
-        <img src="<?=base_url()?>assets/img/lgregbg.jpg" alt="image" class="login__bg">
+        <img src="<?=base_url()?>assets/img/login.png" alt="image" class="login__bg">
         <form action="<?= base_url('cauth/prosesregister') ?>" method="post" class="login__form">
             <h1 class="login__title">Register</h1>
             <?php
