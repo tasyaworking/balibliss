@@ -42,8 +42,12 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
+    <h1 class="logo me-auto">
+    <a href="index.html">
+        <img src="<?php echo base_url('assets/img/BaliBlissLogo.png'); ?>" alt="Balibliss Logo" style="width: 210px; height: 40px;">
+    </a>
+</h1>
 
-      <h1 class="logo me-auto"><a href="inex.html">Balibliss</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!--<a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
