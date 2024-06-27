@@ -12,6 +12,7 @@ class Cpengelola extends CI_Controller {
     public function index() {
         $data['tempatwisata'] = $this->Mpengelola->get_all_tempatwisata();
         $data['sponsor'] = $this->Mpengelola->get_all_sponsor();
+        $data['pengunjung'] = $this->Mpengelola->get_all_pengunjung();
         $this->load->view('pengelola/dashboard', $data);
     }
 
@@ -90,6 +91,16 @@ class Cpengelola extends CI_Controller {
             $this->Mpengelola->insert_sponsor($data);
             redirect('cpengelola');
         }
+    }
+
+    public function view_tempatwisata() {
+        $data['tempatwisata'] = $this->Mpengelola->get_all_tempatwisata();
+        $this->load->view('pengelola/tbwisata', $data);
+    }
+
+    public function view_pengunjung() {
+        $data['pengguna'] = $this->Mpengelola->get_all_pengunjung();
+        $this->load->view('pengelola/tbpengguna', $data);
     }
 }
 ?>

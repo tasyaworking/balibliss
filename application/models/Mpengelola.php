@@ -35,5 +35,10 @@ class Mpengelola extends CI_Model {
         $query = $this->db->get('tb_sponsor');
         return $query->num_rows() > 0;
     }
+
+    // Pengunjung Methods
+    public function get_all_pengunjung() {
+        return $this->db->get('tb_pengguna')->result();
+    }
 }
 ?>
