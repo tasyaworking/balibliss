@@ -25,8 +25,6 @@ class Cadmin extends CI_Controller {
 	public function pengguna() {
         $title['title']= 'Data Pengguna';
 		$data1 ['data_pengguna'] = $this->madmin->data_pengguna();
-		$data1 ['data_alamat'] = $this->madmin->data_alamat();
-		$data1 ['data_hp'] = $this->madmin->data_hp();
         $data = [
 			'header'=>$this->load->view('partials/header',$title,true),
 			'sidebar'=>$this->load->view('admin/sidebar','',true),

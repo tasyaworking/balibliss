@@ -8,16 +8,6 @@ class Madmin extends CI_Model {
 		return $query->result();
     }
 
-    public function data_alamat() {
-        $query = $this->db->get('tb_alamat');
-		return $query->result();
-    }
-
-    public function data_hp() {
-        $query = $this->db->get('tb_contact');
-		return $query->result();
-    }
-
 }
 
 ?>

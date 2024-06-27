@@ -26,7 +26,7 @@
     					<span class="hide-menu">Home</span>
     				</li> -->
     				<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('index.php/Cadmin/dashboard')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Cadmin/dashboard')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-layout-dashboard"></i>
     						</span>
@@ -39,7 +39,7 @@
     				</li> -->
     				
     				<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('index.php/Cadmin/pengguna')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Cadmin/pengguna')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-user"></i>
     						</span>
@@ -47,7 +47,7 @@
     					</a>
     				</li>
     				<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('index.php/Cadmin/tempatwisata')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Cadmin/tempatwisata')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-building-community"></i>
     						</span>
@@ -55,7 +55,7 @@
     					</a>
     				</li>
 					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('index.php/Cadmin/pengelola')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Cadmin/pengelola')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-user-check"></i>
     						</span>
@@ -63,7 +63,7 @@
     					</a>
     				</li>
 					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('index.php/Cadmin/sponsorship')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Cadmin/sponsorship')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-folder-plus"></i>
     						</span>

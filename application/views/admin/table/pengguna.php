@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?=base_url();?>assets/DataTables/datatables.css">
-<h3 class="mb-4">Tabel Pengguna</h3>
+<h4 class="mb-4">Tabel Data Pengguna</h4>
 <div>
 	<div class="card-header d-flex justify-content-end">
 		<!-- <button id="btn-tampil" type="button" onclick="hideShow()" class="btn btn-light px-5">Form Show</button> -->
@@ -27,7 +27,7 @@
 						<td><?=$no++?></td>
 						<td><?=$row->nama?></td>
 						<td><?=$row->email?></td>
-						<td><?=$row->nama_jalan?>, <?=$row->kecamatan?>, <?=$row->kota?>, <?=$row->provinsi?>, <?=$row->kode_pos?></td>
+						<td><?=$row->alamat?></td>
 						<td><?=$row->no_hp?></td>
                         <td><?=$row->level?></td>
 						<!-- <td class="text-center">
