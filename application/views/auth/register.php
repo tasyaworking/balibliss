@@ -26,7 +26,7 @@
             ?>
             <div class="login__inputs">
                 <div class="login__box">
-                    <input type="text" name="text" placeholder="Nama Lengkap" required class="login__input">
+                    <input type="text" name="nama" placeholder="Nama Lengkap" required class="login__input">
                     <i class="ri-user-fill"></i>
                 </div>
                 <div class="login__box">
