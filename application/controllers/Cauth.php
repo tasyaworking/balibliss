@@ -29,10 +29,44 @@ class Cauth extends CI_Controller {
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');
         $password = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
-        
-        // Periksa apakah name tidak null atau kosong
+        $alamat = $this->input->post('alamat'); // Retrieve 'alamat' from the form
+        $no_hp = $this->input->post('no_hp'); // Retrieve 'no_hp' from the form
+    
+        // Periksa apakah nama tidak null atau kosong
         if (empty($nama)) {
             $this->session->set_flashdata('pesan', 'Nama tidak boleh kosong!');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('cauth/register');
+            return;
+        }
+    
+        // Periksa apakah alamat tidak null atau kosong
+        if (empty($alamat)) {
+            $this->session->set_flashdata('pesan', 'Alamat tidak boleh kosong!');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('cauth/register');
+            return;
+        }
+    
+        // Periksa apakah no_hp tidak null atau kosong
+        if (empty($no_hp)) {
+            $this->session->set_flashdata('pesan', 'Nomor HP tidak boleh kosong!');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('cauth/register');
+            return;
+        }
+    
+        // Periksa apakah email sudah ada di database
+        if ($this->Mauth->email_exists($email)) {
+            $this->session->set_flashdata('pesan', 'Email sudah digunakan!');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('cauth/register');
+            return;
+        }
+    
+        // Periksa apakah no_hp sudah ada di database
+        if ($this->Mauth->no_hp_exists($no_hp)) {
+            $this->session->set_flashdata('pesan', 'Nomor HP sudah digunakan!');
             $this->session->set_flashdata('color', 'danger');
             redirect('cauth/register');
             return;
@@ -41,7 +75,9 @@ class Cauth extends CI_Controller {
         $data = [
             'nama' => $nama,
             'email' => $email,
-            'password' => $password
+            'password' => $password,
+            'alamat' => $alamat,
+            'no_hp' => $no_hp
         ];
     
         $result = $this->Mauth->register($data);
@@ -55,6 +91,7 @@ class Cauth extends CI_Controller {
             redirect('cauth/register');
         }
     }
+    
     public function proseslogin() {
         $email = $this->input->post('email');
         $password = $this->input->post('password');

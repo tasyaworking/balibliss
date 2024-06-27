@@ -34,6 +34,14 @@
                     <i class="ri-user-fill"></i>
                 </div>
                 <div class="login__box">
+                    <input type="text" name="alamat" placeholder="Alamat" required class="login__input">
+                    <i class="ri-user-fill"></i>
+                </div>
+                <div class="login__box">
+                    <input type="text" name="no_hp" placeholder="No.Handphone" required class="login__input">
+                    <i class="ri-user-fill"></i>
+                </div>
+                <div class="login__box">
                     <input type="password" name="password" placeholder="Password" required class="login__input" id="password">
                     <i class="ri-lock-2-fill" onclick="showpassword()" id="icon"></i>
                 </div>

@@ -20,12 +20,21 @@ class Mauth extends CI_Model {
             return false;
         }
     }
-
+   
     // Fungsi untuk mendaftarkan pengguna baru
     public function register($data) {
         return $this->db->insert('tb_pengguna', $data);
     }
-
+    public function email_exists($email) {
+        $this->db->where('email', $email);
+        $query = $this->db->get('tb_pengguna');
+        return $query->num_rows() > 0;
+    }
+    public function no_hp_exists($no_hp) {
+        $this->db->where('no_hp', $no_hp);
+        $query = $this->db->get('tb_pengguna');
+        return $query->num_rows() > 0;
+    }
     // Fungsi untuk mendapatkan data pengguna berdasarkan ID
     public function get_user_by_id($user_id) {
         $this->db->where('id', $user_id);
