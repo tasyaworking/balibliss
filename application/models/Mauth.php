@@ -5,26 +5,30 @@ class Mauth extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        // Load database library jika belum dimuat secara global
         $this->load->database();
     }
-
-    // Fungsi untuk mendapatkan data pengguna berdasarkan email dan password
     public function get_pengguna($email, $password) {
         $this->db->where('email', $email);
         $query = $this->db->get('tb_pengguna');
         $user = $query->row();
-        if ($user && password_verify($password, $user->password)) {
-            return $user;
+        
+        if ($user) {
+            if (password_verify($password, $user->password)) {
+                return $user;
+            } else {
+                log_message('error', 'Password salah untuk pengguna dengan email: ' . $email);
+            }
         } else {
-            return false;
+            log_message('error', 'Pengguna dengan email: ' . $email . ' tidak ditemukan');
         }
+        
+        return false;
     }
-   
-    // Fungsi untuk mendaftarkan pengguna baru
+
     public function register($data) {
         return $this->db->insert('tb_pengguna', $data);
     }
+
     public function email_exists($email) {
         $this->db->where('email', $email);
         $query = $this->db->get('tb_pengguna');
@@ -36,33 +40,30 @@ class Mauth extends CI_Model {
         $query = $this->db->get('tb_pengguna');
         return $query->num_rows() > 0;
     }
-    // Fungsi untuk mendapatkan data pengguna berdasarkan ID
+
     public function get_user_by_id($user_id) {
         $this->db->where('id', $user_id);
-        $query = $this->db->get('users');
-        return $query->row(); // Mengembalikan baris pertama hasil query sebagai objek
+        $query = $this->db->get('tb_pengguna');
+        return $query->row();
     }
 
-    // Fungsi untuk mendapatkan semua pengguna
     public function get_all_users() {
-        $query = $this->db->get('users');
-        return $query->result(); // Mengembalikan semua hasil query sebagai array objek
+        $query = $this->db->get('tb_pengguna');
+        return $query->result();
     }
 
-    // Fungsi untuk menambahkan pengguna baru
     public function insert_user($data) {
-        return $this->db->insert('users', $data);
+        return $this->db->insert('tb_pengguna', $data);
     }
 
-    // Fungsi untuk mengupdate data pengguna
     public function update_user($user_id, $data) {
         $this->db->where('id', $user_id);
-        return $this->db->update('users', $data);
+        return $this->db->update('tb_pengguna', $data);
     }
 
-    // Fungsi untuk menghapus pengguna berdasarkan ID
     public function delete_user($user_id) {
         $this->db->where('id', $user_id);
-        return $this->db->delete('users');
+        return $this->db->delete('tb_pengguna');
     }
 }
+?>

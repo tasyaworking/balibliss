@@ -30,7 +30,7 @@ class Cadmin extends CI_Controller {
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
 			'navbar'=>$this->load->view('partials/navbar','',true),
 			'footer'=>$this->load->view('partials/footer','',true),
-			'table'=>$this->load->view('admin/table/pengguna',$data1,TRUE),
+			'table'=>$this->load->view('admin/table/pengguna',$data1,true)
 			];
 		$this->load->view('admin/pengguna', $data);
 	}
@@ -50,15 +50,30 @@ class Cadmin extends CI_Controller {
 
 	public function pengelola() {
         $title['title']= 'Pengajuan Pengelola';
+		$data1 ['data_pengajuan_pengelola'] = $this->madmin->data_pengajuan_pengelola();
         $data = [
 			'header'=>$this->load->view('partials/header',$title,true),
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
 			'navbar'=>$this->load->view('partials/navbar','',true),
 			'footer'=>$this->load->view('partials/footer','',true),
 			// 'konten'=>'',
-			// 'table'=>'',
+			'table'=>$this->load->view('admin/table/pengelola',$data1,true)
 			];
 		$this->load->view('admin/pengelola', $data);
+	}
+
+	public function view_pengelola() {
+        $title['title']= 'Pengajuan Pengelola';
+		// $data1 ['data_pengajuan_pengelola'] = $this->madmin->data_pengajuan_pengelola();
+        $data = [
+			'header'=>$this->load->view('partials/header',$title,true),
+			'sidebar'=>$this->load->view('admin/sidebar','',true),
+			'navbar'=>$this->load->view('partials/navbar','',true),
+			'footer'=>$this->load->view('partials/footer','',true),
+			// 'konten'=>$this->load->view('admin/form/pengajuan_pengelola',true),
+			// 'table'=>$this->load->view('admin/table/pengelola',$data1,true)
+			];
+		$this->load->view('admin/form/pengajuan_pengelola', $data);
 	}
 
 	public function sponsorship() {
