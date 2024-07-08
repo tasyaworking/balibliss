@@ -52,3 +52,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'ctampil/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['konfirmasi-pemesanan'] = 'ctiket/konfirmasi_pemesanan';
+

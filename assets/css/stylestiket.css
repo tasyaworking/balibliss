@@ -1,0 +1,79 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom right, #96C9F4, #D9F1F9);
+    margin: 0;
+    padding: 0;
+}
+
+.wisata-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.wisata-card {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 12px;
+    background: url('path-to-your-background-image.jpg') no-repeat center center / cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.wisata-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.wisata-card .wisata-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.wisata-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.wisata-card .wisata-description {
+    margin: 10px 0;
+    color: white;
+    font-size: 1rem;
+}
+
+.wisata-card .wisata-price {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.wisata-card .wisata-location {
+    margin-bottom: 15px;
+    color: white;
+}
+
+.pesan-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.pesan-button:hover {
+    background-color: #45a049;
+}

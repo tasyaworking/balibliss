@@ -65,6 +65,7 @@
 
           <li><a href="contact.html">Contact</a></li>
           <li><a href="<?php echo base_url('ctampil/login');?>" class="getstarted" type="button" onclick="login()">Login</a></li>
+          <li><a href="<?php echo base_url('Ctiket/index');?>" class="btn btn-primary" style="margin-left: 10px;">Dashboard Pembelian 1</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
