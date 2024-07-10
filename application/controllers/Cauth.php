@@ -89,33 +89,50 @@ class Cauth extends CI_Controller {
             redirect('cauth/register');
         }
     }
-
     public function proseslogin() {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
     
-        $user = $this->Mauth->get_pengguna($email, $password);
+        // Debugging: Tampilkan nilai input email dan password
+        log_message('debug', 'Email: ' . $email);
+        log_message('debug', 'Password: ' . $password);
     
-        if ($user) {
-            $this->session->set_userdata('user_id', $user->id);
-            $this->session->set_userdata('level', $user->level);
-            $this->session->set_flashdata('pesan', 'Login berhasil!');
-            $this->session->set_flashdata('color', 'success');
+        $user = $this->Mauth->get_pengguna_by_email($email);
     
-            // Redirect sesuai dengan level pengguna
-            if ($user->level == 'admin') {
-                redirect('views/admin/dashboard');
-            } elseif ($user->level == 'pengelola') {
-                redirect('views/pengelola/dashboard');
-            } else {
-                redirect('views/pengguna/dashboard');
-            }
-        } else {
+        // Debugging: Periksa apakah pengguna ditemukan
+        if (!$user) {
+            log_message('debug', 'Pengguna tidak ditemukan dengan email: ' . $email);
             $this->session->set_flashdata('pesan', 'Email atau password salah!');
             $this->session->set_flashdata('color', 'danger');
             redirect('cauth/login');
+            return;
+        } else {
+            log_message('debug', 'Pengguna ditemukan: ' . json_encode($user));
         }
-    }
     
+        // Debugging: Periksa password yang di-hash
+        if (!password_verify($password, $user->password)) {
+            log_message('debug', 'Password salah untuk pengguna: ' . $email);
+            $this->session->set_flashdata('pesan', 'Email atau password salah!');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('cauth/login');
+            return;
+        }
+    
+        // Jika berhasil login
+        $this->session->set_userdata('user_id', $user->id);
+        $this->session->set_userdata('level', $user->level);
+        $this->session->set_flashdata('pesan', 'Login berhasil!');
+        $this->session->set_flashdata('color', 'success');
+    
+        // Redirect sesuai dengan level pengguna
+        if ($user->level == 'admin') {
+            redirect('views/admin/dashboard');
+        } elseif ($user->level == 'pengelola') {
+            redirect('views/pengelola/dashboard');
+        } else {
+            redirect('views/pengguna/dashboard');
+        }
+    }       
 }
 ?>

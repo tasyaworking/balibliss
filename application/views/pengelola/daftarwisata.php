@@ -59,8 +59,8 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+             <!-- Nav Item - Pages Collapse Menu -->
+             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -69,8 +69,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu :</h6>
-                        <a class="collapse-item" href="login.html">Tempat Wisata</a>
-                        <a class="collapse-item" href="forgot-password.html">Sponsorship</a>
+                        <a class="collapse-item" href="daftartempatwisata.php">Tempat Wisata</a>
+                        <a class="collapse-item" href="daftarsponsor.php">Sponsorship</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
@@ -86,19 +86,11 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu :</h6>
-                        <a class="collapse-item" href="buttons.html">Tempat Wisata</a>
-                        <a class="collapse-item" href="cards.html">Pendapatan</a>
+                        <a class="collapse-item" href="tbwisata.php">Tempat Wisata</a>
+                        <a class="collapse-item" href="tbpengguna.php">Pendapatan</a>
                     </div>
                 </div>
             </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                 <a class="nav-link collapsed" href="charts.html">
-                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
-                </a>
-            </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -710,5 +702,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
 </body>
+
 </html>
