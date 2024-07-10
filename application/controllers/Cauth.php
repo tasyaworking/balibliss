@@ -27,6 +27,21 @@ class Cauth extends CI_Controller {
         $this->login();
     }
 
+    public function dashboard() {
+        $level = $this->session->userdata('level');
+    
+        switch ($level) {
+            case 'admin':
+                $this->load->view('admin/dashboard');
+                break;
+            case 'pengelola':
+                $this->load->view('pengelola/dashboard');
+                break;
+            default:
+                $this->load->view('pengguna/dashboard');
+                break;
+        }
+    }    
     public function prosesregister() {
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');
