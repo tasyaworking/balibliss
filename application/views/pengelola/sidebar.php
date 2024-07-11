@@ -63,7 +63,7 @@
     					</a>
     				</li>
 					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Cpengelola/daftarsponsor')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Cpengelola/tempatwisata')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-folder-plus"></i>
     						</span>

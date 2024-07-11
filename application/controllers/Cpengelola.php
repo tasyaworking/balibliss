@@ -52,7 +52,7 @@ class Cpengelola extends CI_Controller {
             'navbar' => $this->load->view('partials/navbar', '', true),
             'footer' => $this->load->view('partials/footer', '', true),
         ];
-        $this->load->view('pengelola/daftartempatwisata', $data);
+        $this->load->view('pengelola/daftarwisata', $data);
     }
 
     public function daftarsponsor() {
