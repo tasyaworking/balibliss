@@ -15,7 +15,7 @@
             <?php
                 $pesan = $this->session->flashdata('pesan');
                 $color = $this->session->flashdata('color');
-                if ($pesan != "") {
+                if ($pesan) {
             ?>
                 <div class="alert alert-<?=$color?> alert-dismissible fade show" role="alert">
                     <?php echo $pesan; ?>                        
@@ -26,7 +26,7 @@
             ?>
             <div class="login__inputs">
                 <div class="login__box">
-                    <input type="email" name="email" placeholder="EMAIL ID" required class="login__input">
+                    <input type="email" name="email" placeholder="Email" required class="login__input">
                     <i class="ri-user-fill"></i>
                 </div>
                 <div class="login__box">
@@ -36,8 +36,8 @@
             </div>
             <div class="login__check">
                 <div class="login__check-box">
-                    <input type="checkbox" class="login__check-input" id="user-check">
-                    <label for="user-check" class="login__check-label">Remember me</label>
+                    <input type="checkbox" class="login__check-input" id="id_user">
+                    <label for="id_user" class="login__check-label">Remember me</label>
                 </div>
                 <a href="#" class="login__forgot">Forgot Password?</a>
             </div>

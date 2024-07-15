@@ -8,8 +8,9 @@
     <?=$navbar?>
 		<!-- main -->
 		<div class="container-fluid">
-            Tabel Daftar Pengajuan Sponsorship
+    
 		</div>
+	</div>
 	</div>
 	<!-- main -->
 </div>
