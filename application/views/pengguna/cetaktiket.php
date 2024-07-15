@@ -7,19 +7,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembayaran Sukses</title>
+    <title>Cetak Tiket</title>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <h1>Pembayaran Sukses</h1>
+            <h1>Cetak Tiket</h1>
+            <p>Nama Wisata: <?php echo isset($nama_wisata) ? $nama_wisata : 'Data tidak tersedia'; ?></p>
             <p>Id Pesanan: <?php echo isset($id_pesanan) ? $id_pesanan : 'Data tidak tersedia'; ?></p>
-            <p>Total Harga: Rp. <?php echo isset($total_harga) ? number_format($total_harga, 0, ',', '.') : 'Data tidak tersedia'; ?></p>
+            <p>Harga Tiket: Rp. <?php echo isset($harga_tiket) ? number_format($harga_tiket, 0, ',', '.') : 'Data tidak tersedia'; ?></p>
             <p>Tanggal Kunjungan: <?php echo isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></p>
             <a href="<?php echo base_url(); ?>">Kembali ke Beranda</a>
-            <a href="<?php echo base_url('Ctiket/cetaktiket'); ?>">Cetak Tiket</a>
         </div>
     </div>
 </body>
 </html>
-

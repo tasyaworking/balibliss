@@ -1,0 +1,164 @@
+/* Global styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container for the form */
+.container {
+    max-width: 1200px; /* Increased the max-width for a wider layout */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card styles */
+.card {
+    padding: 30px; /* Adjusted padding for better spacing */
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form title */
+.card h1 {
+    text-align: center;
+    margin-bottom: 30px; /* Adjusted margin for better spacing */
+    font-size: 2em;
+    color: #444;
+    font-weight: 700;
+}
+
+/* Form group styles */
+.form-group {
+    display: flex;
+    justify-content: space-between; /* Align label and value to the left and right */
+    margin-bottom: 20px;
+}
+
+/* Form label styles */
+.form-group label {
+    width: 200px; /* Adjusted the width as needed */
+    font-weight: 500;
+    color: #333;
+    text-align: left; /* Align text to the left */
+}
+
+/* Form input styles */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-left: 10px; /* Space between label and input */
+}
+
+/* Readonly input styles */
+.form-group input[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Button styles */
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #1363DF;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-left: auto; /* Align button to the right */
+    display: block; /* Make sure button is a block element */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Text Styles */
+p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+/* Global styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container for the form */
+.container {
+    max-width: 1000px; /* Increased the max-width for a wider layout */
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Form title */
+.container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: #444;
+    font-weight: 700;
+}
+
+/* Text Styles */
+.container p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f4f4f4;
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #df1343;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Form group styles */
+.form-group {
+    text-align: center; /* Center align the button */
+}

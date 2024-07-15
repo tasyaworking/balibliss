@@ -1,0 +1,68 @@
+/* Global styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container for the confirmation message */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Card styles */
+.card {
+    max-width: 600px; /* Adjust the width as needed */
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Form title */
+.card h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: #444;
+    font-weight: 700;
+}
+
+/* Paragraph styles */
+.card p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f4f4f4;
+}
+
+/* Link button styles */
+.card a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #1363DF;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.card a:hover {
+    background-color: #0056b3;
+}

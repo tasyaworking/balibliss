@@ -8,14 +8,11 @@ class Mtiket extends CI_Model {
         $this->load->database();
     }
     
-    public function get_all_wisata() {
-        // Ambil semua data dari tabel 'tb_ticket'
+    public function ambilwisata() {
         $query = $this->db->get('tb_ticket');
-
-        // Mengembalikan hasil dalam bentuk array
         return $query->result_array();
     }
-    public function get_place_by_id($id) {
+    public function ambilid($id) {
         // Ambil data detail wisata berdasarkan id
         return $this->db->get_where('tb_detailwisata', array('id' => $id))->row_array();
     }
@@ -27,20 +24,12 @@ class Mtiket extends CI_Model {
     public function simpan_pemesanan($data_pemesanan) {
         return $this->db->insert('tb_pesanan', $data_pemesanan);
     }
-
-    public function insert_konfirmasi($data) {
-        // Debugging data sebelum insert
-        log_message('debug', 'Inserting data: ' . print_r($data, true));
-
-        $this->db->insert('tb_bayar', $data);
-        if ($this->db->affected_rows() > 0) {
-            return true;
-        } else {
-            // Debugging jika insert gagal
-            log_message('error', 'Insert failed: ' . $this->db->last_query());
-            return false;
-        }
+    
+    public function insertkonfirmasi($data_pembayaran) {
+        $this->db->insert('tb_bayar', $data_pembayaran);
+        return $this->db->affected_rows() > 0;
     }
+
     public function get_order($kd_order) {
         // Ambil data pembayaran berdasarkan kode order
         $this->db->where('kd_order', $kd_order);
@@ -58,6 +47,14 @@ class Mtiket extends CI_Model {
     public function update_konfirmasi($id, $data) {
         $this->db->where('id', $id);
         return $this->db->update('tb_bayar', $data);
+    }
+
+    public function insert_rating($data) {
+        return $this->db->insert('tb_rating', $data);
+    }
+    public function get_ratings() {
+        $query = $this->db->get('tb_rating');
+        return $query->result();
     }
 }
 ?>
