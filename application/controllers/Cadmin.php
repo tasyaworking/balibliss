@@ -24,7 +24,7 @@ class Cadmin extends CI_Controller {
 
 	public function pengguna() {
         $title['title']= 'Data Pengguna';
-		$data1 ['data_pengguna'] = $this->madmin->data_pengguna();
+		$data1['data_pengguna'] = $this->madmin->data_pengguna();
         $data = [
 			'header'=>$this->load->view('partials/header',$title,true),
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
@@ -37,20 +37,21 @@ class Cadmin extends CI_Controller {
 
 	public function tempatwisata() {
         $title['title']= 'Data Tempat Wisata';
+		$data1['data_tempat_wisata'] = $this->madmin->data_tempat_wisata();
         $data = [
 			'header'=>$this->load->view('partials/header',$title,true),
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
 			'navbar'=>$this->load->view('partials/navbar','',true),
 			'footer'=>$this->load->view('partials/footer','',true),
 			// 'konten'=>'',
-			// 'table'=>'',
+			'table'=>$this->load->view('admin/table/tempat_wisata',$data1,true)
 			];
 		$this->load->view('admin/tempatwisata', $data);
 	}
 
 	public function pengelola() {
         $title['title']= 'Pengajuan Pengelola';
-		$data1 ['data_pengajuan_pengelola'] = $this->madmin->data_pengajuan_pengelola();
+		$data1['data_pengajuan_pengelola'] = $this->madmin->data_pengajuan_pengelola();
         $data = [
 			'header'=>$this->load->view('partials/header',$title,true),
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
@@ -78,13 +79,14 @@ class Cadmin extends CI_Controller {
 
 	public function sponsorship() {
         $title['title']= 'Pengajuan Sponsorship';
+		$data1['data_pengajuan_sponsor'] = $this->madmin->data_pengajuan_sponsor();
         $data = [
 			'header'=>$this->load->view('partials/header',$title,true),
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
 			'navbar'=>$this->load->view('partials/navbar','',true),
 			'footer'=>$this->load->view('partials/footer','',true),
 			// 'konten'=>'',
-			// 'table'=>'',
+			'table'=>$this->load->view('admin/table/sponsor',$data1,true)
 			];
 		$this->load->view('admin/sponsorship', $data);
 	}

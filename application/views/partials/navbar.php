@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <!-- Logo di sini -->
         <a class="navbar-brand" href="#">
-            <img src="<?= base_url('assets/img/BaliBlissLogo.png') ?>" height="40" width="140" alt="Logo">
+            <!-- <img src="<?= base_url('assets/img/BaliBlissLogo.png') ?>" height="40" width="140" alt="Logo"> -->
         </a>
 
         <!-- Tombol sidebar toggle di sini -->

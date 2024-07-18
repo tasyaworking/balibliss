@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
             <th>Ulasan</th>
             <th>Tanggal</th>
         </tr>
-        <?php foreach ($ratings as $rating): ?>
+        <?php //foreach ($ratings as $rating): ?>
         <tr>
             <td><?= $rating->place_id ?></td>
             <td><?= $rating->user_id ?></td>
@@ -22,7 +22,24 @@
             <td><?= $rating->review ?></td>
             <td><?= $rating->date ?></td>
         </tr>
-        <?php endforeach; ?>
+        <?php // endforeach; ?>
     </table>
 </body>
-</html>
+</html> -->
+
+<?=$header?>
+<!--  Body Wrapper -->
+<div class="page-wrapper"  id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+	data-sidebar-position="fixed" data-header-position="fixed">
+	<?=$sidebar;?>
+	<!--  Main wrapper -->
+	<div class="body-wrapper ">
+    <?=$navbar?>
+		<!-- main -->
+		<div class="container-fluid">
+            Hello
+		</div>
+	</div>
+	<!-- main -->
+</div>
+<?=$footer?>
