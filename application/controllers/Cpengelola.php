@@ -58,14 +58,44 @@ class Cpengelola extends CI_Controller {
     }
 
     public function daftarsponsor() {
-        $title['title'] = 'Daftar Sponsorship';
-        $data = [
-            'header' => $this->load->view('partials/header', $title, true),
-            'sidebar' => $this->load->view('pengelola/sidebar', '', true),
-            'navbar' => $this->load->view('partials/navbar', '', true),
-            'footer' => $this->load->view('partials/footer', '', true),
-        ];
-        $this->load->view('pengelola/daftarsponsor', $data);
+        $this->form_validation->set_rules('nama_wisata', 'Nama Sponsor', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Sponsor', 'required');
+        $this->form_validation->set_rules('sosial_media', 'Sosial Media', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('no_hp', 'No HP', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('pesan', validation_errors());
+            $this->session->set_flashdata('color', 'danger');
+        } else {
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = 2048;
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('gambar')) {
+                $this->session->set_flashdata('pesan', $this->upload->display_errors());
+                $this->session->set_flashdata('color', 'danger');
+            } else {
+                $upload_data = $this->upload->data();
+                $data = array(
+                    'nama_sponsor' => $this->input->post('nama_wisata'),
+                    'deskripsi' => $this->input->post('deskripsi'),
+                    'sosial_media' => $this->input->post('sosial_media'),
+                    'alamat' => $this->input->post('alamat'),
+                    'no_hp' => $this->input->post('no_hp'),
+                    'logo' => $upload_data['file_name']
+                );
+                if ($this->Mpengelola->daftarsponsor($data)) {
+                    $this->session->set_flashdata('pesan', 'Pendaftaran sponsorship berhasil.');
+                    $this->session->set_flashdata('color', 'success');
+                } else {
+                    $this->session->set_flashdata('pesan', 'Pendaftaran sponsorship gagal.');
+                    $this->session->set_flashdata('color', 'danger');
+                }
+            }
+        }
+        redirect('pengelola/daftarsponsor');
     }
 
     public function tambahTempatWisata() {
