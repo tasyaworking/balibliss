@@ -1,25 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Rating dan Ulasan</title>
+    <?php $this->load->view('partials/header'); ?>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styleskonfirm.css'); ?>">
+    <style>
+        .page-wrapper {
+            display: flex;
+            height: 100vh;
+            overflow: hidden; /* Ensure no scrolling on the main wrapper */
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar {
+            background-color: #1076e3;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: calc(100% - 250px);
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: 140px;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-top: 70px; /* Adjust margin to push content below navbar */
+            margin-left: 250px; /* Adjust margin to make space for sidebar */
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding: 20px;
+            height: calc(100vh - 70px); /* Full height minus navbar height */
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-back {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .btn-back:hover {
+            background-color: #c82333;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #0069d9;
+        }
+    </style>
 </head>
 <body>
-    <h2>Beri Rating dan Ulasan untuk Tempat Wisata</h2>
-    <form action="<?= site_url('Crating/submit_rating') ?>" method="post">
-        <label for="place_id">ID Tempat Wisata:</label>
-        <input type="text" id="place_id" name="place_id" required><br><br>
-
-        <label for="user_id">ID Pengguna:</label>
-        <input type="text" id="user_id" name="user_id" required><br><br>
-
-        <label for="rating">Rating (1-5):</label>
-        <input type="number" id="rating" name="rating" min="1" max="5" required><br><br>
-
-        <label for="review">Ulasan:</label>
-        <textarea id="review" name="review" required></textarea><br><br>
-
-        <input type="submit" value="Kirim">
-    </form>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <?php $this->load->view('pengguna/sidebar'); ?>
+        <div class="main-content">
+            <?php $this->load->view('pengguna/navbar'); ?>
+    	<div class="main-container">
+    <div class="container">
+        <h2>Tempat Wisata yang Sudah Kamu Kunjungi</h2>
+        <?php if (!empty($visited_places)): ?>
+            <?php foreach ($visited_places as $place): ?>
+                <div class="card">
+                    <img src="<?= base_url('assets/img/upload/' . $place->foto) ?>" alt="<?= $place->nama_wisata ?>">
+                    <h3><?= $place->nama_wisata ?></h3>
+                    <p><?= $place->deskripsi ?></p>
+                    <button onclick="location.href='<?= site_url('Ctiket/rate_place/' . $place->id) ?>'">Berikan Ulasan</button>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Kamu belum mengunjungi tempat wisata apapun.</p>
+        <?php endif; ?>
+    </div>
 </body>
 </html>

@@ -1,14 +1,23 @@
+/* Mengimpor font Poppins dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Gaya dasar untuk seluruh halaman */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #0f0fdb;
+    color: #333;
     box-sizing: border-box;
+    font-weight: bold;
 }
 
+/* Gaya untuk container utama */
 .main-container {
     display: flex;
 }
 
+/* Gaya untuk sidebar */
 .sidebar {
     width: 250px;
     padding: 20px;
@@ -43,19 +52,22 @@ body {
     background-color: #ddd;
 }
 
+/* Gaya untuk container konten */
 .content-container {
-    margin-left: 270px; /* Adjust this value based on the width of the sidebar */
+    margin-left: 270px; /* Sesuaikan nilai ini berdasarkan lebar sidebar */
     padding: 20px;
     flex: 1;
 }
 
+/* Gaya untuk container wisata */
 .wisata-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: justify;
+    justify-content: space-between;
 }
 
+/* Gaya untuk kartu wisata */
 .wisata-card {
     width: 100%;
     max-width: 300px;
@@ -78,25 +90,27 @@ body {
 
 .wisata-card h3 {
     margin: 0;
-    padding: 10px;
-    background-color: #f8f8f8;
-    color: #333;
+    padding: 15px;
+    background-color: #007bff;
+    color: #ffffff;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .wisata-card p {
-    padding: 10px;
-    color: #666;
+    padding: 15px;
+    color: #333;
     font-size: 1rem;
+    text-align: justify;
 }
 
 .pesan-button {
     display: block;
     text-align: center;
-    margin: 10px auto;
+    margin: 10px auto 20px auto;
     padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #11b20b;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -104,4 +118,66 @@ body {
 
 .pesan-button:hover {
     background-color: #0056b3;
+}
+
+/* Gaya untuk halaman dashboard */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    width: calc(33% - 20px);
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #eee;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h2 {
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+    color: #007bff;
+}
+
+.card-content p {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+    color: #555;
+}
+
+.rating {
+    color: #f39c12;
+}
+
+.rating .fa {
+    margin-right: 5px;
 }

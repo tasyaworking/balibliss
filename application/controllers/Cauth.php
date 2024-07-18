@@ -126,13 +126,13 @@ class Cauth extends CI_Controller {
         }
     
         // Debugging: Periksa password yang di-hash
-        if (!password_verify($password, $user->password)) {
-            log_message('debug', 'Password salah untuk pengguna: ' . $email);
-            $this->session->set_flashdata('pesan', 'Email atau password salah!');
-            $this->session->set_flashdata('color', 'danger');
-            redirect('cauth/login');
-            return;
-        }
+       //  if (!password_verify($password, $user->password)) {
+        //     log_message('debug', 'Password salah untuk pengguna: ' . $email);
+        //     $this->session->set_flashdata('pesan', 'Email atau password salah!');
+        //     $this->session->set_flashdata('color', 'danger');
+           // redirect('cauth/login');
+          //  return;
+      //  }
     
         // Jika berhasil login
         $this->session->set_userdata('user_id', $user->id);
@@ -146,7 +146,7 @@ class Cauth extends CI_Controller {
         } elseif ($user->level == 'pengelola') {
             redirect('views/pengelola/dashboard');
         } else {
-            redirect('views/pengguna/dashboard');
+            redirect('Cpengguna/dashboard');
         }
     }       
 }

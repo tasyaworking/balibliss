@@ -28,6 +28,28 @@ class Mtiket extends CI_Model {
     public function insertkonfirmasi($data_pembayaran) {
         $this->db->insert('tb_bayar', $data_pembayaran);
         return $this->db->affected_rows() > 0;
+
+    }
+
+    public function get_pesanan_by_id($id_pesanan) {
+        return $this->db->get_where('tb_pesanan', array('id_pesanan' => $id_pesanan))->row_array();
+    }
+    
+    // Fungsi callback untuk validasi file bukti transaksi
+    public function file_check($str) {
+        $allowed_mime_type_arr = array('image/gif', 'image/jpeg', 'image/png');
+        $mime = get_mime_by_extension($_FILES['userfile']['name']);
+        if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != "") {
+            if (in_array($mime, $allowed_mime_type_arr)) {
+                return true;
+            } else {
+                $this->form_validation->set_message('file_check', 'Please select only gif/jpg/png file.');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_check', 'Please choose a file to upload.');
+            return false;
+        }
     }
 
     public function get_order($kd_order) {
@@ -49,12 +71,18 @@ class Mtiket extends CI_Model {
         return $this->db->update('tb_bayar', $data);
     }
 
-    public function insert_rating($data) {
-        return $this->db->insert('tb_rating', $data);
-    }
-    public function get_ratings() {
-        $query = $this->db->get('tb_rating');
+    public function get_visited_places_by_wisata($id_wisata) {
+        $this->db->select('id_wisata, nama_wisata, deskripsi, harga_tiket, foto');
+        $this->db->from('tb_ticket');
+        $this->db->where('id_wisata', $id_wisata); // Mengambil data berdasarkan id_wisata
+        $query = $this->db->get();
         return $query->result();
+    }
+
+    public function get_all_wisata()
+    {
+        $query = $this->db->get('tb_ticket');
+        return $query->result_array();
     }
 }
 ?>

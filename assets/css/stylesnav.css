@@ -1,63 +1,15 @@
-/* Navbar CSS */
-.navbar {
-    background-color: white; /* Change navbar color to blue */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for a 3D effect */
-}
-
-.navbar-brand img {
-    height: 50px;
-    width: 140px;
-}
-
-.navbar-toggler {
-    border-color: transparent;
-}
-
-.navbar-toggler-icon {
-    color: white;
-}
-
-.navbar-nav .nav-item .nav-link {
-    color: white;
-    font-size: 16px;
-    padding: 10px 15px;
-    transition: color 0.3s ease;
-}
-
-.navbar-nav .nav-item .nav-link:hover {
-    color: #FFC107; /* Hover color */
-}
-
-.navbar-nav .nav-item.dropdown .dropdown-menu {
-    background-color: #1076e3;
-    border: none;
-}
-
-.navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item {
-    color: white;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-.navbar-nav .nav-item .nav-icon-hover img {
-    border: 2px solid white;
-}
-
 /* Sidebar CSS */
 .sidebar {
-    width: 500px; /* Increase width to make sidebar wider */
+    width: 300px; /* Atur lebar sidebar sesuai kebutuhan */
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #343A40; /* Dark background */
+    background-color: #343A40; /* Warna background sidebar */
     color: white;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Atur z-index agar sidebar menutupi navbar */
 }
 
 .sidebar .sidebar-header {
@@ -90,11 +42,56 @@
     text-decoration: none;
 }
 
-.sidebar .nav-item .nav-link.active {
-    background-color: #0056b3; /* Darker blue for active link */
+/* Navbar CSS */
+.navbar {
+    background-color: #1076e3; /* Warna background navbar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek shadow navbar */
+    z-index: 999; /* Pastikan navbar berada di bawah sidebar */
+    position: fixed;
+    top: 0;
+    left: 250px; /* Sesuaikan left dengan lebar sidebar */
+    width: calc(100% - 250px); /* Atur lebar navbar */
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: 140px;
+}
+
+.navbar-toggler {
+    border-color: transparent;
+}
+
+.navbar-toggler-icon {
     color: white;
 }
 
-.sidebar .nav-item .nav-link .nav-icon {
-    margin-right: 40px;
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #FFC107; /* Hover color */
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu {
+    background-color: #0056b3; /* Dark blue */
+    border: none;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item {
+    color: white;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #004494; /* Darker blue on hover */
+}
+
+.navbar-nav .nav-item .nav-icon-hover img {
+    border: 2px solid white;
 }

@@ -1,164 +1,98 @@
-/* Global styles */
+/* stylesform.css */
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f0f8ff;
+    color: #0056b3;
     margin: 0;
-    padding: 20px;
-    color: #333;
-    line-height: 1.6;
+    padding: 0;
+    font-weight: bold;
 }
 
-/* Container for the form */
 .container {
-    max-width: 1200px; /* Increased the max-width for a wider layout */
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Card styles */
-.card {
-    padding: 30px; /* Adjusted padding for better spacing */
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Form title */
-.card h1 {
-    text-align: center;
-    margin-bottom: 30px; /* Adjusted margin for better spacing */
-    font-size: 2em;
-    color: #444;
-    font-weight: 700;
-}
-
-/* Form group styles */
-.form-group {
     display: flex;
-    justify-content: space-between; /* Align label and value to the left and right */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
+    padding-left: 220px; /* Sesuaikan dengan lebar sidebar */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #0056b3;
+    text-align: center;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
-/* Form label styles */
-.form-group label {
-    width: 200px; /* Adjusted the width as needed */
-    font-weight: 500;
-    color: #333;
-    text-align: left; /* Align text to the left */
+.form-group {
+    margin-bottom: 15px;
 }
 
-/* Form input styles */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="number"],
-.form-group input[type="date"],
-.form-group input[type="file"],
-.form-group select {
-    flex: 1;
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #0056b3;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 5px;
     box-sizing: border-box;
-    margin-left: 10px; /* Space between label and input */
+    margin-bottom: 10px;
 }
 
-/* Readonly input styles */
-.form-group input[readonly] {
+input[type="text"]:read-only,
+input[type="email"]:read-only,
+input[type="tel"]:read-only,
+input[type="number"]:read-only,
+input[type="date"]:read-only {
     background-color: #e9ecef;
-    cursor: not-allowed;
 }
 
-/* Button styles */
-button[type="submit"] {
-    padding: 12px 20px;
-    background-color: #1363DF;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
     cursor: pointer;
-    margin-left: auto; /* Align button to the right */
-    display: block; /* Make sure button is a block element */
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Text Styles */
-p {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-
-/* Global styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Container for the form */
-.container {
-    max-width: 1000px; /* Increased the max-width for a wider layout */
-    margin: 0 auto;
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-}
-
-/* Form title */
-.container h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5em;
-    color: #444;
-    font-weight: 700;
-}
-
-/* Text Styles */
-.container p {
-    font-size: 18px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f4f4f4;
-}
-
-/* Button styles */
-.button {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #df1343;
-    color: white;
-    text-align: center;
-    text-decoration: none;
+.btn-back {
+    background-color: #45a049;
+    color: #faf8f8;
     font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    margin-top: 20px;
 }
 
-.button:hover {
+.btn-back:hover {
+    background-color: #bbb;
+}
+
+.btn-submit {
     background-color: #0056b3;
+    color: #fff;
+    font-weight: bold;
 }
 
-/* Form group styles */
-.form-group {
-    text-align: center; /* Center align the button */
+.btn-submit:hover {
+    background-color: #004494;
 }

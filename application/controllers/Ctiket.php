@@ -34,7 +34,10 @@ public function pesan($id_wisata = null) {
 
     $this->form_validation->set_rules('nama_pemesan', 'Nama Pemesan', 'required');
     $this->form_validation->set_rules('email_pemesan', 'Email Pemesan', 'required|valid_email');
+    $this->form_validation->set_rules('tlp_pemesan', 'Tlp Pemesan', 'required|numeric');
     $this->form_validation->set_rules('jumlah_tiket', 'Jumlah Tiket', 'required|numeric');
+    $this->form_validation->set_rules('tgl_kunjungan', 'Tanggal Kunjungan', 'required');
+    
 
     if ($this->form_validation->run() == FALSE) {
         // Jika validasi gagal, kembalikan ke halaman sebelumnya atau tampilkan pesan kesalahan
@@ -43,7 +46,9 @@ public function pesan($id_wisata = null) {
         // Tangkap data dari form
         $nama_pemesan = $this->input->post('nama_pemesan');
         $email_pemesan = $this->input->post('email_pemesan');
+        $tlp_pemesan = $this->input->post('tlp_pemesan');
         $jumlah_tiket = $this->input->post('jumlah_tiket');
+        $tgl_kunjungan = $this->input->post('tgl_kunjungan');
 
         // Simpan data konfirmasi ke dalam session
         $this->session->set_userdata('konfirmasi_pemesanan', [
@@ -51,7 +56,9 @@ public function pesan($id_wisata = null) {
             'id_wisata' => $id_wisata,
             'nama_pemesan' => $nama_pemesan,
             'email_pemesan' => $email_pemesan,
-            'jumlah_tiket' => $jumlah_tiket
+            'tlp_pemesan' => $tlp_pemesan,
+            'jumlah_tiket' => $jumlah_tiket,
+            'tgl_kunjungan' => $tgl_kunjungan
         ]);
 
         // Siapkan data untuk dimasukkan ke dalam tabel tb_pesanan
@@ -60,7 +67,9 @@ public function pesan($id_wisata = null) {
             'id_wisata' => $id_wisata,
             'nama_pemesan' => $nama_pemesan,
             'email_pemesan' => $email_pemesan,
-            'jumlah_tiket' => $jumlah_tiket
+            'tlp_pemesan' => $tlp_pemesan,
+            'jumlah_tiket' => $jumlah_tiket,
+            'tgl_kunjungan' => $tgl_kunjungan
         ];
         $result = $this->Mtiket->simpan_pemesanan($data_pemesanan);
 
@@ -71,7 +80,9 @@ public function pesan($id_wisata = null) {
                 'konfirmasi' => [
                     'nama_pemesan' => $nama_pemesan,
                     'email_pemesan' => $email_pemesan,
-                    'jumlah_tiket' => $jumlah_tiket
+                    'tlp_pemesan' => $tlp_pemesan,
+                    'jumlah_tiket' => $jumlah_tiket,
+                    'tgl_kunjungan' => $tgl_kunjungan
                 ]
             ]);
         } else {
@@ -86,7 +97,9 @@ public function konfirmasi_pemesanan() {
     $id_wisata = $this->input->post('id_wisata');
     $nama_pemesan = $this->input->post('nama_pemesan');
     $email_pemesan = $this->input->post('email_pemesan');
+    $tlp_pemesan = $this->input->post('tlp_pemesan');
     $jumlah_tiket = $this->input->post('jumlah_tiket');
+    $tgl_kunjungan = $this->input->post('tgl_kunjungan');
 
     // Ambil data wisata berdasarkan id_wisata dari model Mtiket
     $wisata = $this->Mtiket->getWisataById($id_wisata);
@@ -103,7 +116,9 @@ public function konfirmasi_pemesanan() {
         'id_wisata' => $id_wisata,
         'nama_pemesan' => $nama_pemesan,
         'email_pemesan' => $email_pemesan,
+        'tlp_pemesan' => $tlp_pemesan,
         'jumlah_tiket' => $jumlah_tiket,
+        'tgl_kunjungan' => $tgl_kunjungan,
     ];
 
 
@@ -118,7 +133,9 @@ public function konfirmasi_pemesanan() {
             'id_wisata' => $id_wisata,
             'nama_pemesan' => $nama_pemesan,
             'email_pemesan' => $email_pemesan,
+            'tlp_pemesan' => $tlp_pemesan,
             'jumlah_tiket' => $jumlah_tiket,
+            'tgl_kunjungan' => $tgl_kunjungan,
             'total_harga' => $total_harga
         ]);
 
@@ -201,13 +218,23 @@ public function konfirmasi_pemesanan() {
                     return;
                 }
     
+                // Validasi ID pesanan
+                $id_pesanan = $konfirmasi['id_pesanan'];
+                $pesanan = $this->Mtiket->get_pesanan_by_id($id_pesanan);
+                if (!$pesanan) {
+                    log_message('error', 'ID pesanan tidak valid');
+                    show_error('ID pesanan tidak valid', 500);
+                    return;
+                }
+    
                 // Siapkan data pembayaran untuk disimpan ke database
-                $data_pembayaran = array(// Ambil id_pesanan dari konfirmasi
+                $data_pembayaran = array(
                     'bank_km' => $this->input->post('bank_km'),
                     'total_harga' => $this->input->post('total_harga'),
                     'tgl_kunjungan' => $this->input->post('tgl_kunjungan'),
                     'bukti_transaksi' => $upload_data['file_name'],
-                    'created_at' => date('Y-m-d H:i:s')
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'verified' => 0 // 0: belum diverifikasi, 1: diverifikasi
                 );
     
                 // Simpan data pembayaran ke database
@@ -261,6 +288,12 @@ public function konfirmasi_pemesanan() {
     
         // Menampilkan view cetak tiket dengan data yang diambil
         $this->load->view('pengguna/cetaktiket', $data);
+    }
+
+    public function ratings() {
+        $id_wisata = $this->input->get('id_wisata'); // Mengambil id_wisata dari query parameter
+        $data['visited_places'] = $this->Mtiket->get_visited_places_by_wisata($id_wisata);
+        $this->load->view('pengguna/ratings', $data);
     }
     
 
