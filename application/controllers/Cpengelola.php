@@ -6,9 +6,10 @@ class Cpengelola extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Mpengelola');
+        $this->load->model('Msponsor');
         $this->load->helper('url');
         $this->load->helper('form');
-        $this->load->library('form_validation'); // Memuat library form validation
+        $this->load->library('form_validation');
     }
 
     public function dashboard() {
@@ -37,13 +38,27 @@ class Cpengelola extends CI_Controller {
 
     public function tempatwisata() {
         $title['title'] = 'Data Tempat Wisata';
+        // Ambil data sponsor dari model Msponsor
+        $data_sponsor['data_sponsor'] = $this->Msponsor->get_sponsor_data(); // Pastikan metode get_sponsor_data() ada di dalam model Msponsor
+        $data = [
+            'header' => $this->load->view('partials/header', $title, true),
+            'sidebar' => $this->load->view('pengelola/sidebar', '', true),
+            'navbar' => $this->load->view('partials/navbar', '', true),
+            'footer' => $this->load->view('partials/footer', '', true),
+            'data_sponsor' => $data_sponsor // Kirimkan data sponsor ke view
+        ];
+        $this->load->view('pengelola/tbwisata', $data);
+    }
+
+    public function tbpengguna() {
+        $title['title'] = 'Data Tempat Wisata';
         $data = [
             'header' => $this->load->view('partials/header', $title, true),
             'sidebar' => $this->load->view('pengelola/sidebar', '', true),
             'navbar' => $this->load->view('partials/navbar', '', true),
             'footer' => $this->load->view('partials/footer', '', true),
         ];
-        $this->load->view('pengelola/tbwisata', $data);
+        $this->load->view('pengelola/tbpengguna', $data);
     }
 
     public function daftarwisata() {
@@ -58,7 +73,7 @@ class Cpengelola extends CI_Controller {
     }
 
     public function daftarsponsor() {
-        $this->form_validation->set_rules('nama_wisata', 'Nama Sponsor', 'required');
+        $this->form_validation->set_rules('nama_sponsor', 'Nama Sponsor', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi Sponsor', 'required');
         $this->form_validation->set_rules('sosial_media', 'Sosial Media', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
@@ -79,7 +94,7 @@ class Cpengelola extends CI_Controller {
             } else {
                 $upload_data = $this->upload->data();
                 $data = array(
-                    'nama_sponsor' => $this->input->post('nama_wisata'),
+                    'nama_sponsor' => $this->input->post('nama_sponsor'),
                     'deskripsi' => $this->input->post('deskripsi'),
                     'sosial_media' => $this->input->post('sosial_media'),
                     'alamat' => $this->input->post('alamat'),
@@ -95,7 +110,7 @@ class Cpengelola extends CI_Controller {
                 }
             }
         }
-        redirect('pengelola/daftarsponsor');
+        redirect('cpengelola/daftarsponsor');
     }
 
     public function tambahTempatWisata() {
