@@ -9,6 +9,7 @@ class Cadmin extends CI_Controller {
 			$this->load->model('madmin');
 		}
 
+	// load dashboard	
 	public function dashboard() {
         $title['title']= 'Dashboard Admin';
         $data = [
@@ -22,6 +23,7 @@ class Cadmin extends CI_Controller {
 		$this->load->view('admin/dashboard', $data);
 	}
 
+	// load data pengguna
 	public function pengguna() {
         $title['title']= 'Data Pengguna';
 		$data1['data_pengguna'] = $this->madmin->data_pengguna();
@@ -35,6 +37,7 @@ class Cadmin extends CI_Controller {
 		$this->load->view('admin/pengguna', $data);
 	}
 
+	// load tempat wisata
 	public function tempatwisata() {
         $title['title']= 'Data Tempat Wisata';
 		$data1['data_tempat_wisata'] = $this->madmin->data_tempat_wisata();
@@ -49,6 +52,7 @@ class Cadmin extends CI_Controller {
 		$this->load->view('admin/tempatwisata', $data);
 	}
 
+	// load pengajuan pengelola
 	public function pengelola() {
         $title['title']= 'Pengajuan Pengelola';
 		$data1['data_pengajuan_pengelola'] = $this->madmin->data_pengajuan_pengelola();
@@ -63,6 +67,7 @@ class Cadmin extends CI_Controller {
 		$this->load->view('admin/pengelola', $data);
 	}
 
+	// load pengajuan pengelola - tempat wisata per id 
 	public function view_pengelola() {
         $title['title']= 'Pengajuan Pengelola';
 		// $data1 ['data_pengajuan_pengelola'] = $this->madmin->data_pengajuan_pengelola();
@@ -77,6 +82,7 @@ class Cadmin extends CI_Controller {
 		$this->load->view('admin/form/pengajuan_pengelola', $data);
 	}
 
+	// load pengajuan sponsorship
 	public function sponsorship() {
         $title['title']= 'Pengajuan Sponsorship';
 		$data1['data_pengajuan_sponsor'] = $this->madmin->data_pengajuan_sponsor();
@@ -89,6 +95,21 @@ class Cadmin extends CI_Controller {
 			'table'=>$this->load->view('admin/table/sponsor',$data1,true)
 			];
 		$this->load->view('admin/sponsorship', $data);
+	}
+
+	// load tempat_wisata per id
+	public function view_tempatwisata_id($id_wisata) {
+        $title['title']= 'Data Tempat Wisata';
+		$data1['data_tempat_wisata_by_id'] = $this->madmin->data_tempat_wisata_by_id($id_wisata);
+        $data = [
+			'header'=>$this->load->view('partials/header',$title,true),
+			'sidebar'=>$this->load->view('admin/sidebar','',true),
+			'navbar'=>$this->load->view('partials/navbar','',true),
+			'footer'=>$this->load->view('partials/footer','',true),
+			// 'konten'=>'',
+			'table'=>$this->load->view('admin/form/tempatwisata',$data1,true)
+			];
+		$this->load->view('admin/tempatwisata', $data);
 	}
 }
 ?>

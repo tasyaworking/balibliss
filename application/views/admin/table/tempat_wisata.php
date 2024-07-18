@@ -31,8 +31,12 @@
 						<td><?=$row->alamat_wisata?></td>
 						<td><?=$row->no_hp_wisata?></td>
 						<td class="text-center">
-							<button type="button" class="btn btn-primary" onclick="view(<?=$row->id_user?>)"><i
-									class="ti ti-eye"></i></button>
+						<a href="<?= site_url('cadmin/view_tempatwisata_id/'.$row->id_wisata) ?>" class="btn btn-primary">
+							<i class="ti ti-eye"></i>
+						</a>
+
+							<!-- <button type="button" class="btn btn-primary" onclick="view(<?=$row->id_wisata?>)"><i
+									class="ti ti-eye"></i></button> -->
 							<!-- <button type="button" class="btn btn-success" onclick="hapus(<?=$row->id_user?>)"><i
 									class="ti ti-check"></i></button>
 							<button type="button" class="btn btn-danger" onclick="hapus(<?=$row->id_user?>)"><i
@@ -54,8 +58,8 @@
 		var btn = document.getElementById('btn-tampil');
 		var display = 1;
 
-		function view(id_user) {
-			load("cadmin/view_pengelola" + id_user, "#script");
+		function view(id_wisata) {
+			load("cadmin/view_tempatwisata_id/" + id_wisata, "#script");
 		}
 
 		// function hideShow() {
