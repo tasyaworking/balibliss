@@ -34,7 +34,7 @@ class Cpengelola extends CI_Controller {
             'footer' => $this->load->view('partials/footer', '', true),
             'table' => $this->load->view('admin/table/pengguna', $data1, true)
         ];
-        $this->load->view('pengelola/tbpengguna', $data);
+        $this->load->view('pengelola/pengguna', $data);
     }
 
     public function tempatwisata() {
@@ -48,7 +48,7 @@ class Cpengelola extends CI_Controller {
             'footer' => $this->load->view('partials/footer', '', true),
             'data_sponsor' => $data_sponsor // Kirimkan data sponsor ke view
         ];
-        $this->load->view('pengelola/tbwisata', $data);
+        $this->load->view('pengelola/tempatwisata', $data);
     }
 
     public function tbpengguna() {
@@ -59,7 +59,7 @@ class Cpengelola extends CI_Controller {
             'navbar' => $this->load->view('partials/navbar', '', true),
             'footer' => $this->load->view('partials/footer', '', true),
         ];
-        $this->load->view('pengelola/tbpengguna', $data);
+        $this->load->view('pengelola/pengguna', $data);
     }
 
     public function daftarwisata() {
@@ -70,7 +70,7 @@ class Cpengelola extends CI_Controller {
             'navbar' => $this->load->view('partials/navbar', '', true),
             'footer' => $this->load->view('partials/footer', '', true),
         ];
-        $this->load->view('pengelola/daftarwisata', $data);
+        $this->load->view('pengelola/tempatwisata', $data);
     }
 
     public function daftarsponsor() {
@@ -111,7 +111,7 @@ class Cpengelola extends CI_Controller {
                 }
             }
         }
-        redirect('cpengelola/daftarsponsor');
+        redirect('cpengelola/sponsorship');
     }
 
     public function tambahTempatWisata() {

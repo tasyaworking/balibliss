@@ -8,7 +8,7 @@
     <?=$navbar?>
 		<!-- main -->
 		<div class="container-fluid">
-            Hello bbbbb
+            Hello
 		</div>
 	</div>
 	<!-- main -->
