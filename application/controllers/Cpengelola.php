@@ -10,6 +10,7 @@ class Cpengelola extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->library('session');
     }
 
     public function dashboard() {
@@ -116,40 +117,48 @@ class Cpengelola extends CI_Controller {
     public function tambahTempatWisata() {
         $this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
-        $this->form_validation->set_rules('jam_operasional', 'Jam Operasional', 'required');
-        $this->form_validation->set_rules('fasilitas', 'Fasilitas', 'required');
-        $this->form_validation->set_rules('sosial_media', 'Sosial Media', 'required');
-        $this->form_validation->set_rules('gambar', 'Gambar', 'required');
+        $this->form_validation->set_rules('jam_buka', 'Jam Operasional', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-        $this->form_validation->set_rules('no_hp', 'No HP', 'required');
+        $this->form_validation->set_rules('sosial_media', 'Sosial Media', 'required');
+        $this->form_validation->set_rules('nomor_telepon', 'Nomor Telepon', 'required');
         $this->form_validation->set_rules('harga_tiket', 'Harga Tiket', 'required|decimal');
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('pesan', validation_errors());
             $this->session->set_flashdata('color', 'danger');
-            redirect('pengelola/daftarwisata');
+            redirect('cpengelola/form');
         } else {
-            $data = array(
-                'nama_wisata' => $this->input->post('nama_wisata'),
-                'deskripsi' => $this->input->post('deskripsi'),
-                'jam_operasional' => $this->input->post('jam_operasional'),
-                'fasilitas' => $this->input->post('fasilitas'),
-                'sosial_media' => $this->input->post('sosial_media'),
-                'gambar' => $this->input->post('gambar'),
-                'alamat' => $this->input->post('alamat'),
-                'no_hp' => $this->input->post('no_hp'),
-                'harga_tiket' => $this->input->post('harga_tiket'),
-                'diterima' => 'pending' // default value
-            );
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = 2048;
+            $this->load->library('upload', $config);
 
-            if ($this->Mpengelola->tambahTempatWisata($data)) {
-                $this->session->set_flashdata('pesan', 'Tempat wisata berhasil ditambahkan.');
-                $this->session->set_flashdata('color', 'success');
-                redirect('pengelola/daftarwisata');
-            } else {
-                $this->session->set_flashdata('pesan', 'Gagal menambahkan tempat wisata.');
+            if (!$this->upload->do_upload('gambar')) {
+                $this->session->set_flashdata('pesan', $this->upload->display_errors());
                 $this->session->set_flashdata('color', 'danger');
-                redirect('pengelola/daftarwisata');
+                redirect('cpengelola/form');
+            } else {
+                $upload_data = $this->upload->data();
+                $data = array(
+                    'nama_wisata' => $this->input->post('nama_wisata'),
+                    'deskripsi' => $this->input->post('deskripsi'),
+                    'jam_buka' => $this->input->post('jam_buka'),
+                    'alamat' => $this->input->post('alamat'),
+                    'sosial_media' => $this->input->post('sosial_media'),
+                    'gambar' => $upload_data['file_name'],
+                    'nomor_telepon' => $this->input->post('nomor_telepon'),
+                    'harga_tiket' => $this->input->post('harga_tiket'),
+                );
+
+                if ($this->Mdetailwisata->tambahTempatWisata($data)) {
+                    $this->session->set_flashdata('pesan', 'Tempat wisata berhasil ditambahkan.');
+                    $this->session->set_flashdata('color', 'success');
+                    redirect('cpengelola/form');
+                } else {
+                    $this->session->set_flashdata('pesan', 'Gagal menambahkan tempat wisata.');
+                    $this->session->set_flashdata('color', 'danger');
+                    redirect('cpengelola/form');
+                }
             }
         }
     }

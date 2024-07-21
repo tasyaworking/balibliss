@@ -11,7 +11,7 @@ class Mpengelola extends CI_Model {
     }
 
     public function tambahTempatWisata($data) {
-        return $this->db->insert('tb_tempatwisata', $data);
+        return $this->db->insert('tb_detailwisata', $data);
     }
 
     public function daftarsponsor($data) {
