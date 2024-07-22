@@ -31,9 +31,7 @@
 		}
 		else {
 		?>
-			<div class="p-3 rounded-4 bg-primary bg-opacity-50">
-        		<h3>Hello</h3>
-			</div>
+			
 			<?php
 		}
 		?>
