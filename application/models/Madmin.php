@@ -56,6 +56,39 @@ class Madmin extends CI_Model {
         return $query->row(); // Menggunakan row() untuk mengambil satu baris data
     }
     
+    // terima & tolak pengelola di pengajuan pengelola
+	public function terima_pengelola($id_wisata) {
+		$data = array('diterima' => 'ya');
+        $this->db->where('id_wisata', $id_wisata);
+        $this->db->update('tb_tempatwisata', $data);
+        $this->session->set_flashdata(['pesan'=>'Tempat wisata berhasil diterima','color'=>'primary']);
+        redirect('cadmin/pengelola','refresh');
+	}
+
+	public function tolak_pengelola($id_wisata) {
+		$data = array('diterima' => 'tolak');
+        $this->db->where('id_wisata', $id_wisata);
+        $this->db->update('tb_tempatwisata', $data);
+        $this->session->set_flashdata(['pesan'=>'Tempat wisata berhasil ditolak','color'=>'primary']);
+        redirect('cadmin/pengelola','refresh');
+	}
+
+    // terima & tolak sponsor di pengajuan sponsor
+	public function terima_sponsor($id_sponsor) {
+		$data = array('diterima' => 'ya');
+        $this->db->where('id_sponsor', $id_sponsor);
+        $this->db->update('tb_sponsor', $data);
+        $this->session->set_flashdata(['pesan'=>'Sponsor berhasil diterima','color'=>'primary']);
+        redirect('cadmin/sponsorship','refresh');
+	}
+
+	public function tolak_sponsor($id_sponsor) {
+		$data = array('diterima' => 'tolak');
+        $this->db->where('id_sponsor', $id_sponsor);
+        $this->db->update('tb_sponsor', $data);
+        $this->session->set_flashdata(['pesan'=>'Sponsor berhasil ditolak','color'=>'primary']);
+        redirect('cadmin/sponsorship','refresh');
+	}
 
 }
 

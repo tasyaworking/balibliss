@@ -111,5 +111,23 @@ class Cadmin extends CI_Controller {
 			];
 		$this->load->view('admin/tempatwisata', $data);
 	}
+
+	// terima & tolak pengelola di pengajuan pengelola
+	public function terima_pengelola($id_wisata) {
+		$this->madmin->terima_pengelola($id_wisata);
+	}
+
+	public function tolak_pengelola($id_wisata) {
+		$this->madmin->tolak_pengelola($id_wisata);
+	}
+
+	 // terima & tolak sponsor di pengajuan sponsor
+	 public function terima_sponsor($id_sponsor) {
+		$this->madmin->terima_sponsor($id_sponsor);
+	 }
+ 
+	 public function tolak_sponsor($id_sponsor) {
+		$this->madmin->tolak_sponsor($id_sponsor);
+	 }
 }
 ?>

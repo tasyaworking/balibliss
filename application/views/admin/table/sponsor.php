@@ -2,7 +2,6 @@
 <h4 class="mb-4">Tabel Pengajuan Sponsor</h4>
 <div>
 	<div class="card-header d-flex justify-content-end">
-		<!-- <button id="btn-tampil" type="button" onclick="hideShow()" class="btn btn-light px-5">Form Show</button> -->
 	</div>
 	<div class="card-body">
 		<div style="overflow-x:scroll;">
@@ -13,6 +12,7 @@
 						<th class="text-center">Nama</th>
                         <th class="text-center">Tanggal mulai</th>
 						<th class="text-center">Tanggal selesai</th>
+						<th class="text-center">Pembayaran</th>
 						<th class="text-center">Bukti pembayaran</th>
 						<th class="text-center">Action</th>
 					</tr>
@@ -27,13 +27,12 @@
 						<td><?=$row->nama_wisata?></td>
 						<td><?=$row->tanggal_mulai?></td>
 						<td><?=$row->tanggal_selesai?></td>
-						<td><?=$row->pembayaran?></td>
+						<td>Rp<?=$row->pembayaran?></td>
+						<td><?=$row->bukti_pembayaran?></td>
 						<td class="text-center">
-							<!-- <button type="button" class="btn btn-primary" onclick="view(<?=$row->id_user?>)"><i
-									class="ti ti-eye"></i></button> -->
-							<button type="button" class="btn btn-success" onclick="hapus(<?=$row->id_user?>)"><i
+							<button type="button" class="btn btn-success" onclick="terima(<?=$row->id_sponsor?>)"><i
 									class="ti ti-check"></i></button>
-							<button type="button" class="btn btn-danger" onclick="hapus(<?=$row->id_user?>)"><i
+							<button type="button" class="btn btn-danger" onclick="tolak(<?=$row->id_sponsor?>)"><i
 									class="ti ti-x"></i></button>
 						</td>
 					</tr>
@@ -43,42 +42,21 @@
 		</div>
 	</div>
 </div>
-	<script src="<?=base_url();?>assets/DataTables/datatables.js"></script>
+
+
 	<script>
-		let table = new DataTable('#myTable', {
-
-		});
-		var div = document.getElementById('form');
-		var btn = document.getElementById('btn-tampil');
-		var display = 1;
-
-		function view(id_user) {
-			load("cadmin/view_pengelola" + id_user, "#script");
+		
+		function terima(id_sponsor) {
+			if(confirm("Apakah yakin menerima sponsor ini?")) {
+				window.open("<?php echo base_url(); ?>cadmin/terima_sponsor/"+id_sponsor,"_self");
+			}	
 		}
 
-		// function hideShow() {
-		// 	if (display == 1) {
-		// 		btn.textContent = 'Form Hide'
-		// 		div.style.display = 'block';
-		// 		display = 0;
-		// 	} else {
-		// 		btn.textContent = 'Form Show'
-		// 		div.style.display = 'none';
-		// 		display = 1;
-		// 	}
-		// }
+		function tolak(id_sponsor) {
+			if(confirm("Apakah yakin menolak sponsor ini?")) {
+				window.open("<?php echo base_url(); ?>cadmin/tolak_sponsor/"+id_sponsor,"_self");
+			}	
+		}
 
-		// function editdata(id_pengguna) {
-		// 	btn.textContent = 'Form Hide'
-		// 	div.style.display = 'block';
-		// 	display = 0;
-		// 	load("csuperadmin/edit_jurusan/" + id_jurusan, "#script");
-		// }
-
-		// function hapus(id_jurusan) {
-		// 	if (confirm("Apakah yakin menghapus data ini?")) {
-		// 		window.open("<?=base_url('csuperadmin/delete_jurusan/')?>" + id_jurusan, '_self');
-		// 	}
-		// }
 
 	</script>
