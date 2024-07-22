@@ -43,7 +43,7 @@
     						<span>
     							<i class="ti ti-user"></i>
     						</span>
-    						<span class="hide-menu">Data Pengguna</span>
+    						<span class="hide-menu">Data Pengunjung</span>
     					</a>
     				</li>
     				<li class="sidebar-item">
@@ -63,11 +63,11 @@
     					</a>
     				</li>
 					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Cpengelola/sponsorship')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Csponsorship/register')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-folder-plus"></i>
     						</span>
-    						<span class="hide-menu">Pengajuan Sponsorship</span>
+    						<span class="hide-menu">Daftar Sponsorship</span>
     					</a>
     				</li>
     			</ul>

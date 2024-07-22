@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?=base_url();?>assets/DataTables/datatables.css">
-<h4 class="mb-4">Tabel Data Pengguna</h4>
+<h4 class="mb-4">Tabel Data Pengunjung</h4>
 <div>
 	<div class="card-header d-flex justify-content-end">
 		<!-- <button id="btn-tampil" type="button" onclick="hideShow()" class="btn btn-light px-5">Form Show</button> -->
@@ -14,7 +14,6 @@
 						<th class="text-center">Email</th>
 						<th class="text-center">Alamat</th>
                         <th class="text-center">No telp</th>
-						<th class="text-center">Level</th>
 						<!-- <th class="text-center">Action</th> -->
 					</tr>
 				</thead>
@@ -29,7 +28,6 @@
 						<td><?=$row->email?></td>
 						<td><?=$row->alamat?></td>
 						<td><?=$row->no_hp?></td>
-                        <td><?=$row->level?></td>
 						<!-- <td class="text-center">
 							<button type="button" class="btn btn-warning" onclick="editdata(<?=$row->id_user?>)"><i
 									class="ti ti-pencil"></i></button>

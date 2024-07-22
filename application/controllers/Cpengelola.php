@@ -6,7 +6,7 @@ class Cpengelola extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Mpengelola');
-        $this->load->model('Msponsor');
+        $this->load->model('Msponsorship');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -32,7 +32,7 @@ class Cpengelola extends CI_Controller {
             'sidebar' => $this->load->view('pengelola/sidebar', '', true),
             'navbar' => $this->load->view('partials/navbar', '', true),
             'footer' => $this->load->view('partials/footer', '', true),
-            'table' => $this->load->view('admin/table/pengguna', $data1, true)
+            'table' => $this->load->view('pengelola/table/pengguna', $data1, true)
         ];
         $this->load->view('pengelola/pengguna', $data);
     }
