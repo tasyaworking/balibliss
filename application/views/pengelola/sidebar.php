@@ -54,16 +54,16 @@
     						<span class="hide-menu">Data Tempat Wisata</span>
     					</a>
     				</li>
-					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Capengelola/pengelola')?>" aria-expanded="false">
+					<!--<li class="sidebar-item">
+    					<a class="sidebar-link" href="<?=base_url('Cpengelola/pengelola')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-user-check"></i>
     						</span>
     						<span class="hide-menu">Pengajuan Pengelola</span>
     					</a>
-    				</li>
+    				</li>-->
 					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Csponsorship/register')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Csponsorship/tambah')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-folder-plus"></i>
     						</span>
