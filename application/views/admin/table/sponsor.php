@@ -10,11 +10,10 @@
 				<thead class="table-light">
 					<tr>
 						<th class="text-center">No</th>
-						<th class="text-center">Gambar</th>
-						<th class="text-center">Nama Pengelola</th>
-						<th class="text-center">Nama Tempat Wisata</th>
-                        <th class="text-center">Alamat</th>
-						<th class="text-center">No telp</th>
+						<th class="text-center">Nama</th>
+                        <th class="text-center">Tanggal mulai</th>
+						<th class="text-center">Tanggal selesai</th>
+						<th class="text-center">Bukti pembayaran</th>
 						<th class="text-center">Action</th>
 					</tr>
 				</thead>
@@ -25,14 +24,13 @@
 				?>
 					<tr>
 						<td><?=$no++?></td>
-                        <td><?=$row->gambar?></td>
-						<td><?=$row->nama?></td>
 						<td><?=$row->nama_wisata?></td>
-						<td><?=$row->alamat_wisata?></td>
-						<td><?=$row->no_hp_wisata?></td>
+						<td><?=$row->tanggal_mulai?></td>
+						<td><?=$row->tanggal_selesai?></td>
+						<td><?=$row->pembayaran?></td>
 						<td class="text-center">
-							<button type="button" class="btn btn-primary" onclick="view(<?=$row->id_user?>)"><i
-									class="ti ti-eye"></i></button>
+							<!-- <button type="button" class="btn btn-primary" onclick="view(<?=$row->id_user?>)"><i
+									class="ti ti-eye"></i></button> -->
 							<button type="button" class="btn btn-success" onclick="hapus(<?=$row->id_user?>)"><i
 									class="ti ti-check"></i></button>
 							<button type="button" class="btn btn-danger" onclick="hapus(<?=$row->id_user?>)"><i
