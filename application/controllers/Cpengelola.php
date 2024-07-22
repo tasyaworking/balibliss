@@ -134,6 +134,8 @@ class Cpengelola extends CI_Controller {
         $this->form_validation->set_rules('alamat_wisata', 'Alamat', 'required');
         $this->form_validation->set_rules('sosmed', 'Sosial Media', 'required');
         $this->form_validation->set_rules('no_hp_wisata', 'Nomor Telepon', 'required');
+        $this->form_validation->set_rules('no_rek', 'Nomor Rekening', 'required');
+        $this->form_validation->set_rules('harga_tiket', 'Harga Tiket', 'required');
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('pesan', validation_errors());
@@ -159,6 +161,8 @@ class Cpengelola extends CI_Controller {
                     'sosmed' => $this->input->post('sosmed'),
                     'gambar' => $upload_data['file_name'], // Pastikan nama file gambar ada
                     'no_hp_wisata' => $this->input->post('no_hp_wisata'),
+                    'no_rek' => $this->input->post('no_rek'),
+                    'harga_tiket' => $this->input->post('harga_tiket'),
                 );
     
                 if ($this->Mtempatwisata->insert($data)) {
@@ -194,6 +198,8 @@ class Cpengelola extends CI_Controller {
             'alamat_wisata' => $this->input->post('alamat_wisata'),
             'no_hp_wisata' => $this->input->post('no_hp_wisata'),
             'deskripsi' => $this->input->post('deskripsi'),
+            'no_rek' => $this->input->post('no_rek'),
+            'harga_tiket' => $this->input->post('harga_tiket'),
         );
 
         // Memanggil metode insert
@@ -223,6 +229,8 @@ public function edit($id) {
     $this->form_validation->set_rules('alamat_wisata', 'Alamat Wisata', 'required');
     $this->form_validation->set_rules('sosmed', 'Sosial Media', 'required');
     $this->form_validation->set_rules('no_hp_wisata', 'Nomor Telepon', 'required');
+    $this->form_validation->set_rules('no_rek', 'Nomor Rekening', 'required');
+    $this->form_validation->set_rules('harga_tiket', 'Harga Tiket', 'required');
 
     if ($this->form_validation->run() == FALSE) {
         $data['tempatwisata'] = $this->Mtempatwisata->get_by_id($id);
@@ -234,6 +242,8 @@ public function edit($id) {
             'jam_operasional' => $this->input->post('jam_operasional'),
             'alamat_wisata' => $this->input->post('alamat_wisata'),
             'no_hp_wisata' => $this->input->post('no_hp_wisata'),
+            'no_rek' => $this->input->post('no_rek'),
+            'harga_tiket' => $this->input->post('harga_tiket'),
             'deskripsi' => $this->input->post('deskripsi'),
         );
 

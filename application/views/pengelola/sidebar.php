@@ -63,7 +63,7 @@
     					</a>
     				</li>-->
 					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Csponsorship/tambah')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Csponsorship/submit')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-folder-plus"></i>
     						</span>

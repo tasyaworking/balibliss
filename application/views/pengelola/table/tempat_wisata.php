@@ -47,6 +47,8 @@
                                     <th class="text-center">Gambar</th>
                                     <th class="text-center">Alamat</th>
                                     <th class="text-center">No Telp</th>
+									<th class="text-center">No Rekening</th>
+                                    <th class="text-center">Harga Tiket</th>
                                     <th class="text-center">Deskripsi</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -63,6 +65,8 @@
                                         <td><img src="<?= base_url('uploads/' . $row->gambar) ?>" alt="Gambar" width="100"></td>
                                         <td><?= htmlspecialchars($row->alamat_wisata) ?></td>
                                         <td><?= htmlspecialchars($row->no_hp_wisata) ?></td>
+										<td><?= htmlspecialchars($row->no_rek) ?></td>
+                                        <td><?= htmlspecialchars($row->harga_tiket) ?></td>
                                         <td><?= htmlspecialchars($row->deskripsi) ?></td>
                                         <td class="text-center">
                                             <a href="<?= site_url('cpengelola/edit/' . $row->id_wisata); ?>" class="btn btn-warning">

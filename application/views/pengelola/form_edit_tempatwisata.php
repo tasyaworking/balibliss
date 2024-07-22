@@ -48,6 +48,14 @@
                             <input type="text" class="form-control" id="no_hp_wisata" name="no_hp_wisata" value="<?= htmlspecialchars($tempatwisata->no_hp_wisata ?? ''); ?>">
                         </div>
                         <div class="mb-3">
+                            <label for="no_rek" class="form-label">No Rekening</label>
+                            <input type="text" class="form-control" id="no_rek" name="no_rek" value="<?= htmlspecialchars($tempatwisata->no_rek ?? ''); ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="harga_tiket" class="form-label">Harga Tiket</label>
+                            <textarea class="form-control" id="harga_tiket" name="harga_tiket"><?= htmlspecialchars($tempatwisata->harga_tiket ?? ''); ?></textarea>
+                        </div>
+                        <div class="mb-3">
                             <label for="deskripsi" class="form-label">Deskripsi</label>
                             <textarea class="form-control" id="deskripsi" name="deskripsi"><?= htmlspecialchars($tempatwisata->deskripsi ?? ''); ?></textarea>
                         </div>

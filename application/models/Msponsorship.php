@@ -5,11 +5,10 @@ class Msponsorship extends CI_Model {
 
     public function __construct() {
         parent::__construct();
+        $this->load->database();
     }
 
-    // Method untuk menambah data sponsor
-    public function insert($data) {
+    public function insert_sponsorship($data) {
         return $this->db->insert('sponsorship', $data);
     }
 }
-?>
