@@ -69,7 +69,7 @@
                     <div class="card text-white bg-secondary">
                         <div class="card-body">
                             <h5 class="card-title">Total Pembayaran Sponsor</h5>
-                            <p class="card-text display-4">Rp <?= number_format($total_pembayaran, 0, ',', '.') ?></p>
+                            <p class="card-text display-4">Rp<?= number_format($total_pembayaran, 0, ',', '.') ?></p>
                         </div>
                         <div class="card-footer">
                             <small class="text-white">Jumlah total pembayaran</small>
