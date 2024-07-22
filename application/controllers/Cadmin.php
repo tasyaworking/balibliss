@@ -12,14 +12,24 @@ class Cadmin extends CI_Controller {
 	// load dashboard	
 	public function dashboard() {
         $title['title']= 'Dashboard Admin';
+
+		$data_counts = [
+            'count_pengguna' => $this->madmin->get_count_pengguna(),
+            'count_tempat_wisata' => $this->madmin->get_count_tempat_wisata(),
+            'count_pengelola' => $this->madmin->get_count_pengelola(),
+            'count_sponsor_accepted' => $this->madmin->get_count_sponsor_accepted(),
+            'count_sponsor_pending' => $this->madmin->get_count_sponsor_pending(),
+			'total_pembayaran' => $this->madmin->get_total_pembayaran(),
+        ];
+		
         $data = [
 			'header'=>$this->load->view('partials/header',$title,true),
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
 			'navbar'=>$this->load->view('partials/navbar','',true),
 			'footer'=>$this->load->view('partials/footer','',true),
-			// 'konten'=>'',
-			// 'table'=>'',
 			];
+
+		$data = array_merge($data, $data_counts);	
 		$this->load->view('admin/dashboard', $data);
 	}
 
@@ -46,7 +56,6 @@ class Cadmin extends CI_Controller {
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
 			'navbar'=>$this->load->view('partials/navbar','',true),
 			'footer'=>$this->load->view('partials/footer','',true),
-			// 'konten'=>'',
 			'table'=>$this->load->view('admin/table/tempat_wisata',$data1,true)
 			];
 		$this->load->view('admin/tempatwisata', $data);
@@ -61,7 +70,6 @@ class Cadmin extends CI_Controller {
 			'sidebar'=>$this->load->view('admin/sidebar','',true),
 			'navbar'=>$this->load->view('partials/navbar','',true),
 			'footer'=>$this->load->view('partials/footer','',true),
-			// 'konten'=>'',
 			'table'=>$this->load->view('admin/table/pengelola',$data1,true)
 			];
 		$this->load->view('admin/pengelola', $data);

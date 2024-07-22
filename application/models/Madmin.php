@@ -90,6 +90,36 @@ class Madmin extends CI_Model {
         redirect('cadmin/sponsorship','refresh');
 	}
 
+    public function get_count_pengguna() {
+        return $this->db->count_all('tb_pengguna');
+    }
+
+    public function get_count_tempat_wisata() {
+        $this->db->where('diterima', 'ya');
+        return $this->db->count_all_results('tb_tempatwisata');
+    }
+
+    public function get_count_pengelola() {
+        $this->db->where('diterima', 'tidak');
+        return $this->db->count_all_results('tb_tempatwisata');
+    }
+
+    public function get_count_sponsor_accepted() {
+        $this->db->where('diterima', 'ya');
+        return $this->db->count_all_results('tb_sponsor');
+    }
+
+    public function get_count_sponsor_pending() {
+        $this->db->where('diterima', 'tidak');
+        return $this->db->count_all_results('tb_sponsor');
+    }
+
+    public function get_total_pembayaran() {
+        $this->db->select_sum('pembayaran');
+        $query = $this->db->get('tb_sponsor');
+        return $query->row()->pembayaran;
+    }
+
 }
 
 ?>

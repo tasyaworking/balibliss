@@ -27,7 +27,8 @@
 						<td><?=$row->nama_wisata?></td>
 						<td><?=$row->tanggal_mulai?></td>
 						<td><?=$row->tanggal_selesai?></td>
-						<td>Rp<?=$row->pembayaran?></td>
+						<!-- <td>Rp<?=$row->pembayaran?></td> -->
+						<td>Rp<?= number_format($row->pembayaran, 0, ',', '.') ?></td>
 						<td><?=$row->bukti_pembayaran?></td>
 						<td class="text-center">
 							<button type="button" class="btn btn-success" onclick="terima(<?=$row->id_sponsor?>)"><i
