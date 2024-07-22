@@ -31,8 +31,11 @@
 						<td><?=$row->alamat_wisata?></td>
 						<td><?=$row->no_hp_wisata?></td>
 						<td class="text-center">
-							<button type="button" class="btn btn-primary" onclick="view(<?=$row->id_user?>)"><i
-									class="ti ti-eye"></i></button>
+							<a href="<?= site_url('cadmin/view_tempatwisata_id/'.$row->id_wisata) ?>" class="btn btn-primary">
+								<i class="ti ti-eye"></i>
+							</a>
+							<!-- <button type="button" class="btn btn-primary" onclick="view(<?=$row->id_user?>)"><i
+									class="ti ti-eye"></i></button> -->
 							<button type="button" class="btn btn-success" onclick="hapus(<?=$row->id_user?>)"><i
 									class="ti ti-check"></i></button>
 							<button type="button" class="btn btn-danger" onclick="hapus(<?=$row->id_user?>)"><i
