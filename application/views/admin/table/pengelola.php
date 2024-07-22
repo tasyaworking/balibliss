@@ -31,11 +31,12 @@
 						<td><?=$row->alamat_wisata?></td>
 						<td><?=$row->no_hp_wisata?></td>
 						<td class="text-center">
-							<button type="button" class="btn btn-primary" onclick="view(<?=$row->id_user?>)"><i
-									class="ti ti-eye"></i></button>
-							<button type="button" class="btn btn-success" onclick="hapus(<?=$row->id_user?>)"><i
+							<a href="<?= site_url('cadmin/view_tempatwisata_id/'.$row->id_wisata) ?>" class="btn btn-primary">
+								<i class="ti ti-eye"></i>
+							</a>
+							<button type="button" class="btn btn-success" onclick="terima(<?=$row->id_wisata?>)"><i
 									class="ti ti-check"></i></button>
-							<button type="button" class="btn btn-danger" onclick="hapus(<?=$row->id_user?>)"><i
+							<button type="button" class="btn btn-danger" onclick="tolak(<?=$row->id_wisata?>)"><i
 									class="ti ti-x"></i></button>
 						</td>
 					</tr>
@@ -54,9 +55,22 @@
 		var btn = document.getElementById('btn-tampil');
 		var display = 1;
 
-		function view(id_user) {
-			load("cadmin/view_pengelola" + id_user, "#script");
+
+		function terima(id_wisata) {
+			if(confirm("Apakah yakin menerima tempat wisata ini?")) {
+				window.open("<?php echo base_url(); ?>cadmin/terima_pengelola/"+id_wisata,"_self");
+			}	
 		}
+
+		function tolak(id_wisata) {
+			if(confirm("Apakah yakin menolak tempat wisata ini?")) {
+				window.open("<?php echo base_url(); ?>cadmin/tolak_pengelola/"+id_wisata,"_self");
+			}	
+		}
+
+		// function view(id_user) {
+		// 	load("cadmin/view_pengelola" + id_user, "#script");
+		// }
 
 		// function hideShow() {
 		// 	if (display == 1) {
