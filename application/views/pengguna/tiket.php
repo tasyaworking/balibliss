@@ -89,7 +89,54 @@
         .btn-submit:hover {
             background-color: #0069d9;
         }
- </style>
+
+        .wisata-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .wisata-card {
+            width: calc(33.333% - 20px);
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .wisata-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .wisata-description {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .wisata-price {
+            margin: 10px 0;
+            color: #1076e3;
+            font-weight: bold;
+        }
+
+        .pesan-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .pesan-button:hover {
+            background-color: #0069d9;
+        }
+    </style>
 </head>
 <body>
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -105,7 +152,7 @@
                     <?php if (!empty($wisata)): ?>
                         <?php foreach ($wisata as $tempat): ?>
                             <div class="wisata-card">
-                                <img src="<?= base_url('assets/img/wisata/' . $tempat->foto); ?>" alt="<?= $tempat->nama_wisata; ?>" class="wisata-img">
+                                <img src="<?= base_url('uploads/' . $tempat->foto); ?>" alt="<?= $tempat->nama_wisata; ?>" class="wisata-img">
                                 <h3><?= $tempat->nama_wisata; ?></h3>
                                 <p class="wisata-description"><?= $tempat->deskripsi; ?></p>
                                 <p class="wisata-price">Harga: Rp <?= number_format((float)$tempat->harga_tiket, 0, ',', '.'); ?></p>
@@ -123,4 +170,3 @@
     </div>
 </body>
 </html>
-
