@@ -1,18 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Csponsorship extends CI_Controller {
+class Sponsorship extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Msponsorship');
-        $this->load->helper('url');
+        $this->load->model('Sponsorship_model');
         $this->load->library('form_validation');
     }
 
-    public function register() {
-        // Load the view from 'application/views/sponsorship/register.php'
-        $this->load->view('sponsorship/register');
+    public function index() {
+        $this->load->view('sponsorship/form'); // Pastikan path view benar
     }
 
     public function submit() {
@@ -22,24 +20,23 @@ class Csponsorship extends CI_Controller {
         $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('sponsorship/register');
+            $this->load->view('sponsorship/form');
         } else {
             $data = array(
                 'nama' => $this->input->post('nama'),
                 'email' => $this->input->post('email'),
                 'telepon' => $this->input->post('telepon'),
                 'perusahaan' => $this->input->post('perusahaan'),
-                'created_at' => date('Y-m-d H:i:s')
+                'created_at' => date('Y-m-d H:i:s'),
             );
 
-            if ($this->Msponsorship->insert_sponsorship($data)) {
-                $this->session->set_flashdata('pesan', 'Pendaftaran sponsorship berhasil!');
-                $this->session->set_flashdata('color', 'success');
+            if ($this->Sponsorship_model->insert($data)) {
+                $this->session->set_flashdata('message', 'Pendaftaran sponsorship berhasil!');
+                redirect('sponsorship');
             } else {
-                $this->session->set_flashdata('pesan', 'Pendaftaran sponsorship gagal!');
-                $this->session->set_flashdata('color', 'danger');
+                $this->session->set_flashdata('message', 'Gagal mendaftar sponsorship.');
+                redirect('sponsorship');
             }
-            redirect('csponsorship/register');
         }
     }
 }

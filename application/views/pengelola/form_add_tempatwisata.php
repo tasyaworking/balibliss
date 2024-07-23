@@ -23,7 +23,7 @@
             <h4 class="mb-4">Tambah Tempat Wisata</h4>
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= site_url('cpengelola/add'); ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= site_url('cpengelola/add '); ?>" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="nama_wisata" class="form-label">Nama Wisata</label>
                             <input type="text" class="form-control" id="nama_wisata" name="nama_wisata" required>
@@ -37,8 +37,8 @@
                             <input type="text" class="form-control" id="jam_operasional" name="jam_operasional">
                         </div>
                         <div class="mb-3">
-                            <label for="gambar" class="form-label">Foto</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar">
+                            <label for="foto" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="foto" name="foto">
                         </div>
                         <div class="mb-3">
                             <label for="alamat_wisata" class="form-label">Alamat Lengkap Wisata</label>

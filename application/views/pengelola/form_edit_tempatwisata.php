@@ -33,10 +33,10 @@
                             <input type="text" class="form-control" id="jam_operasional" name="jam_operasional" value="<?= htmlspecialchars($tempatwisata->jam_operasional ?? ''); ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="gambar" class="form-label">foto</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar">
-                            <?php if (!empty($tempatwisata->gambar)): ?>
-                            <img src="<?= base_url('uploads/' . $tempatwisata->gambar); ?>" alt="Gambar" width="100" class="mt-2">
+                            <label for="foto" class="form-label">foto</label>
+                            <input type="file" class="form-control" id="foto" name="foto">
+                            <?php if (!empty($tempatwisata->foto)): ?>
+                            <img src="<?= base_url('uploads/' . $tempatwisata->foto); ?>" alt="foto" width="100" class="mt-2">
                             <?php endif; ?>
                         </div>
                         <div class="mb-3">

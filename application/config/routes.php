@@ -57,5 +57,6 @@ $route['pengelola/dashboard'] = 'Cpengelola/dashboard';
 $route['views/admin/dashboard'] = 'admin/dashboard';
 $route['views/pengelola/dashboard'] = 'pengelola/dashboard';
 $route['views/pengguna/dashboard'] = 'pengguna/dashboard';
-$route['csponsorship'] = 'csponsorship/index';
-$route['csponsorship/list'] = 'csponsorship/list';
+$route['Sponsorship'] = 'sponsorship/index';
+$route['Sponsorship/submit'] = 'sponsorship/submit';
+

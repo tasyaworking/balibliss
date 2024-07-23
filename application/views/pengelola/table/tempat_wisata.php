@@ -64,7 +64,7 @@
                                         <td><?= htmlspecialchars($row->nama_wisata) ?></td>
                                         <td><?= htmlspecialchars($row->sosmed) ?></td>
                                         <td><?= htmlspecialchars($row->jam_operasional) ?></td>
-                                        <td><img src="<?= base_url('uploads/' . $row->gambar) ?>" alt="Gambar" width="100"></td>
+                                        <td><img src="<?= base_url('uploads/' . $row->foto) ?>" alt="Gambar" width="100"></td>
                                         <td><?= htmlspecialchars($row->alamat_wisata) ?></td>
                                         <td><?= htmlspecialchars($row->lokasi) ?></td>
                                         <td><?= htmlspecialchars($row->no_hp_wisata) ?></td>
