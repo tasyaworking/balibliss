@@ -94,28 +94,33 @@
 <body>
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
+        
         <?php $this->load->view('pengguna/sidebar'); ?>
+        
         <div class="main-content">
-        <?php $this->load->view('pengguna/navbar'); ?>
-        <div class="content-container">
-            <div class="wisata-container">
-                <?php if (!empty($wisata)): ?>
-                    <?php foreach ($wisata as $tempat): ?>
-                        <div class="wisata-card">
-                            <img src="<?= base_url('assets/img/wisata/' . $tempat['foto']); ?>" alt="<?= $tempat['nama_wisata']; ?>" class="wisata-img">
-                            <h3><?= $tempat['nama_wisata']; ?></h3>
-                            <p class="wisata-description"><?= $tempat['deskripsi']; ?></p>
-                            <p class="wisata-price">Harga: Rp <?= number_format($tempat['harga_tiket'], 0, ',', '.'); ?></p>
-                            <p class="wisata-location">Lokasi: <?= $tempat['lokasi']; ?></p>
-                            <a href="<?= base_url('Ctiket/detailwisata/' . $tempat['id_wisata']); ?>" class="pesan-button">Pesan Tiket</a>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>Maaf, tidak ada data wisata yang tersedia saat ini.</p>
-                <?php endif; ?>
+            <?php $this->load->view('pengguna/navbar'); ?>
+            
+            <div class="content-container">
+                <div class="wisata-container">
+                    <?php if (!empty($wisata)): ?>
+                        <?php foreach ($wisata as $tempat): ?>
+                            <div class="wisata-card">
+                                <img src="<?= base_url('assets/img/wisata/' . $tempat->foto); ?>" alt="<?= $tempat->nama_wisata; ?>" class="wisata-img">
+                                <h3><?= $tempat->nama_wisata; ?></h3>
+                                <p class="wisata-description"><?= $tempat->deskripsi; ?></p>
+                                <p class="wisata-price">Harga: Rp <?= number_format((float)$tempat->harga_tiket, 0, ',', '.'); ?></p>
+                                <a href="<?= base_url('Ctiket/detailwisata/' . $tempat->id_wisata); ?>" class="pesan-button">Pesan Tiket</a>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>Maaf, tidak ada data wisata yang tersedia saat ini.</p>
+                    <?php endif; ?>
+                </div>
+                
+                <?php $this->load->view('partials/footer'); ?>
             </div>
-            <?php $this->load->view('partials/footer'); ?>
         </div>
     </div>
 </body>
 </html>
+

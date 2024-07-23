@@ -8,16 +8,21 @@ class Mtiket extends CI_Model {
         $this->load->database();
     }
     
-    public function ambilwisata() {
-        $query = $this->db->get('tb_ticket');
-        return $query->result_array();
+    public function ambilwisata($kondisi = array()) {
+        $this->db->select('id_wisata, nama_wisata, deskripsi, lokasi, foto, harga_tiket');
+        if (!empty($kondisi)) {
+            $this->db->where($kondisi);
+        }
+        $query = $this->db->get('tb_tempatwisata');
+        return $query->result();
     }
-    public function ambilid($id) {
+
+    public function ambilid($id_wisata) {
         // Ambil data detail wisata berdasarkan id
-        return $this->db->get_where('tb_detailwisata', array('id' => $id))->row_array();
+        return $this->db->get_where('tb_tempatwisata', array('id_wisata' => $id_wisata))->row_array();
     }
-    public function getWisataById($id) {
-        $query = $this->db->get_where('tb_ticket', array('id_wisata' => $id));
+    public function getWisataById($id_wisata) {
+        $query = $this->db->get_where('tb_tempatwisata', array('id_wisata' => $id_wisata));
         return $query->row_array();
     }
 
@@ -84,5 +89,62 @@ class Mtiket extends CI_Model {
         $query = $this->db->get('tb_ticket');
         return $query->result_array();
     }
+    public function get_nama_wisata_by_id_pesanan($id_pesanan) {
+        $this->db->select('tb_ticket.nama_wisata');
+        $this->db->from('tb_bayar');
+        $this->db->join('tb_ticket', 'tb_ticket.id_wisata = tb_bayar.id_wisata');
+        $this->db->where('tb_bayar.id_pesanan', $id_pesanan);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->row()->nama_wisata;
+        } else {
+            return 'Tidak ditemukan';
+        }
+    }
+
+    public function submit_rating($data) {
+        $this->db->insert('ratings', $data);
+    }
+
+    // Metode untuk mendapatkan ID pesanan terakhir
+    public function get_last_id_pesanan() {
+        $this->db->select('id_pesanan');
+        $this->db->from('tb_bayar');
+        $this->db->order_by('id_pesanan', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->row()->id_pesanan;
+        } else {
+            return NULL;
+        }
+    }
+
+    public function get_all_tickets() {
+        $query = $this->db->get('tb_ticket');
+        return $query->result_array(); // Mengembalikan data sebagai array
+    }
+    
+    // Metode untuk mengambil data berdasarkan ID tiket
+    public function get_ticket_by_id($id) {
+        $this->db->where('id_wisata', $id);
+        $query = $this->db->get('tb_ticket');
+        return $query->row_array(); // Mengembalikan data sebagai array
+    }
+
+    // Metode untuk menyimpan rating dan ulasan
+    public function save_review($data) {
+        return $this->db->insert('tb_reviews', $data); // Menyimpan data ke tabel tb_reviews
+    }
+
+    // Metode untuk mengambil rating dan ulasan berdasarkan ID tiket
+    public function get_reviews_by_ticket_id($id_wisata) {
+        $this->db->where('id_wisata', $id_wisata);
+        $query = $this->db->get('tb_reviews');
+        return $query->result_array(); // Mengembalikan data sebagai array
+    }
 }
+    
 ?>

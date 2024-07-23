@@ -106,9 +106,9 @@
 		<div class="main-content">
 			<?php $this->load->view('pengguna/navbar'); ?>
 			<div class="container">
-				<h2 class="title"><?php echo $tempat['nama']; ?></h2>
+				<h2 class="title"><?php echo $tempat['nama_wisata']; ?></h2>
 				<img class="wisata-img" src="<?php echo base_url('assets/img/wisata/' . $tempat['foto']); ?>"
-					alt="<?php echo $tempat['nama']; ?>">
+					alt="<?php echo $tempat['nama_wisata']; ?>">
 
 				<div id="overview" class="detail-section">
 					<h3 class="section-title">Overview</h3>
@@ -131,22 +131,27 @@
 					<p class="section-content"><?php echo nl2br($tempat['jam_operasional']); ?></p>
 				</div>
 
-				<div id="alamat" class="detail-section">
+				<div id="alamat_wisata" class="detail-section">
 					<h3 class="section-title">Alamat</h3>
-					<p class="section-content"><?php echo nl2br($tempat['alamat']); ?></p>
+					<p class="section-content"><?php echo nl2br($tempat['alamat_wisata']); ?></p>
 				</div>
 
 				<div id="nomor_telepon" class="detail-section">
 					<h3 class="section-title">No. Telp</h3>
-					<p class="section-content"><?php echo $tempat['nomor_telepon']; ?></p>
+					<p class="section-content"><?php echo $tempat['no_hp_wisata']; ?></p>
+				</div>
+
+				<div id="no_rek" class="detail-section">
+					<h3 class="section-title">No. Rekening </h3>
+					<p class="section-content"><?php echo $tempat['no_rek']; ?></p>
 				</div>
 
 				<div id="sosial_media" class="detail-section">
 					<h3 class="section-title">Sosial Media</h3>
-					<p class="section-content"><?php echo nl2br($tempat['sosial_media']); ?></p>
+					<p class="section-content"><?php echo nl2br($tempat['sosmed']); ?></p>
 				</div>
 
-				<a href="<?php echo base_url('Ctiket/pesan/' . $tempat['id']); ?>" class="pesan-button">Pesan Tiket</a>
+				<a href="<?php echo base_url('Ctiket/pesan/' . $tempat['id_wisata']); ?>" class="pesan-button">Pesan Tiket</a>
 			</div>
 </body>
 

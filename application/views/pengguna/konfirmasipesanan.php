@@ -69,7 +69,7 @@
 		}
 
 		.btn-back {
-			background-color: #dc3545;
+			background-color: #4CAF50;
 			color: white;
 			border: none;
 			padding: 10px 20px;
@@ -79,7 +79,7 @@
 		}
 
 		.btn-back:hover {
-			background-color: #c82333;
+			background-color: #45a049;
 		}
 
 		.btn-submit {
@@ -92,7 +92,7 @@
 		}
 
 		.btn-submit:hover {
-			background-color: #0069d9;
+			background-color: #45a049;
 		}
 
 	</style>
@@ -110,7 +110,7 @@
 						<h1>Konfirmasi Pemesanan</h1>
 						<?php if (isset($konfirmasi)) { ?>
 						<p>Nama Pemesan: <?php echo $konfirmasi['nama_pemesan']; ?></p>
-						<p>Email Pemesan: <?php echo $konfirmasi['email_pemesan']; ?></p>
+						<p>Jenis Kelamin: <?php echo $konfirmasi['jenis_kelamin']; ?></p>
 						<p>Jumlah Tiket: <?php echo $konfirmasi['jumlah_tiket']; ?></p>
 						<p>Tanggal Kunjungan: <?php echo $konfirmasi['tgl_kunjungan']; ?></p>
 						<p>Total Harga: Rp

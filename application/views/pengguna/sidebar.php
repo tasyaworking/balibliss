@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<?=base_url('Cpengguna/rating')?>" aria-expanded="false">
+                    <a class="sidebar-link" href="<?=base_url('Ctiket/ratings')?>" aria-expanded="false">
                         <span>
                             <i class="ti ti-building-community"></i>
                         </span>
@@ -56,11 +56,6 @@
                 </li>
             </ul>
             <!-- Tampilkan pesan selamat datang di sini -->
-            <div class="welcome-message">
-                <?php if($this->session->userdata('username')): ?>
-                    <p>Selamat datang, <?= $this->session->userdata('username'); ?>!</p>
-                <?php endif; ?>
-            </div>
         </nav>
         <!-- End Sidebar navigation -->
     </div>

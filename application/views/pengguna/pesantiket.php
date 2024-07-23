@@ -42,10 +42,10 @@
         .main-content {
             flex: 1;
             margin-top: 70px; /* Adjust margin to push content below navbar */
-            margin-left: 90px; /* Adjust margin to make space for sidebar */
+            margin-left: 250px; /* Adjust margin to make space for sidebar */
             overflow-y: auto; /* Enable vertical scrolling */
             padding: 30px;
-            height: calc(100vh - 90px); /* Full height minus navbar height */
+            height: calc(100vh - 70px); /* Full height minus navbar height */
         }
 
         .container {
@@ -63,6 +63,30 @@
             margin-bottom: 20px;
         }
 
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+
+        .form-group select {
+            appearance: none; /* Remove default dropdown icon */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEyIDEyIj48cGF0aCBkPSJNMS40MTQgNC4xNDRhLjY5LjY5IDAgMDEuOTc2IDBMNiA3LjIwNyA5LjYxMiA0LjE0NGEuNjkuNjkgMCAwMS45NzYgMGwuNTk1LjU5NWEuNjkuNjkgMCAwMSAwIC45NzZMMTYuNTkgOS4xMjZsLS41OTUuNTk1YS42OS42OSAwIDAxLS45NzYgMGwtNS45NTItNS45NTJhLjY5LjY5IDAgMDAtLjk3NiAwTDEuNDE0IDQuNzMyYS42OS42OSAwIDAxMC0uOTc2eiIgZmlsbD0iI0FBQUIiLz48L3N2Zz4=');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+            padding-right: 40px; /* Adjust padding to accommodate dropdown icon */
+        }
+
         .btn-submit {
             background-color: #007bff;
             color: white;
@@ -74,6 +98,19 @@
 
         .btn-submit:hover {
             background-color: #0069d9;
+        }
+
+        .btn-back {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -88,36 +125,31 @@
                 <div class="card">
                     <h1>Formulir Pembelian Tiket</h1>
                     <form action="<?php echo base_url('Ctiket/konfirmasi_pemesanan'); ?>" method="post">
-                        <input type="hidden" name="id_wisata"
-                            value="<?php echo isset($wisata['id_wisata']) ? $wisata['id_wisata'] : ''; ?>">
+                        <input type="hidden" name="id_wisata" value="<?php echo isset($wisata['id_wisata']) ? $wisata['id_wisata'] : ''; ?>">
+                        <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user'); ?>">
 
                         <div class="form-group">
                             <label for="nama_wisata">Nama Wisata:</label>
-                            <input type="text" id="nama_wisata" name="nama_wisata"
-                                value="<?php echo isset($wisata['nama_wisata']) ? $wisata['nama_wisata'] : ''; ?>"
-                                readonly>
+                            <input type="text" id="nama_wisata" name="nama_wisata" value="<?php echo isset($wisata['nama_wisata']) ? $wisata['nama_wisata'] : ''; ?>" readonly>
                         </div>
 
                         <div class="form-group">
                             <label for="harga_tiket">Harga Tiket (Rp):</label>
-                            <input type="text" id="harga_tiket" name="harga_tiket"
-                                value="<?php echo isset($wisata['harga_tiket']) ? number_format($wisata['harga_tiket'], 0, ',', '.') : ''; ?>"
-                                readonly>
+                            <input type="text" id="harga_tiket" name="harga_tiket" value="<?php echo isset($wisata['harga_tiket']) ? number_format($wisata['harga_tiket'], 0, ',', '.') : ''; ?>" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="nama_pemesan">Nama Pemesan:</label>
+                            <label for="nama_pemesan">Nama Lengkap:</label>
                             <input type="text" id="nama_pemesan" name="nama_pemesan" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="email_pemesan">Email Pemesan:</label>
-                            <input type="email" id="email_pemesan" name="email_pemesan" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tlp_pemesan">No Telepon Pemesan:</label>
-                            <input type="tel" id="tlp_pemesan" name="tlp_pemesan" required>
+                            <label for="jenis_kelamin">Jenis Kelamin:</label>
+                            <select id="jenis_kelamin" name="jenis_kelamin" required>
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
                         </div>
 
                         <div class="form-group">

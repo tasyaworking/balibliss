@@ -3,115 +3,76 @@
 
 <head>
     <?php $this->load->view('partials/header'); ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/styleskonfirm.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/stylesrate.css'); ?>">
     <style>
-        .page-wrapper {
-            display: flex;
-            height: 100vh;
-            overflow: hidden; /* Ensure no scrolling on the main wrapper */
-        }
-
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #343a40;
-            color: white;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-
-        .navbar {
-            background-color: #1076e3;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: calc(100% - 250px);
-        }
-
-        .navbar-brand img {
-            height: 50px;
-            width: 140px;
-        }
-
-        .main-content {
-            flex: 1;
-            margin-top: 70px; /* Adjust margin to push content below navbar */
-            margin-left: 250px; /* Adjust margin to make space for sidebar */
-            overflow-y: auto; /* Enable vertical scrolling */
-            padding: 20px;
-            height: calc(100vh - 70px); /* Full height minus navbar height */
-        }
-
-        .container {
-            margin-top: 20px;
-        }
-
-        .card {
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .btn-back {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        .btn-back:hover {
-            background-color: #c82333;
-        }
-
-        .btn-submit {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn-submit:hover {
-            background-color: #0069d9;
-        }
+        /* CSS styles remain unchanged */
     </style>
 </head>
 <body>
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-        <?php $this->load->view('pengguna/sidebar'); ?>
-        <div class="main-content">
-            <?php $this->load->view('pengguna/navbar'); ?>
-    	<div class="main-container">
-    <div class="container">
-        <h2>Tempat Wisata yang Sudah Kamu Kunjungi</h2>
-        <?php if (!empty($visited_places)): ?>
-            <?php foreach ($visited_places as $place): ?>
-                <div class="card">
-                    <img src="<?= base_url('assets/img/upload/' . $place->foto) ?>" alt="<?= $place->nama_wisata ?>">
-                    <h3><?= $place->nama_wisata ?></h3>
-                    <p><?= $place->deskripsi ?></p>
-                    <button onclick="location.href='<?= site_url('Ctiket/rate_place/' . $place->id) ?>'">Berikan Ulasan</button>
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <?php $this->load->view('pengguna/sidebar'); ?>
+    <div class="main-content">
+        <?php $this->load->view('pengguna/navbar'); ?>
+        <div class="main-container">
+            <h1>Berikanlah Rating dan Ulasan Anda</h1>
+            
+            <?php if ($this->session->flashdata('success')): ?>
+                <p style="color: green;"><?php echo $this->session->flashdata('success'); ?></p>
+            <?php elseif ($this->session->flashdata('error')): ?>
+                <p style="color: red;"><?php echo $this->session->flashdata('error'); ?></p>
+            <?php endif; ?>
+
+            <form action="<?php echo site_url('Ctiket/add_review'); ?>" method="post">
+                <label for="id_wisata">Tiket Wisata:</label>
+                <select name="id_wisata" id="id_wisata" required>
+                    <?php foreach ($tickets as $ticket): ?>
+                        <option value="<?php echo $ticket['id_wisata']; ?>"><?php echo $ticket['nama_wisata']; ?></option>
+                    <?php endforeach; ?>
+                </select><br>
+
+                <label for="rating">Rating:</label>
+                <input type="number" name="rating" id="rating" min="1" max="5" required><br>
+
+                <label for="review">Ulasan:</label>
+                <textarea name="review" id="review" required></textarea><br>
+
+                <button type="submit">Kirim Ulasan</button>
+            </form>
+
+            <h2>Rating Ulasan Tiket</h2>
+            <?php foreach ($tickets as $ticket): ?>
+                <div class="kartu">
+                    <img src="<?php echo base_url('assets/img/wisata/' . $ticket['foto']); ?>" alt="<?php echo $ticket['foto']; ?>">
+                    <h3><?php echo $ticket['nama_wisata']; ?></h3>
+                    <p><?php echo $ticket['deskripsi']; ?></p>
+                    <?php
+                    $reviews = $this->Mtiket->get_reviews_by_ticket_id($ticket['id_wisata']);
+                    if ($reviews): ?>
+                        <ul>
+                            <?php foreach ($reviews as $review): ?>
+                                <li>
+                                    <div class="rating">
+                                        <?php for ($i = 0; $i < $review['rating']; $i++): ?>
+                                            <span>⭐</span>
+                                        <?php endfor; ?>
+                                        <?php for ($i = $review['rating']; $i < 5; $i++): ?>
+                                            <span>☆</span>
+                                        <?php endfor; ?>
+                                    </div>
+                                    <p class="ulasan"><?php echo $review['review']; ?></p>
+                                    <p><strong>Pengirim:</strong> <?php echo $review['nama_pengirim']; ?></p>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <p>Tidak ada ulasan untuk tiket ini.</p>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
-        <?php else: ?>
-            <p>Kamu belum mengunjungi tempat wisata apapun.</p>
-        <?php endif; ?>
+
+        </div>
     </div>
+</div>
 </body>
 </html>

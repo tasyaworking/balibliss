@@ -3,7 +3,7 @@
 
 <head>
     <?php $this->load->view('partials/header'); ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/stylesform.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/stylesdashboard.css'); ?>">
     <style>
         .page-wrapper {
             display: flex;
@@ -78,31 +78,32 @@
     </style>
 </head>
 <body>
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-        <?php $this->load->view('pengguna/sidebar'); ?>
-        <div class="main-content">
-            <?php $this->load->view('pengguna/navbar'); ?>
-    <div class="container">
-        <header>
-            <h1>Dashboard Wisata</h1>
-        </header>
-        <div class="cards">
-            <?php foreach($wisata as $w): ?>
-                <div class="card">
-                    <img src="<?=base_url()?>assets/img/<?=$w['foto']?>" alt="<?=$w['nama_wisata']?>">
-                    <div class="card-content">
-                        <h2><?=$w['nama_wisata']?></h2>
-                        <p>Harga Tiket: Rp<?=$w['harga_tiket']?></p>
-                        <div class="rating">
-                            <?php for($i = 0; $i < 5; $i++): ?>
-                                <i class="fa <?= $i < $w['rating'] ? 'fa-star' : 'fa-star-o' ?>"></i>
-                            <?php endfor; ?>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <?php $this->load->view('pengguna/sidebar'); ?>
+    <div class="main-content">
+        <?php $this->load->view('pengguna/navbar'); ?>
+        <div class="content-container">
+            <h2 class="dashboard-header">Silahkan beli tiket wisata ini dan nikmati pengalaman yang tak terlupakan!</h2>
+            <div class="wisata-container">
+                <?php if (!empty($wisata)): ?>
+                    <?php foreach ($wisata as $tempat): ?>
+                        <div class="wisata-card">
+                            <img src="<?= base_url('assets/img/wisata/' . $tempat['foto']); ?>" alt="<?= $tempat['nama_wisata']; ?>" class="wisata-img">
+                            <h3><?= $tempat['nama_wisata']; ?></h3>
+                            <p class="wisata-description"><?= $tempat['deskripsi']; ?></p>
+                            <p class="wisata-price">Harga: Rp <?= number_format($tempat['harga_tiket'], 0, ',', '.'); ?></p>
+                            <p class="wisata-location">Lokasi: <?= $tempat['lokasi']; ?></p>
+                            <a href="<?= base_url('Ctiket/detailwisata/' . $tempat['id_wisata']); ?>" class="pesan-button">Beli Sekarang</a>
                         </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Maaf, tidak ada data wisata yang tersedia saat ini.</p>
+                <?php endif; ?>
+            </div>
+            <?php $this->load->view('partials/footer'); ?>
         </div>
     </div>
+</div>
 </body>
 </html>

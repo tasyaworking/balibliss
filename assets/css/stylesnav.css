@@ -46,11 +46,13 @@
 .navbar {
     background-color: #1076e3; /* Warna background navbar */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek shadow navbar */
-    z-index: 999; /* Pastikan navbar berada di bawah sidebar */
-    position: fixed;
+    position: -webkit-sticky;
+    position: sticky;
     top: 0;
-    left: 250px; /* Sesuaikan left dengan lebar sidebar */
-    width: calc(100% - 250px); /* Atur lebar navbar */
+    z-index: 999; /* Pastikan navbar berada di bawah sidebar */
+    left: 300px; /* Sesuaikan left dengan lebar sidebar */
+    width: calc(100% - 300px); /* Atur lebar navbar */
+    height: 60px;
 }
 
 .navbar-brand img {
