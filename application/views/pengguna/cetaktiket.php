@@ -18,7 +18,16 @@
             <p>Harga Tiket: Rp. <?php echo isset($harga_tiket) ? number_format($harga_tiket, 0, ',', '.') : 'Data tidak tersedia'; ?></p>
             <p>Tanggal Kunjungan: <?php echo isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></p>
             <a href="<?php echo base_url(); ?>">Kembali ke Beranda</a>
+            <br><br>
+            <input type="button" class="btn btn-success" value="Cetak PDF" onclick="cetakpdf()">
         </div>
     </div>
 </body>
+<script language="javascript">
+	function cetakpdf()
+	{
+		window.open("<?php echo base_url() ?>ctiket/cetakpdf","_blank");	
+	}
+  </script>
+  
 </html>
