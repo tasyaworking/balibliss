@@ -6,7 +6,7 @@ class Cpengelola extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Mpengelola');
-        $this->load->model('Msponsorship');
+        $this->load->model('Sponsorship_model');
         $this->load->model('Mtempatwisata');
         $this->load->helper('url');
         $this->load->helper('form');
@@ -129,13 +129,15 @@ class Cpengelola extends CI_Controller {
     public function tambahTempatWisata() {
         
         $this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required');
-        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Detail Deskripsi', 'required');
+        $this->form_validation->set_rules('deskripsi_singkat', 'Deskripsi Singkat', 'required');
         $this->form_validation->set_rules('jam_operasional', 'Jam Operasional', 'required');
         $this->form_validation->set_rules('alamat_wisata', 'Alamat', 'required');
         $this->form_validation->set_rules('sosmed', 'Sosial Media', 'required');
         $this->form_validation->set_rules('no_hp_wisata', 'Nomor Telepon', 'required');
         $this->form_validation->set_rules('no_rek', 'Nomor Rekening', 'required');
         $this->form_validation->set_rules('harga_tiket', 'Harga Tiket', 'required');
+        $this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('pesan', validation_errors());
@@ -156,6 +158,7 @@ class Cpengelola extends CI_Controller {
                 $data = array(
                     'nama_wisata' => $this->input->post('nama_wisata'),
                     'deskripsi' => $this->input->post('deskripsi'),
+                    'deskripsi_singkat' => $this->input->post('deskripsi_singkat'),
                     'jam_operasional' => $this->input->post('jam_operasional'),
                     'alamat_wisata' => $this->input->post('alamat_wisata'),
                     'sosmed' => $this->input->post('sosmed'),
@@ -163,6 +166,7 @@ class Cpengelola extends CI_Controller {
                     'no_hp_wisata' => $this->input->post('no_hp_wisata'),
                     'no_rek' => $this->input->post('no_rek'),
                     'harga_tiket' => $this->input->post('harga_tiket'),
+                    'lokasi' => $this->input->post('lokasi'),
                 );
     
                 if ($this->Mtempatwisata->insert($data)) {
@@ -186,56 +190,114 @@ class Cpengelola extends CI_Controller {
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
-
-    $this->load->view('pengelola/form_add_tempatwisata', $data);
+    //$this->load->view('pengelola/form_add_tempatwisata', $data);
 
     if ($this->input->post()) {
+        // Load file helper
+        $this->load->helper('file');
+
+        // Ensure the upload directory exists
+        $upload_path = './uploads/';
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+
+        // Configure file upload
+        $config['upload_path'] = $upload_path;
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['max_size'] = 2048;
+        $this->load->library('upload', $config);
+
+        // Handle file upload
+        if ($this->upload->do_upload('foto')) {
+            $uploadData = $this->upload->data();
+            $foto = $uploadData['file_name'];
+        } else {
+            $foto = null;
+            $error = $this->upload->display_errors();
+            $this->session->set_flashdata('error', $error);
+            redirect('Cpengelola/add');
+        }
+
         $data = array(
             'nama_wisata' => $this->input->post('nama_wisata'),
             'sosmed' => $this->input->post('sosmed'),
             'jam_operasional' => $this->input->post('jam_operasional'),
-            'gambar' => $this->input->post('gambar'),
+            'foto' => $foto,
             'alamat_wisata' => $this->input->post('alamat_wisata'),
             'no_hp_wisata' => $this->input->post('no_hp_wisata'),
             'deskripsi' => $this->input->post('deskripsi'),
+            'deskripsi_singkat' => $this->input->post('deskripsi_singkat'),
             'no_rek' => $this->input->post('no_rek'),
             'harga_tiket' => $this->input->post('harga_tiket'),
+            'lokasi' => $this->input->post('lokasi'),
         );
 
         // Memanggil metode insert
         if ($this->Mtempatwisata->insert($data)) {
+            $this->session->set_flashdata('pesan', 'Data berhasil ditambahkan');
+            $this->session->set_flashdata('color', 'success');
             redirect('Cpengelola');
         } else {
-            // Handle error
-            show_error('Gagal menambah data.');
+            $this->session->set_flashdata('pesan', 'Gagal menambah data.');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('Cpengelola/add');
         }
     } else {
-        $this->load->view('pengelola/form_add_tempatwisata');
+        $this->load->view('pengelola/form_add_tempatwisata', $data);
     }
 }
 
 public function edit($id) {
-    //$data['tempatwisata'] = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata);
     $data['header'] = $this->load->view('partials/header', NULL, TRUE);
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
 
-    $this->load->view('pengelola/form_edit_tempatwisata', $data);
-
+    // Form validation rules
     $this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required');
-    $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+    $this->form_validation->set_rules('deskripsi', 'Detail Deskripsi', 'required');
+    $this->form_validation->set_rules('deskripsi_singkat', 'Deskripsi Singkat', 'required');
     $this->form_validation->set_rules('jam_operasional', 'Jam Operasional', 'required');
     $this->form_validation->set_rules('alamat_wisata', 'Alamat Wisata', 'required');
     $this->form_validation->set_rules('sosmed', 'Sosial Media', 'required');
     $this->form_validation->set_rules('no_hp_wisata', 'Nomor Telepon', 'required');
     $this->form_validation->set_rules('no_rek', 'Nomor Rekening', 'required');
     $this->form_validation->set_rules('harga_tiket', 'Harga Tiket', 'required');
+    $this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
 
     if ($this->form_validation->run() == FALSE) {
         $data['tempatwisata'] = $this->Mtempatwisata->get_by_id($id);
         $this->load->view('pengelola/form_edit_tempatwisata', $data);
     } else {
+        // Load file helper
+        $this->load->helper('file');
+        $this->load->library('upload');
+
+        // Configure file upload
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['max_size'] = 2048;
+        $this->upload->initialize($config);
+
+        // Check if a new file was uploaded
+        if (!empty($_FILES['foto']['name'])) {
+            if ($this->upload->do_upload('foto')) {
+                $uploadData = $this->upload->data();
+                $foto = $uploadData['file_name'];
+            } else {
+                $foto = null;
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('pesan', $error);
+                $this->session->set_flashdata('color', 'danger');
+                redirect('cpengelola/edit/'.$id);
+            }
+        } else {
+            // Keep the existing photo if no new file was uploaded
+            $existingData = $this->Mtempatwisata->get_by_id($id);
+            $foto = $existingData->foto;
+        }
+
         $data = array(
             'nama_wisata' => $this->input->post('nama_wisata'),
             'sosmed' => $this->input->post('sosmed'),
@@ -243,8 +305,11 @@ public function edit($id) {
             'alamat_wisata' => $this->input->post('alamat_wisata'),
             'no_hp_wisata' => $this->input->post('no_hp_wisata'),
             'no_rek' => $this->input->post('no_rek'),
+            'foto' => $foto,
             'harga_tiket' => $this->input->post('harga_tiket'),
             'deskripsi' => $this->input->post('deskripsi'),
+            'deskripsi_singkat' => $this->input->post('deskripsi_singkat'),
+            'lokasi' => $this->input->post('lokasi'),
         );
 
         if ($this->Mtempatwisata->update($id, $data)) {
@@ -257,6 +322,7 @@ public function edit($id) {
         redirect('cpengelola');
     }
 }
+
 
     // Delete tempat wisata
     public function delete($id) {

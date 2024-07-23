@@ -312,5 +312,28 @@ public function konfirmasi_pemesanan() {
                 redirect('Ctiket/ratings');
             }
         }
+
     }
+
+    public function cetakpdf() {
+        $data['nama_wisata'] = 'Nama Wisata'; // Ganti dengan cara Anda mengambil nama wisata
+        $data['id_pesanan'] = $this->session->flashdata('id_pesanan');
+        $data['harga_tiket'] = $this->session->flashdata('total_harga');
+        $data['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
+    
+        require_once(APPPATH . 'libraries/dompdf/autoload.inc.php');
+        $pdf = new Dompdf\Dompdf();
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->set_option('isRemoteEnabled', TRUE);
+        $pdf->set_option('isHtml5ParserEnabled', true);
+        $pdf->set_option('isPhpEnabled', true);
+        $pdf->set_option('isFontSubsettingEnabled', true);
+    
+        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
+        $pdf->loadHtml($html);
+        $pdf->render();
+        $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);  
+    }
+
+
 }
