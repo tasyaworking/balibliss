@@ -8,7 +8,7 @@
     <?=$navbar?>
 		<!-- main -->
 		<div class="container-fluid">
-		<?php
+    <?php
 			$pesan = $this->session->flashdata('pesan');
 			$color = $this->session->flashdata('color');
 			if(!empty($pesan)):
@@ -32,13 +32,13 @@
 		else {
 		?>
 			<div class="p-3 rounded-4 bg-primary bg-opacity-50">
-        		<h3>Hello</h3>
+        		<h3>Hello nnnnnn</h3>
 			</div>
 			<?php
-		}
-		?>
-	
+	}
+	?>
 		</div>
+	</div>
 	</div>
 	<!-- main -->
 </div>
