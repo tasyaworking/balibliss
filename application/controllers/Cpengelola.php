@@ -129,13 +129,15 @@ class Cpengelola extends CI_Controller {
     public function tambahTempatWisata() {
         
         $this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required');
-        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Detail Deskripsi', 'required');
+        $this->form_validation->set_rules('deskripsi_singkat', 'Deskripsi Singkat', 'required');
         $this->form_validation->set_rules('jam_operasional', 'Jam Operasional', 'required');
         $this->form_validation->set_rules('alamat_wisata', 'Alamat', 'required');
         $this->form_validation->set_rules('sosmed', 'Sosial Media', 'required');
         $this->form_validation->set_rules('no_hp_wisata', 'Nomor Telepon', 'required');
         $this->form_validation->set_rules('no_rek', 'Nomor Rekening', 'required');
         $this->form_validation->set_rules('harga_tiket', 'Harga Tiket', 'required');
+        $this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('pesan', validation_errors());
@@ -156,6 +158,7 @@ class Cpengelola extends CI_Controller {
                 $data = array(
                     'nama_wisata' => $this->input->post('nama_wisata'),
                     'deskripsi' => $this->input->post('deskripsi'),
+                    'deskripsi_singkat' => $this->input->post('deskripsi_singkat'),
                     'jam_operasional' => $this->input->post('jam_operasional'),
                     'alamat_wisata' => $this->input->post('alamat_wisata'),
                     'sosmed' => $this->input->post('sosmed'),
@@ -163,6 +166,7 @@ class Cpengelola extends CI_Controller {
                     'no_hp_wisata' => $this->input->post('no_hp_wisata'),
                     'no_rek' => $this->input->post('no_rek'),
                     'harga_tiket' => $this->input->post('harga_tiket'),
+                    'lokasi' => $this->input->post('lokasi'),
                 );
     
                 if ($this->Mtempatwisata->insert($data)) {
@@ -188,9 +192,11 @@ class Cpengelola extends CI_Controller {
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
 
     $this->load->view('pengelola/form_add_tempatwisata', $data);
+    
 
     if ($this->input->post()) {
         $data = array(
+            
             'nama_wisata' => $this->input->post('nama_wisata'),
             'sosmed' => $this->input->post('sosmed'),
             'jam_operasional' => $this->input->post('jam_operasional'),
@@ -198,8 +204,10 @@ class Cpengelola extends CI_Controller {
             'alamat_wisata' => $this->input->post('alamat_wisata'),
             'no_hp_wisata' => $this->input->post('no_hp_wisata'),
             'deskripsi' => $this->input->post('deskripsi'),
+            'deskripsi_singkat' => $this->input->post('deskripsi_singkat'),
             'no_rek' => $this->input->post('no_rek'),
             'harga_tiket' => $this->input->post('harga_tiket'),
+            'lokasi' => $this->input->post('lokasi'),
         );
 
         // Memanggil metode insert
@@ -224,13 +232,17 @@ public function edit($id) {
     $this->load->view('pengelola/form_edit_tempatwisata', $data);
 
     $this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required');
-    $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+    $this->form_validation->set_rules('deskripsi', 'Detail Deskripsi', 'required');
+    $this->form_validation->set_rules('deskripsi_singkat', 'Deskripsi Singkat', 'required');
     $this->form_validation->set_rules('jam_operasional', 'Jam Operasional', 'required');
     $this->form_validation->set_rules('alamat_wisata', 'Alamat Wisata', 'required');
     $this->form_validation->set_rules('sosmed', 'Sosial Media', 'required');
+    $this->form_validation->set_rules('gambar', 'Gambar', 'required');
     $this->form_validation->set_rules('no_hp_wisata', 'Nomor Telepon', 'required');
     $this->form_validation->set_rules('no_rek', 'Nomor Rekening', 'required');
     $this->form_validation->set_rules('harga_tiket', 'Harga Tiket', 'required');
+    $this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
+    
 
     if ($this->form_validation->run() == FALSE) {
         $data['tempatwisata'] = $this->Mtempatwisata->get_by_id($id);
@@ -243,8 +255,12 @@ public function edit($id) {
             'alamat_wisata' => $this->input->post('alamat_wisata'),
             'no_hp_wisata' => $this->input->post('no_hp_wisata'),
             'no_rek' => $this->input->post('no_rek'),
+            'gambar' => $this->input->post('gambar'),
             'harga_tiket' => $this->input->post('harga_tiket'),
             'deskripsi' => $this->input->post('deskripsi'),
+            'deskripsi_singkat' => $this->input->post('deskripsi_singkat'),
+            'lokasi' => $this->input->post('lokasi'),
+           
         );
 
         if ($this->Mtempatwisata->update($id, $data)) {

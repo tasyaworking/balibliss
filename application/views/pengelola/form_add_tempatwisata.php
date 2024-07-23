@@ -37,12 +37,16 @@
                             <input type="text" class="form-control" id="jam_operasional" name="jam_operasional">
                         </div>
                         <div class="mb-3">
-                            <label for="gambar" class="form-label">Gambar</label>
+                            <label for="gambar" class="form-label">Foto</label>
                             <input type="file" class="form-control" id="gambar" name="gambar">
                         </div>
                         <div class="mb-3">
-                            <label for="alamat_wisata" class="form-label">Alamat Wisata</label>
+                            <label for="alamat_wisata" class="form-label">Alamat Lengkap Wisata</label>
                             <input type="text" class="form-control" id="alamat_wisata" name="alamat_wisata">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lokasi" class="form-label">Lokasi Wisata</label>
+                            <textarea class="form-control" id="lokasi" name="lokasi"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="no_hp_wisata" class="form-label">No Telp</label>
@@ -57,7 +61,11 @@
                             <input type="text" class="form-control" id="harga_tiket" name="harga_tiket">
                         </div>
                         <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <label for="deskripsi_singkat" class="form-label">Deskripsi Singkat</label>
+                            <textarea class="form-control" id="deskripsi_singkat" name="deskripsi_singkat"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label">Detail Deskripsi</label>
                             <textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>

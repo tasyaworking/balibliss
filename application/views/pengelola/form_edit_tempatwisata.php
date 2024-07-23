@@ -33,15 +33,19 @@
                             <input type="text" class="form-control" id="jam_operasional" name="jam_operasional" value="<?= htmlspecialchars($tempatwisata->jam_operasional ?? ''); ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="gambar" class="form-label">Gambar</label>
+                            <label for="gambar" class="form-label">foto</label>
                             <input type="file" class="form-control" id="gambar" name="gambar">
                             <?php if (!empty($tempatwisata->gambar)): ?>
                             <img src="<?= base_url('uploads/' . $tempatwisata->gambar); ?>" alt="Gambar" width="100" class="mt-2">
                             <?php endif; ?>
                         </div>
                         <div class="mb-3">
-                            <label for="alamat_wisata" class="form-label">Alamat Wisata</label>
+                            <label for="alamat_wisata" class="form-label">Alamat Lengkap Wisata</label>
                             <input type="text" class="form-control" id="alamat_wisata" name="alamat_wisata" value="<?= htmlspecialchars($tempatwisata->alamat_wisata ?? ''); ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lokasi" class="form-label">Lokasi Wisata</label>
+                            <textarea class="form-control" id="lokasi" name="lokasi"><?= htmlspecialchars($tempatwisata->lokasi ?? ''); ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="no_hp_wisata" class="form-label">No Telp</label>
@@ -56,7 +60,11 @@
                             <textarea class="form-control" id="harga_tiket" name="harga_tiket"><?= htmlspecialchars($tempatwisata->harga_tiket ?? ''); ?></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <label for="deskripsi_singkat" class="form-label">Deskripsi Singkat</label>
+                            <textarea class="form-control" id="deskripsi_singkat" name="deskripsi_singkat"><?= htmlspecialchars($tempatwisata->deskripsi_singkat ?? ''); ?></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label">Detail Deskripsi</label>
                             <textarea class="form-control" id="deskripsi" name="deskripsi"><?= htmlspecialchars($tempatwisata->deskripsi ?? ''); ?></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
