@@ -18,8 +18,7 @@
                     <p>Id Pesanan: <?= isset($id_pesanan) ? $id_pesanan : 'Data tidak tersedia'; ?></p>
                     <p>Total Harga: Rp. <?= isset($total_harga) ? number_format($total_harga, 0, ',', '.') : 'Data tidak tersedia'; ?></p>
                     <p>Tanggal Kunjungan: <?= isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></p>
-                    <a href="<?= base_url('Ctiket/cetaktiket'); ?>">Cetak Tiket</a>
-                    <a href="<?= base_url('Ctiket/visited_tickets'); ?>">Lihat Tempat Wisata yang Sudah Dikunjungi</a>
+                    <a href="<?= base_url('Ctiket/cetakpdf'); ?>">Cetak Tiket</a>
                 </div>
             </div>
         </div>
