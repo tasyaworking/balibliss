@@ -29,7 +29,7 @@
 						<td><?=$row->tanggal_selesai?></td>
 						<!-- <td>Rp<?=$row->pembayaran?></td> -->
 						<td>Rp<?= number_format($row->pembayaran, 0, ',', '.') ?></td>
-						<td><?=$row->bukti_pembayaran?></td>
+						<td><img src="<?php echo base_url('assets/img/wisata/' . $row->bukti_pembayaran);?>" width="120"></td>
 						<td class="text-center">
 							<button type="button" class="btn btn-success" onclick="terima(<?=$row->id_sponsor?>)"><i
 									class="ti ti-check"></i></button>

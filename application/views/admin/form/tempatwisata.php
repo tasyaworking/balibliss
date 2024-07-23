@@ -1,8 +1,8 @@
 <div class="container-fluid">
     
     <h3 class="title"><?= $data_tempat_wisata_by_id->nama_wisata ?></h3>
-		<img class="wisata-img" src="<?= $data_tempat_wisata_by_id->gambar ?>"
-			alt="<?= $data_tempat_wisata_by_id->nama_wisata ?>">
+		<img class="wisata-img" src="<?php echo base_url('assets/img/wisata/' . $data_tempat_wisata_by_id->gambar);?>"
+			width="45%" alt="<?= $data_tempat_wisata_by_id->nama_wisata ?>">
 
 	<div id="overview" class="detail-section">
 		<h5 class="section-title">Overview</h5>
@@ -23,11 +23,6 @@
 		<h5 class="section-title">Jam Operasional</h5>
 			<p class="section-content"><?= $data_tempat_wisata_by_id->jam_operasional ?></p>
 	</div>
-
-	<!-- <div id="alamat" class="detail-section">
-		<h5 class="section-title">Alamat</h5>
-			<p class="section-content"><?php // echo nl2br($tempat['alamat']); ?></p>
-	</div> -->
 
 	<div id="nomor_telepon" class="detail-section">
 		<h5 class="section-title">No. Telp</h5>

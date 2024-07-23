@@ -25,7 +25,7 @@
 				?>
 					<tr>
 						<td><?=$no++?></td>
-                        <td><?=$row->gambar?></td>
+                        <td><img src="<?php echo base_url('assets/img/wisata/' . $row->gambar);?>" width="120"></td>
 						<td><?=$row->nama?></td>
 						<td><?=$row->nama_wisata?></td>
 						<td><?=$row->alamat_wisata?></td>
