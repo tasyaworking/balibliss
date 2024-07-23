@@ -116,6 +116,7 @@ class Madmin extends CI_Model {
 
     public function get_total_pembayaran() {
         $this->db->select_sum('pembayaran');
+        $this->db->where('diterima', 'ya');
         $query = $this->db->get('tb_sponsor');
         return $query->row()->pembayaran;
     }
