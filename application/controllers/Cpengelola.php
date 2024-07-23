@@ -86,24 +86,33 @@ class Cpengelola extends CI_Controller {
     }
 
     public function daftarsponsor() {
+        // Set rules for form validation
         $this->form_validation->set_rules('nama_sponsor', 'Nama Sponsor', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi Sponsor', 'required');
         $this->form_validation->set_rules('sosial_media', 'Sosial Media', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('no_hp', 'No HP', 'required');
-
+    
+        // Run form validation
         if ($this->form_validation->run() == FALSE) {
+            // If validation fails, set flashdata for error message and redirect back
             $this->session->set_flashdata('pesan', validation_errors());
             $this->session->set_flashdata('color', 'danger');
+            redirect('cpengelola/daftarsponsor'); // Redirect to the form page
         } else {
+            // Set configuration for file upload
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'jpg|png|jpeg';
-            $config['max_size'] = 2048;
+            $config['max_size'] = 2048; // Max size in kilobytes
+    
             $this->load->library('upload', $config);
-
+    
+            // Attempt file upload
             if (!$this->upload->do_upload('gambar')) {
+                // If upload fails, set flashdata for error message and redirect back
                 $this->session->set_flashdata('pesan', $this->upload->display_errors());
                 $this->session->set_flashdata('color', 'danger');
+                redirect('cpengelola/daftarsponsor'); // Redirect to the form page
             } else {
                 $upload_data = $this->upload->data();
                 $data = array(
@@ -112,19 +121,23 @@ class Cpengelola extends CI_Controller {
                     'sosial_media' => $this->input->post('sosial_media'),
                     'alamat' => $this->input->post('alamat'),
                     'no_hp' => $this->input->post('no_hp'),
-                    'logo' => $upload_data['file_name']
+                    'logo' => $upload_data['file_name'] // Store uploaded file name
                 );
-                if ($this->Mpengelola->daftarsponsor($data)) {
+    
+                // Insert data into database
+                if ($this->Sponsorship_model->insert($data)) {
                     $this->session->set_flashdata('pesan', 'Pendaftaran sponsorship berhasil.');
                     $this->session->set_flashdata('color', 'success');
                 } else {
                     $this->session->set_flashdata('pesan', 'Pendaftaran sponsorship gagal.');
                     $this->session->set_flashdata('color', 'danger');
                 }
+    
+                redirect('cpengelola/daftarsponsor'); // Redirect to the form page or another page
             }
         }
-        redirect('cpengelola/sponsorship');
     }
+    
 
     public function tambahTempatWisata() {
         
