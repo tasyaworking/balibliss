@@ -44,12 +44,14 @@
                                     <th class="text-center">Nama Destinasi</th>
                                     <th class="text-center">Sosial Media</th>
                                     <th class="text-center">Jam Operasional</th>
-                                    <th class="text-center">Gambar</th>
-                                    <th class="text-center">Alamat</th>
+                                    <th class="text-center">Foto</th>
+                                    <th class="text-center">Alamat Lengkap Wisata</th>
+                                    <th class="text-center">Lokasi Wisata</th>
                                     <th class="text-center">No Telp</th>
 									<th class="text-center">No Rekening</th>
                                     <th class="text-center">Harga Tiket</th>
-                                    <th class="text-center">Deskripsi</th>
+                                    <th class="text-center">Deskripsi Singkat</th>
+                                    <th class="text-center">Detail Deskripsi</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -62,11 +64,13 @@
                                         <td><?= htmlspecialchars($row->nama_wisata) ?></td>
                                         <td><?= htmlspecialchars($row->sosmed) ?></td>
                                         <td><?= htmlspecialchars($row->jam_operasional) ?></td>
-                                        <td><img src="<?= base_url('uploads/' . $row->gambar) ?>" alt="Gambar" width="100"></td>
+                                        <td><img src="<?= base_url('uploads/' . $row->foto) ?>" alt="Gambar" width="100"></td>
                                         <td><?= htmlspecialchars($row->alamat_wisata) ?></td>
+                                        <td><?= htmlspecialchars($row->lokasi) ?></td>
                                         <td><?= htmlspecialchars($row->no_hp_wisata) ?></td>
 										<td><?= htmlspecialchars($row->no_rek) ?></td>
                                         <td><?= htmlspecialchars($row->harga_tiket) ?></td>
+                                        <td><?= htmlspecialchars($row->deskripsi_singkat) ?></td>
                                         <td><?= htmlspecialchars($row->deskripsi) ?></td>
                                         <td class="text-center">
                                             <a href="<?= site_url('cpengelola/edit/' . $row->id_wisata); ?>" class="btn btn-warning">

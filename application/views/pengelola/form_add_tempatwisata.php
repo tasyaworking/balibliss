@@ -23,7 +23,7 @@
             <h4 class="mb-4">Tambah Tempat Wisata</h4>
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= site_url('cpengelola/add'); ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= site_url('cpengelola/add '); ?>" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="nama_wisata" class="form-label">Nama Wisata</label>
                             <input type="text" class="form-control" id="nama_wisata" name="nama_wisata" required>
@@ -37,12 +37,16 @@
                             <input type="text" class="form-control" id="jam_operasional" name="jam_operasional">
                         </div>
                         <div class="mb-3">
-                            <label for="gambar" class="form-label">Gambar</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar">
+                            <label for="foto" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="foto" name="foto">
                         </div>
                         <div class="mb-3">
-                            <label for="alamat_wisata" class="form-label">Alamat Wisata</label>
+                            <label for="alamat_wisata" class="form-label">Alamat Lengkap Wisata</label>
                             <input type="text" class="form-control" id="alamat_wisata" name="alamat_wisata">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lokasi" class="form-label">Lokasi Wisata</label>
+                            <textarea class="form-control" id="lokasi" name="lokasi"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="no_hp_wisata" class="form-label">No Telp</label>
@@ -57,7 +61,11 @@
                             <input type="text" class="form-control" id="harga_tiket" name="harga_tiket">
                         </div>
                         <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <label for="deskripsi_singkat" class="form-label">Deskripsi Singkat</label>
+                            <textarea class="form-control" id="deskripsi_singkat" name="deskripsi_singkat"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label">Detail Deskripsi</label>
                             <textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
