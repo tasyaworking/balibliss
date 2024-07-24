@@ -10,7 +10,7 @@ class Sponsorship extends CI_Controller {
     }
 
     public function index() {
-        echo "Loading view sponsorship/form";  // Debug statement
+        echo "Attempting to load sponsorship/form";  // Debug statement
         $this->load->view('sponsorship/form');
     }
 
