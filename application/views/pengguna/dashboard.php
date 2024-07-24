@@ -96,7 +96,7 @@
 					<?php if (!empty($wisata)): ?>
 					<?php foreach ($wisata as $tempat): ?>
 					<div class="wisata-card">
-						<img src="<?= base_url('assets/img/wisata/' . $tempat['foto']); ?>"
+						<img src="<?= base_url('uploads/' . $tempat['foto']); ?>"
 							alt="<?= $tempat['nama_wisata']; ?>" class="wisata-img">
 						<h3><?= $tempat['nama_wisata']; ?></h3>
 						<p class="wisata-description"><?= $tempat['deskripsi_singkat']; ?></p>
