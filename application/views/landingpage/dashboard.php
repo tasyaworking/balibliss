@@ -181,7 +181,7 @@
             <div class="icon-box">
               <i class="bi bi-card-checklist"></i>
               <h4><a href="#">PILIHAN DESTINASI YANG BERAGAM</a></h4>
-              <p>Dari pantai yang memukau, taman rekreasi, hingga tempat-tempat budaya yang kaya, kami menawarkan berbagai destinasi wisata yang dapat dipilih sesuai keinginan Anda.</p>
+              <p>Dari pantai yang memukauu, taman rekreasi, hingga tempat-tempat budaya yang kaya, kami menawarkan berbagai destinasi wisata yang dapat dipilih sesuai keinginan Anda.</p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
