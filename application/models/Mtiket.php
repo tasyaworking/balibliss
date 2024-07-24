@@ -84,11 +84,12 @@ class Mtiket extends CI_Model {
         return $query->result();
     }
 
-    public function get_all_wisata()
-    {
-        $query = $this->db->get('tb_ticket');
+    public function get_all_wisata() {
+        $this->db->select('id_wisata, nama_wisata, deskripsi_singkat, harga_tiket, foto, lokasi');
+        $query = $this->db->get('tb_tempatwisata');
         return $query->result_array();
     }
+    
     public function get_nama_wisata_by_id_pesanan($id_pesanan) {
         $this->db->select('tb_ticket.nama_wisata');
         $this->db->from('tb_bayar');
@@ -123,14 +124,14 @@ class Mtiket extends CI_Model {
     }
 
     public function get_all_tickets() {
-        $query = $this->db->get('tb_ticket');
+        $query = $this->db->get('tb_tempatwisata');
         return $query->result_array(); // Mengembalikan data sebagai array
     }
     
     // Metode untuk mengambil data berdasarkan ID tiket
     public function get_ticket_by_id($id) {
         $this->db->where('id_wisata', $id);
-        $query = $this->db->get('tb_ticket');
+        $query = $this->db->get('tb_tempatwisata');
         return $query->row_array(); // Mengembalikan data sebagai array
     }
 
