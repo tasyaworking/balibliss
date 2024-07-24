@@ -174,7 +174,7 @@
             <div class="icon-box">
               <i class="bi bi-briefcase"></i>
               <h4><a href="#">MEMESANAN TIKET ONLINE</a></h4>
-              <p>Hindari antrean panjang dan pesan tiket untuk berbagai atraksi wisata secara online melalui website kami.</p>
+              <p>Hindari antrean panjang dann pesan tiket untuk berbagai atraksi wisata secara online melalui website kami.</p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
