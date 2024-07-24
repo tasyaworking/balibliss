@@ -1,0 +1,99 @@
+/* Sidebar CSS */
+.sidebar {
+    width: 300px; /* Atur lebar sidebar sesuai kebutuhan */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343A40; /* Warna background sidebar */
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Atur z-index agar sidebar menutupi navbar */
+}
+
+.sidebar .sidebar-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav-item {
+    margin: 30px 0;
+}
+
+.sidebar .nav-item .nav-link {
+    color: white;
+    font-size: 16px;
+    padding: 15px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .nav-item .nav-link:hover {
+    background-color: #f0f1f1; /* Blue background on hover */
+    color: white;
+    text-decoration: none;
+}
+
+/* Navbar CSS */
+.navbar {
+    background-color: #1076e3; /* Warna background navbar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek shadow navbar */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 999; /* Pastikan navbar berada di bawah sidebar */
+    left: 300px; /* Sesuaikan left dengan lebar sidebar */
+    width: calc(100% - 300px); /* Atur lebar navbar */
+    height: 60px;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: 140px;
+}
+
+.navbar-toggler {
+    border-color: transparent;
+}
+
+.navbar-toggler-icon {
+    color: white;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #FFC107; /* Hover color */
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu {
+    background-color: #0056b3; /* Dark blue */
+    border: none;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item {
+    color: white;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #004494; /* Darker blue on hover */
+}
+
+.navbar-nav .nav-item .nav-icon-hover img {
+    border: 2px solid white;
+}

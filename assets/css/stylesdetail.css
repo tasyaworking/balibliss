@@ -1,0 +1,89 @@
+/* Mengimpor font Poppins dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Mengatur gaya dasar untuk seluruh halaman */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    
+}
+
+.page-wrapper {
+    display: flex;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Gaya untuk container utama */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya untuk judul */
+.title {
+    font-size: 2em;
+    font-weight: 600;
+    color: #0056b3;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Gaya untuk gambar wisata */
+.wisata-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk setiap bagian detail */
+.detail-section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+.section-content {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+/* Gaya untuk tombol pesan */
+.pesan-button {
+    display: block;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.pesan-button:hover {
+    background-color: #0056b3;
+}

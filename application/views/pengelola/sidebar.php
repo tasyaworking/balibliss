@@ -39,35 +39,35 @@
     				</li> -->
     				
     				<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Cpengelola/daftarsponsor')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Cpengelola/pengguna')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-user"></i>
     						</span>
-    						<span class="hide-menu">Daftar Sponsorship</span>
+    						<span class="hide-menu">Data Pengunjung</span>
     					</a>
     				</li>
     				<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Cpengelola/daftarwisata')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Cpengelola/tempatwisata')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-building-community"></i>
     						</span>
-    						<span class="hide-menu">Daftar Tempat Wisata</span>
+    						<span class="hide-menu">Data Tempat Wisata</span>
     					</a>
     				</li>
-					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Cpengelola/pengguna')?>" aria-expanded="false">
+					<!--<li class="sidebar-item">
+    					<a class="sidebar-link" href="<?=base_url('Cpengelola/pengelola')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-user-check"></i>
     						</span>
-    						<span class="hide-menu">Tabel Pengguna</span>
+    						<span class="hide-menu">Pengajuan Pengelola</span>
     					</a>
-    				</li>
+    				</li>-->
 					<li class="sidebar-item">
-    					<a class="sidebar-link" href="<?=base_url('Cpengelola/tempatwisata')?>" aria-expanded="false">
+    					<a class="sidebar-link" href="<?=base_url('Sponsorship')?>" aria-expanded="false">
     						<span>
     							<i class="ti ti-folder-plus"></i>
     						</span>
-    						<span class="hide-menu">Tabel Sponsorship</span>
+    						<span class="hide-menu">Daftar Sponsorship</span>
     					</a>
     				</li>
     			</ul>

@@ -8,7 +8,37 @@
     <?=$navbar?>
 		<!-- main -->
 		<div class="container-fluid">
-            Tabel Daftar Pengajuan Sponsorship
+            
+		<?php
+			$pesan = $this->session->flashdata('pesan');
+			$color = $this->session->flashdata('color');
+			if(!empty($pesan)):
+			?>
+			<div class="alert alert-<?=$color?> alert-dismissible fade show" role="alert">
+				<?=$pesan?>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<?php
+			endif;
+			?>
+			<?php
+		if(!empty($konten)||!empty($table)){
+			if(!empty($konten)){
+				echo $konten;
+			}
+			if(!empty($table)){
+				echo $table;
+			}
+		}
+		else {
+		?>
+			<div class="p-3 rounded-4 bg-primary bg-opacity-50">
+        		<h3>Hello</h3>
+			</div>
+			<?php
+		}
+		?>
+		
 		</div>
 	</div>
 	<!-- main -->

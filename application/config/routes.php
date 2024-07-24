@@ -53,6 +53,10 @@ $route['default_controller'] = 'ctampil/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['cauth/dashboard'] = 'cauth/dashboard';
+$route['pengelola/dashboard'] = 'Cpengelola/dashboard';
 $route['views/admin/dashboard'] = 'admin/dashboard';
 $route['views/pengelola/dashboard'] = 'pengelola/dashboard';
 $route['views/pengguna/dashboard'] = 'pengguna/dashboard';
+$route['Sponsorship'] = 'sponsorship/index';
+$route['Sponsorship/submit'] = 'sponsorship/submit';
+

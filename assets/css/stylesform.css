@@ -1,0 +1,98 @@
+/* stylesform.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f8ff;
+    color: #0056b3;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
+    padding-left: 220px; /* Sesuaikan dengan lebar sidebar */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #0056b3;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input[type="text"]:read-only,
+input[type="email"]:read-only,
+input[type="tel"]:read-only,
+input[type="number"]:read-only,
+input[type="date"]:read-only {
+    background-color: #e9ecef;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-back {
+    background-color: #45a049;
+    color: #faf8f8;
+    font-weight: bold;
+}
+
+.btn-back:hover {
+    background-color: #bbb;
+}
+
+.btn-submit {
+    background-color: #0056b3;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-submit:hover {
+    background-color: #004494;
+}

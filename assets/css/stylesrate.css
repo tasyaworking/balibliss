@@ -1,0 +1,185 @@
+/* Impor font Poppins dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Terapkan font Poppins ke seluruh halaman */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Ensure no scrolling on the main wrapper */
+.page-wrapper {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar .sidebar-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav-item {
+    margin: 30px 0;
+}
+
+.sidebar .nav-item .nav-link {
+    color: white;
+    font-size: 16px;
+    padding: 15px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .nav-item .nav-link:hover {
+    background-color: #f0f1f1; /* Blue background on hover */
+    color: white;
+    text-decoration: none;
+}
+
+/* Navbar CSS */
+.navbar {
+    background-color: #1076e3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 250px; /* Adjusted to fit beside the sidebar */
+    width: calc(100% - 250px); /* Ensure it spans the remaining width */
+    height: 70px; /* Consistent height with the margin-top below */
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: 140px;
+}
+
+.main-content {
+    margin-top: 70px; /* Space for the fixed navbar */
+    margin-left: 250px; /* Space for the fixed sidebar */
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: calc(100vh - 40px); /* Full height minus navbar height */
+}
+
+.container {
+    margin-top: 20px;
+}
+
+/* Enhanced styling for form elements */
+form {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+form select, form input, form textarea {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    box-sizing: border-box;
+}
+
+form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Enhanced ticket card styling */
+.kartu {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: flex-start; /* Align items to the start of the card */
+    overflow: hidden;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.kartu:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.kartu img {
+    width: 30%; /* Make the image take full width of the card */
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.kartu h3 {
+    margin: 10px;
+    margin-bottom: 5px;
+    font-size: 20px; /* Increase font size for better visibility */
+    color: #333;
+}
+
+.kartu .rating {
+    margin-bottom: 10px;
+}
+
+.kartu .rating span {
+    font-size: 24px; /* Larger stars for better visibility */
+    color: #ffcc00;
+}
+
+.kartu .ulasan {
+    font-size: 16px;
+    color: #666;
+}
