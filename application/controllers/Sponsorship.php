@@ -10,7 +10,8 @@ class Sponsorship extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view('Sform');
+        echo "Loading view sponsorship/form";  // Debug statement
+        $this->load->view('sponsorship/form');
     }
 
     public function submit() {
@@ -20,7 +21,7 @@ class Sponsorship extends CI_Controller {
         $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'required');
         
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('Sform');
+            $this->load->view('sponsorship/form');
         } else {
             $data = array(
                 'nama' => $this->input->post('nama'),
