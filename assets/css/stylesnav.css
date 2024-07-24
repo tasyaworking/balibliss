@@ -44,7 +44,7 @@
 
 /* Navbar CSS */
 .navbar {
-    background-color: #1076e3; /* Warna background navbar */
+    background-color: #f0f1f1; /* Warna background navbar */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek shadow navbar */
     position: -webkit-sticky;
     position: sticky;

@@ -9,7 +9,7 @@ class Mtiket extends CI_Model {
     }
     
     public function ambilwisata($kondisi = array()) {
-        $this->db->select('id_wisata, nama_wisata, deskripsi, lokasi, foto, harga_tiket');
+        $this->db->select('id_wisata, nama_wisata, deskripsi_singkat, lokasi, foto, harga_tiket');
         if (!empty($kondisi)) {
             $this->db->where($kondisi);
         }
@@ -89,7 +89,7 @@ class Mtiket extends CI_Model {
         $query = $this->db->get('tb_tempatwisata');
         return $query->result_array();
     }
-    
+
     public function get_nama_wisata_by_id_pesanan($id_pesanan) {
         $this->db->select('tb_ticket.nama_wisata');
         $this->db->from('tb_bayar');

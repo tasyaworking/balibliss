@@ -19,7 +19,7 @@
 			position: fixed;
 			top: 0;
 			left: 0;
-			background-color: #343a40;
+			background-color: #fff;
 			color: white;
 			padding: 20px;
 			box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -27,7 +27,7 @@
 		}
 
 		.navbar {
-			background-color: #1076e3;
+			background-color: white;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 			z-index: 999;
 			position: fixed;
@@ -96,7 +96,7 @@
 					<?php if (!empty($wisata)): ?>
 					<?php foreach ($wisata as $tempat): ?>
 					<div class="wisata-card">
-						<img src="<?= base_url('assets/img/wisata/' . $tempat['foto']); ?>"
+						<img src="<?= base_url('uploads/' . $tempat['foto']); ?>"
 							alt="<?= $tempat['nama_wisata']; ?>" class="wisata-img">
 						<h3><?= $tempat['nama_wisata']; ?></h3>
 						<p class="wisata-description"><?= $tempat['deskripsi_singkat']; ?></p>
