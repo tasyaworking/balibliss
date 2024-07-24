@@ -43,7 +43,7 @@
             <h2>Rating Ulasan Tiket</h2>
             <?php foreach ($tickets as $ticket): ?>
                 <div class="kartu">
-                    <img src="<?php echo base_url('assets/img/wisata/' . $ticket['foto']); ?>" alt="<?php echo $ticket['foto']; ?>">
+                    <img src="<?php echo base_url('uploads/' . $ticket['foto']); ?>" alt="<?php echo $ticket['foto']; ?>">
                     <h3><?php echo $ticket['nama_wisata']; ?></h3>
                     <p><?php echo $ticket['deskripsi']; ?></p>
                     <?php
