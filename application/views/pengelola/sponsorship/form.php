@@ -1,42 +1,45 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Pendaftaran Sponsorship</title>
+</head>
+<body>
 
-class Sponsorship extends CI_Controller {
+<?php if ($this->session->flashdata('message')): ?>
+    <p><?php echo $this->session->flashdata('message'); ?></p>
+<?php endif; ?>
 
-    public function __construct() {
-        parent::__construct();
-        $this->load->model('Sponsorship_model');
-        $this->load->library('form_validation');
-    }
+<?php echo form_open('Sponsorship/submit'); ?>
 
-    public function index() {
-        $this->load->view('sponsorship/form'); // Pastikan path view benar
-    }
+<p>
+    <label for="nama">Nama:</label>
+    <input type="text" name="nama" value="<?php echo set_value('nama'); ?>">
+    <?php echo form_error('nama'); ?>
+</p>
 
-    public function submit() {
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('telepon', 'Telepon', 'required');
-        $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'required');
+<p>
+    <label for="email">Email:</label>
+    <input type="text" name="email" value="<?php echo set_value('email'); ?>">
+    <?php echo form_error('email'); ?>
+</p>
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('sponsorship/form');
-        } else {
-            $data = array(
-                'nama' => $this->input->post('nama'),
-                'email' => $this->input->post('email'),
-                'telepon' => $this->input->post('telepon'),
-                'perusahaan' => $this->input->post('perusahaan'),
-                'created_at' => date('Y-m-d H:i:s'),
-            );
+<p>
+    <label for="telepon">Telepon:</label>
+    <input type="text" name="telepon" value="<?php echo set_value('telepon'); ?>">
+    <?php echo form_error('telepon'); ?>
+</p>
 
-            if ($this->Sponsorship_model->insert($data)) {
-                $this->session->set_flashdata('message', 'Pendaftaran sponsorship berhasil!');
-                redirect('sponsorship');
-            } else {
-                $this->session->set_flashdata('message', 'Gagal mendaftar sponsorship.');
-                redirect('sponsorship');
-            }
-        }
-    }
-}
+<p>
+    <label for="perusahaan">Perusahaan:</label>
+    <input type="text" name="perusahaan" value="<?php echo set_value('perusahaan'); ?>">
+    <?php echo form_error('perusahaan'); ?>
+</p>
+
+<p>
+    <button type="submit">Daftar</button>
+</p>
+
+<?php echo form_close(); ?>
+
+</body>
+</html>
