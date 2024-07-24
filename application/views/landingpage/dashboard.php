@@ -242,8 +242,7 @@
             <p class="card-text">Tabanan</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐☆</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/tanahlot.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Tanah Lot"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -257,8 +256,7 @@
             <p class="card-text">Tabanan</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐☆</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/beratan.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Danau Beratan"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -272,8 +270,7 @@
             <p class="card-text">Gianyar</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐⭐</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/zoo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Bali Zoo"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -287,8 +284,7 @@
             <p class="card-text">Denpasar</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐☆</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/tanahlot.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Tanah Lot"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -302,8 +298,7 @@
             <p class="card-text">Gianyar</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐☆</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/beratan.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Danau Beratan"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -317,8 +312,7 @@
             <p class="card-text">Uluwatu</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐⭐</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/zoo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Bali Zoo"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -331,8 +325,7 @@
             <p class="card-text">Denpasar</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐☆</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/tanahlot.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Tanah Lot"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -346,8 +339,7 @@
             <p class="card-text">Gianyar</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐☆</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/beratan.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Danau Beratan"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -361,8 +353,7 @@
             <p class="card-text">Kuta</p>
             <p class="card-rating">Rating: ⭐⭐⭐⭐⭐</p>
             <div class="portfolio-links">
-              <a href="assets/img/portfolio/zoo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Bali Zoo"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+            <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
