@@ -313,4 +313,12 @@ public function konfirmasi_pemesanan() {
             }
         }
     }
+
+    public function konfirmasi_pembayaran($id_wisata) {
+        $this->load->model('Mtiket');
+        $data['wisata'] = $this->Mtiket->get_wisata_details($id_wisata);
+        $data['total_harga'] = $this->session->userdata('total_harga'); // Ambil total harga dari session atau sumber lain
+        $this->load->view('pengguna/konfirmasi_pembayaran', $data);
+    }
+    
 }

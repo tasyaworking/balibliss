@@ -146,6 +146,14 @@ class Mtiket extends CI_Model {
         $query = $this->db->get('tb_reviews');
         return $query->result_array(); // Mengembalikan data sebagai array
     }
+
+public function get_wisata_details($id_wisata) {
+    $this->db->select('nama_wisata, nomor_rekening');
+    $this->db->from('tb_tempatwisata');
+    $this->db->where('id_wisata', $id_wisata);
+    $query = $this->db->get();
+    return $query->row_array();
+}
 }
     
 ?>

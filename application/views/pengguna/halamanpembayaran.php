@@ -116,8 +116,10 @@
 						<p>Total Harga:
 							<?php echo isset($total_harga) ? 'Rp ' . number_format($total_harga, 0, ',', '.') : 'Total Harga Tidak Tersedia'; ?>
 						</p>
+						<p>Mohon Transfer ke :
+							<?php echo isset($no_rek) ? 'Rp ' . number_format($no_rek, 0, ',', '.') : 'No rekening Tidak Tersedia'; ?>
+						</p>
 					</div>
-
 					<!-- Form untuk upload bukti transaksi -->
 					<?php echo form_open_multipart('Ctiket/insertkonfirmasi'); ?>
 					<input type="hidden" name="total_harga"
