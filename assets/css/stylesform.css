@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
+    padding-top: 40px; /* Sesuaikan dengan tinggi navbar */
     padding-left: 100px; /* Sesuaikan dengan lebar sidebar */
 }
 

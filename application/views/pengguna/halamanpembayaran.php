@@ -26,7 +26,7 @@
 		}
 
 		.navbar {
-			background-color: #1076e3;
+			background-color: white;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 			z-index: 999;
 			position: fixed;
@@ -44,7 +44,7 @@
 			flex: 1;
 			margin-top: 70px;
 			/* Adjust margin to push content below navbar */
-			margin-left: 250px;
+			margin-left: 200px;
 			/* Adjust margin to make space for sidebar */
 			overflow-y: auto;
 			/* Enable vertical scrolling */
@@ -58,7 +58,7 @@
 		}
 
 		.card {
-			padding: 20px;
+			padding: 100px;
 			background: #fff;
 			border-radius: 8px;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -107,57 +107,58 @@
 			<div class="main-container">
 				<div class="container">
 					<h1>Pembayaran</h1>
+<!-- Card untuk menampilkan informasi nama wisata dan total harga -->
+<div class="card">
+    <p>Nama Wisata:
+        <?php echo isset($wisata['nama_wisata']) ? $wisata['nama_wisata'] : 'Nama Wisata Tidak Tersedia'; ?>
+    </p>
+    <p>Total Harga:
+        <?php echo isset($total_harga) ? 'Rp ' . number_format($total_harga, 0, ',', '.') : 'Total Harga Tidak Tersedia'; ?>
+    </p>
+    <p>Mohon Transfer ke:
+        <?php echo isset($no_rek) ? $no_rek : 'No rekening Tidak Tersedia'; ?>
+    </p>
+</div>
 
-					<!-- Card untuk menampilkan informasi nama wisata dan total harga -->
-					<div class="card">
-						<p>Nama Wisata:
-							<?php echo isset($wisata['nama_wisata']) ? $wisata['nama_wisata'] : 'Nama Wisata Tidak Tersedia'; ?>
-						</p>
-						<p>Total Harga:
-							<?php echo isset($total_harga) ? 'Rp ' . number_format($total_harga, 0, ',', '.') : 'Total Harga Tidak Tersedia'; ?>
-						</p>
-						<p>Mohon Transfer ke :
-							<?php echo isset($no_rek) ? 'Rp ' . number_format($no_rek, 0, ',', '.') : 'No rekening Tidak Tersedia'; ?>
-						</p>
-					</div>
-					<!-- Form untuk upload bukti transaksi -->
-					<?php echo form_open_multipart('Ctiket/insertkonfirmasi'); ?>
-					<input type="hidden" name="total_harga"
-						value="<?php echo isset($total_harga) ? $total_harga : ''; ?>">
-					<input type="hidden" name="id_wisata"
-						value="<?php echo isset($wisata['id_wisata']) ? $wisata['id_wisata'] : ''; ?>">
+<!-- Form untuk upload bukti transaksi -->
+<?php echo form_open_multipart('Ctiket/insertkonfirmasi'); ?>
+<input type="hidden" name="total_harga" value="<?php echo isset($total_harga) ? $total_harga : ''; ?>">
+<input type="hidden" name="id_wisata" value="<?php echo isset($wisata['id_wisata']) ? $wisata['id_wisata'] : ''; ?>">
+<input type="hidden" name="no_rek" value="<?php echo isset($no_rek) ? $no_rek : ''; ?>">
 
-					<div class="card">
-						<label for="bank_km">Bank Tujuan:</label>
-						<select name="bank_km" id="bank_km" required>
-							<option value="" disabled selected>Pilih Bank Tujuan</option>
-							<option value="BCA">BCA</option>
-							<option value="BNI">BNI</option>
-							<option value="BRI">BRI</option>
-							<option value="Mandiri">Mandiri</option>
-							<!-- Tambahkan opsi bank lainnya sesuai kebutuhan -->
-						</select>
+<div class="card">
+    <label for="bank_km">Bank Tujuan:</label>
+    <select name="bank_km" id="bank_km" required>
+        <option value="" disabled selected>Pilih Bank Tujuan</option>
+        <option value="BCA">BCA</option>
+        <option value="BNI">BNI</option>
+        <option value="BRI">BRI</option>
+        <option value="Mandiri">Mandiri</option>
+        <!-- Tambahkan opsi bank lainnya sesuai kebutuhan -->
+    </select>
 
-						<label for="nomrek">Nomor Rekening:</label>
-						<input type="text" name="nomrek" id="nomrek" required>
+    <label for="nomrek">Nomor Rekening:</label>
+    <input type="text" name="nomrek" id="nomrek" required>
 
-						<label for="nama">Nama Pemilik Rekening:</label>
-						<input type="text" name="nama" id="nama" required>
+    <label for="nama">Nama Pemilik Rekening:</label>
+    <input type="text" name="nama" id="nama" required>
 
-						<label for="tgl_kunjungan">Tanggal Kunjungan:</label>
-						<input type="date" name="tgl_kunjungan" id="tgl_kunjungan" required>
+    <label for="tgl_kunjungan">Tanggal Kunjungan:</label>
+    <input type="date" name="tgl_kunjungan" id="tgl_kunjungan" required>
 
-						<label for="userfile">Upload Bukti Transaksi:</label>
-						<input type="file" name="userfile" id="userfile" required>
-					</div>
+    <label for="userfile">Upload Bukti Transaksi:</label>
+    <input type="file" name="userfile" id="userfile" required>
+</div>
 
-					<div class="button-container">
-						<button type="submit">Kirim</button>
-						<button type="button" class="btn-back" onclick="history.back()">Batal</button>
-					</div>
-					<?php echo form_close(); ?>
-					<?php echo validation_errors('<div class="error-message">', '</div>'); ?>
-				</div>
+<div class="button-container">
+    <button type="submit">Kirim</button>
+    <button type="button" class="btn-back" onclick="history.back()">Batal</button>
+</div>
+<?php echo form_close(); ?>
+
+<?php echo validation_errors('<div class="error-message">', '</div>'); ?>
+<?php if (isset($error)) { echo '<div class="error-message">' . $error . '</div>'; } ?>
+</div>
 </body>
-
 </html>
+

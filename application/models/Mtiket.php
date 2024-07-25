@@ -25,7 +25,6 @@ class Mtiket extends CI_Model {
         $query = $this->db->get_where('tb_tempatwisata', array('id_wisata' => $id_wisata));
         return $query->row_array();
     }
-
     public function getNoRekByIdWisata($id_wisata) {
         $this->db->select('no_rek');
         $this->db->from('tb_tempatwisata');
@@ -167,6 +166,7 @@ public function get_wisata_details($id_wisata) {
     $query = $this->db->get();
     return $query->row_array();
 }
+
 }
     
 ?>
