@@ -37,7 +37,7 @@
                 <label for="review">Ulasan:</label>
                 <textarea name="review" id="review" required></textarea><br>
 
-                <button type="submit">Kirim Ulasan</button>
+                <button type="submit">Kirim</button>
             </form>
 
             <h2>Rating Ulasan Tiket</h2>
@@ -45,7 +45,7 @@
                 <div class="kartu">
                     <img src="<?php echo base_url('uploads/' . $ticket['foto']); ?>" alt="<?php echo $ticket['foto']; ?>">
                     <h3><?php echo $ticket['nama_wisata']; ?></h3>
-                    <p><?php echo $ticket['deskripsi']; ?></p>
+                    <p><?php echo $ticket['deskripsi_singkat']; ?></p>
                     <?php
                     $reviews = $this->Mtiket->get_reviews_by_ticket_id($ticket['id_wisata']);
                     if ($reviews): ?>
@@ -61,7 +61,6 @@
                                         <?php endfor; ?>
                                     </div>
                                     <p class="ulasan"><?php echo $review['review']; ?></p>
-                                    <p><strong>Pengirim:</strong> <?php echo $review['nama_pengirim']; ?></p>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -74,5 +73,6 @@
         </div>
     </div>
 </div>
+<?php $this->load->view('partials/footer'); ?>
 </body>
 </html>

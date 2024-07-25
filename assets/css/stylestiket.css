@@ -9,7 +9,6 @@ body {
     background-color: #f4f4f9;
     color: #333;
     box-sizing: border-box;
-    font-weight: bold;
 }
 
 /* Gaya untuk container utama */
@@ -21,7 +20,7 @@ body {
 .sidebar {
     width: 250px;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #343a40;
     height: 100vh;
     position: fixed;
     left: 0;
@@ -41,22 +40,22 @@ body {
 
 .sidebar ul li a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     display: block;
-    padding: 10px;
+    padding: 20px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .sidebar ul li a:hover {
-    background-color: #ddd;
+    background-color: #495057;
 }
 
 /* Gaya untuk container konten */
 .content-container {
-    margin-left: 200px; /* Sesuaikan nilai ini berdasarkan lebar sidebar */
-    padding: 20px;
-    flex: 1;
+    margin-left: 90px; /* Sesuaikan nilai ini berdasarkan lebar sidebar */
+    padding: 10px;
+    flex: 5;
 }
 
 /* Gaya untuk container wisata */
@@ -83,7 +82,8 @@ body {
 
 .wisata-card img {
     width: 100%;
-    height: auto;
+    height: 300px; /* Menetapkan tinggi tetap untuk gambar */
+    object-fit: cover; /* Menyesuaikan gambar agar sesuai dengan area */
 }
 
 .wisata-card h3 {
@@ -99,7 +99,7 @@ body {
     padding: 15px;
     color: #333;
     font-size: 1rem;
-    text-align: justify;
+    text-align: center;
 }
 
 .pesan-button {
@@ -148,11 +148,18 @@ h1 {
     margin: 10px;
     width: calc(33% - 20px);
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 200px; /* Menetapkan tinggi tetap untuk gambar */
+    object-fit: cover; /* Menyesuaikan gambar agar sesuai dengan area */
     border-bottom: 1px solid #eee;
 }
 
@@ -167,7 +174,7 @@ h1 {
 }
 
 .card-content p {
-    font-size: 1.2em;
+    font-size: 1rem;
     margin: 0 0 10px 0;
     color: #555;
 }

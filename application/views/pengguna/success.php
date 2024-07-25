@@ -1,11 +1,101 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <?php $this->load->view('partials/header'); ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/styles.pembayaran.css'); ?>">
-    <style>
-        /* Tambahkan style Anda disini */
-    </style>
+<head>
+	<?php $this->load->view('partials/header'); ?>
+	<link rel="stylesheet" href="<?= base_url('assets/css/styles.pembayaran.css'); ?>">
+	<style>
+		.page-wrapper {
+			display: flex;
+			height: 100vh;
+			overflow: hidden;
+			/* Ensure no scrolling on the main wrapper */
+		}
+
+		.sidebar {
+			width: 250px;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background-color: #343a40;
+			color: white;
+			padding: 20px;
+			box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+			z-index: 1000;
+		}
+
+		.navbar {
+			background-color: white;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			z-index: 999;
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: calc(100% - 250px);
+		}
+
+		.navbar-brand img {
+			height: 50px;
+			width: 140px;
+		}
+
+		.main-content {
+			flex: 1;
+			margin-top: 70px;
+			/* Adjust margin to push content below navbar */
+			margin-left: 250px;
+			/* Adjust margin to make space for sidebar */
+			overflow-y: auto;
+			/* Enable vertical scrolling */
+			padding: 20px;
+			height: calc(100vh - 70px);
+			/* Full height minus navbar height */
+		}
+
+		.container {
+			margin-top: 20px;
+		}
+
+		.card {
+			padding: 20px;
+			background: #fff;
+			border-radius: 8px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		.btn-back {
+			background-color: #dc3545;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
+		.btn-back:hover {
+			background-color: #c82333;
+		}
+
+		.btn-submit {
+			background-color: #007bff;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.btn-submit:hover {
+			background-color: #0069d9;
+		}
+
+	</style>
 </head>
 <body>
     <div class="page-wrapper">

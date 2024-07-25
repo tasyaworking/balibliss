@@ -1,9 +1,12 @@
-/* Impor font Poppins dari Google Fonts */
+/* Import font Poppins dari Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Terapkan font Poppins ke seluruh halaman */
 body {
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7; /* Soft background color for the page */
 }
 
 /* Ensure no scrolling on the main wrapper */
@@ -31,7 +34,6 @@ body {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
-    text-align: justify;
 }
 
 .sidebar .nav {
@@ -53,7 +55,7 @@ body {
 
 .sidebar .nav-item .nav-link:hover {
     background-color: #f0f1f1; /* Blue background on hover */
-    color: white;
+    color: #343a40;
     text-decoration: none;
 }
 
@@ -85,7 +87,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
-    height: calc(100vh - 40px); /* Full height minus navbar height */
+    height: calc(100vh - 70px); /* Full height minus navbar height */
 }
 
 .container {
@@ -142,13 +144,14 @@ form button:hover {
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
     display: flex;
-    flex-direction: column; /* Arrange items vertically */
-    align-items: flex-start; /* Align items to the start of the card */
+    flex-direction: column;
+    align-items: flex-start;
     overflow: hidden;
     transition: box-shadow 0.3s, transform 0.3s;
+    width: 300px; /* Reduced width */
 }
 
 .kartu:hover {
@@ -157,29 +160,64 @@ form button:hover {
 }
 
 .kartu img {
-    width: 30%; /* Make the image take full width of the card */
+    width: 100%; /* Make the image take full width of the card */
     height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Reduced margin */
 }
 
 .kartu h3 {
-    margin: 10px;
-    margin-bottom: 5px;
-    font-size: 20px; /* Increase font size for better visibility */
+    margin: 0 0 10px;
+    font-size: 20px; /* Reduced font size */
     color: #333;
+    text-align: center;
 }
 
 .kartu .rating {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Reduced margin */
+    display: flex;
+    justify-content: center;
 }
 
 .kartu .rating span {
-    font-size: 24px; /* Larger stars for better visibility */
+    font-size: 20px; /* Reduced font size */
     color: #ffcc00;
 }
 
 .kartu .ulasan {
-    font-size: 16px;
+    font-size: 14px; /* Reduced font size */
     color: #666;
+    text-align: justify;
+}
+
+/* Additional styling for better appearance */
+.kartu .reviewer-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.kartu .reviewer-info img {
+    width: 40px; /* Reduced size */
+    height: 40px; /* Reduced size */
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.kartu .reviewer-info .name {
+    font-size: 16px; /* Reduced font size */
+    font-weight: 600;
+    color: #333;
+}
+
+.kartu .reviewer-info .date {
+    font-size: 12px; /* Reduced font size */
+    color: #999;
+    margin-left: auto;
+}
+
+.kartu .review-content {
+    text-align: center;
+    color: #555;
+    font-size: 14px; /* Reduced font size */
 }

@@ -110,33 +110,32 @@
                 <h2 class="title"><?php echo $tempat['nama_wisata']; ?></h2>
 
                 <div id="overview" class="detail-section">
-                    <h3 class="section-title">Overview</h3>
+                    <h3 class="section-title">Deskripsi</h3>
                     <p class="section-content"><?php echo nl2br($tempat['deskripsi']); ?></p>
                 </div>
 
                 <div id="harga" class="detail-section">
-                    <h3 class="section-title">Harga</h3>
-                    <p class="section-content"><strong>Rp
-                            <?php echo number_format($tempat['harga_tiket'], 0, ',', '.'); ?></strong></p>
+                    <h3 class="section-title">Harga Tiket Masuk</h3>
+                    <p class="section-content"><strong>Rp <?php echo number_format($tempat['harga_tiket'], 0, ',', '.'); ?></strong></p>
                 </div>
 
                 <div id="lokasi" class="detail-section">
-                    <h3 class="section-title">Lokasi</h3>
+                    <h3 class="section-title">Lokasi Wisata</h3>
                     <p class="section-content"><?php echo $tempat['lokasi']; ?></p>
                 </div>
 
                 <div id="jam_operasional" class="detail-section">
-                    <h3 class="section-title">Jam Operasional</h3>
+                    <h3 class="section-title">Jam Operasional </h3>
                     <p class="section-content"><?php echo nl2br($tempat['jam_operasional']); ?></p>
                 </div>
 
                 <div id="alamat_wisata" class="detail-section">
-                    <h3 class="section-title">Alamat</h3>
+                    <h3 class="section-title">Alamat Lengkap </h3>
                     <p class="section-content"><?php echo nl2br($tempat['alamat_wisata']); ?></p>
                 </div>
 
                 <div id="nomor_telepon" class="detail-section">
-                    <h3 class="section-title">No. Telp</h3>
+                    <h3 class="section-title">No. Telepon</h3>
                     <p class="section-content"><?php echo $tempat['no_hp_wisata']; ?></p>
                 </div>
 

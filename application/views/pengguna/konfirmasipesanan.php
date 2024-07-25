@@ -26,7 +26,7 @@
 		}
 
 		.navbar {
-			background-color: #1076e3;
+			background-color: white;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 			z-index: 999;
 			position: fixed;

@@ -15,16 +15,21 @@ body {
     align-items: center;
     height: 100vh;
     padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
-    padding-left: 220px; /* Sesuaikan dengan lebar sidebar */
+    padding-left: 100px; /* Sesuaikan dengan lebar sidebar */
 }
 
 .card {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 500px;
+    padding: 60px;
+    max-width: 900px; /* Memperbesar max-width card */
     width: 100%;
+    transition: all 0.3s ease; /* Menambahkan animasi transisi */
+}
+
+.card:hover {
+    transform: scale(2.05); /* Membuat card sedikit membesar saat dihover */
 }
 
 h1 {

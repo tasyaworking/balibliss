@@ -145,6 +145,7 @@ public function konfirmasi_pemesanan() {
     
         $this->load->view('pengguna/konfirmasipesanan', $data);
     }
+    
     public function lakukan_pembayaran() {
         $konfirmasi = $this->session->userdata('konfirmasi_pemesanan');
     
@@ -165,7 +166,7 @@ public function konfirmasi_pemesanan() {
             'total_harga' => $total_harga,
             'no_rek' => $no_rek
         ]);
-    }    
+    }
     
     public function file_check($str) {
         $allowed_types = array('gif', 'jpg', 'png');
@@ -193,7 +194,7 @@ public function konfirmasi_pemesanan() {
     
         if ($this->form_validation->run() == FALSE) {
             // Jika validasi gagal, kembali ke halaman pembayaran dengan pesan error
-            $this->load->view('pengguna/halamanpembayaran');
+            $this->load->view('pengguna/success');
         } else {
             if ($this->upload->do_upload('userfile')) {
                 $upload_data = $this->upload->data();
@@ -315,7 +316,6 @@ public function konfirmasi_pemesanan() {
             }
         }
     }
-    
     public function cetakpdf() {
         $data['nama_wisata'] = 'Nama Wisata'; // Ganti dengan cara Anda mengambil nama wisata
         $data['id_pesanan'] = $this->session->flashdata('id_pesanan');

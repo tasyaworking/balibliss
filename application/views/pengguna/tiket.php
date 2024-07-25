@@ -163,10 +163,8 @@
                         <p>Maaf, tidak ada data wisata yang tersedia saat ini.</p>
                     <?php endif; ?>
                 </div>
-                
-                <?php $this->load->view('partials/footer'); ?>
             </div>
         </div>
     </div>
-</body>
-</html>
+    <?php $this->load->view('partials/footer'); ?>
+
