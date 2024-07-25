@@ -145,25 +145,27 @@ public function konfirmasi_pemesanan() {
     
         $this->load->view('pengguna/konfirmasipesanan', $data);
     }
-    
     public function lakukan_pembayaran() {
         $konfirmasi = $this->session->userdata('konfirmasi_pemesanan');
-
+    
         if ($konfirmasi) {
             $id_wisata = $konfirmasi['id_wisata'];
             $total_harga = $konfirmasi['total_harga'];
     
             $wisata = $this->Mtiket->getWisataById($id_wisata);
+            $no_rek = $this->Mtiket->getNoRekByIdWisata($id_wisata);
         } else {
             $wisata = null; 
             $total_harga = 0; 
+            $no_rek = 'No rekening Tidak Tersedia'; 
         }
     
         $this->load->view('pengguna/halamanpembayaran', [
             'wisata' => $wisata,
-            'total_harga' => $total_harga 
+            'total_harga' => $total_harga,
+            'no_rek' => $no_rek
         ]);
-    }
+    }    
     
     public function file_check($str) {
         $allowed_types = array('gif', 'jpg', 'png');
@@ -313,12 +315,35 @@ public function konfirmasi_pemesanan() {
             }
         }
     }
-
-    public function konfirmasi_pembayaran($id_wisata) {
-        $this->load->model('Mtiket');
-        $data['wisata'] = $this->Mtiket->get_wisata_details($id_wisata);
-        $data['total_harga'] = $this->session->userdata('total_harga'); // Ambil total harga dari session atau sumber lain
-        $this->load->view('pengguna/konfirmasi_pembayaran', $data);
+    
+    public function cetakpdf() {
+        $data['nama_wisata'] = 'Nama Wisata'; // Ganti dengan cara Anda mengambil nama wisata
+        $data['id_pesanan'] = $this->session->flashdata('id_pesanan');
+        $data['harga_tiket'] = $this->session->flashdata('total_harga');
+        $data['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
+    
+        // Pastikan path ke file autoload benar
+        $dompdfPath = APPPATH . 'libraries/dompdf/autoload.inc.php';
+    
+        if (file_exists($dompdfPath)) {
+            require_once($dompdfPath);
+        } else {
+            show_error('Library Dompdf tidak ditemukan di path yang ditentukan: ' . $dompdfPath);
+            return;
+        }
+    
+        $pdf = new Dompdf\Dompdf();
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->set_option('isRemoteEnabled', TRUE);
+        $pdf->set_option('isHtml5ParserEnabled', true);
+        $pdf->set_option('isPhpEnabled', true);
+        $pdf->set_option('isFontSubsettingEnabled', true);
+    
+        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
+        $pdf->loadHtml($html);
+        $pdf->render();
+        $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);  
     }
+    
     
 }

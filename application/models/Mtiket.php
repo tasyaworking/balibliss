@@ -26,6 +26,19 @@ class Mtiket extends CI_Model {
         return $query->row_array();
     }
 
+    public function getNoRekByIdWisata($id_wisata) {
+        $this->db->select('no_rek');
+        $this->db->from('tb_tempatwisata');
+        $this->db->where('id_wisata', $id_wisata);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->row()->no_rek;
+        } else {
+            return null;
+        }
+    }    
+
     public function simpan_pemesanan($data_pemesanan) {
         return $this->db->insert('tb_pesanan', $data_pemesanan);
     }

@@ -131,7 +131,7 @@ class Cauth extends CI_Controller {
         //     $this->session->set_flashdata('pesan', 'Email atau password salah!');
         //     $this->session->set_flashdata('color', 'danger');
            // redirect('cauth/login');
-          //  return;
+          //  return; 
       //  }
     
         // Jika berhasil login
