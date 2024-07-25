@@ -23,7 +23,8 @@
             <h4 class="mb-4">Tambah Tempat Wisata</h4>
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= site_url('cpengelola/add '); ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= site_url('Cpengelola/add'); ?>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                         <div class="mb-3">
                             <label for="nama_wisata" class="form-label">Nama Wisata</label>
                             <input type="text" class="form-control" id="nama_wisata" name="nama_wisata" required>
@@ -69,7 +70,7 @@
                             <textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="<?= site_url('cpengelola'); ?>" class="btn btn-secondary">Kembali</a>
+                        <a href="<?= site_url('Cpengelola'); ?>" class="btn btn-secondary">Kembali</a>
                     </form>
                 </div>
             </div>
