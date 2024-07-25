@@ -317,10 +317,16 @@ public function konfirmasi_pemesanan() {
         }
     }
     public function cetakpdf() {
-        $data['nama_wisata'] = 'Nama Wisata'; // Ganti dengan cara Anda mengambil nama wisata
-        $data['id_pesanan'] = $this->session->flashdata('id_pesanan');
-        $data['harga_tiket'] = $this->session->flashdata('total_harga');
-        $data['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
+        $data_pembayaran['id_pesanan'] = $this->session->flashdata('id_pesanan');
+        $data_pembayaran['total_harga'] = $this->session->flashdata('total_harga');
+        $data_pembayaran['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
+    
+        // Validasi apakah ada data pesanan yang diterima dari flash data
+        if (!$data_pembayaran['id_pesanan']) {
+            log_message('error', 'Data pesanan tidak ditemukan di flash data');
+            show_error('Data pesanan tidak ditemukan', 500);
+            return;
+        }
     
         // Pastikan path ke file autoload benar
         $dompdfPath = APPPATH . 'libraries/dompdf/autoload.inc.php';
@@ -339,7 +345,7 @@ public function konfirmasi_pemesanan() {
         $pdf->set_option('isPhpEnabled', true);
         $pdf->set_option('isFontSubsettingEnabled', true);
     
-        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
+        $html = $this->load->view('pengguna/cetak_pdf', $data_pembayaran);
         $pdf->loadHtml($html);
         $pdf->render();
         $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);  
