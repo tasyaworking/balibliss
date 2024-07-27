@@ -30,6 +30,7 @@ class Mpengelola extends CI_Model {
         return $query->row(); // Mengembalikan satu baris hasil query
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function tambahTempatWisata($data) {
         log_message('debug', 'Data to be inserted into database: ' . print_r($data, true));
         return $this->db->insert('tb_tempatwisata', $data);
@@ -46,6 +47,8 @@ class Mpengelola extends CI_Model {
     }
 
 
+=======
+>>>>>>> parent of 39ee102 (P)
 =======
 >>>>>>> parent of 39ee102 (P)
 }
