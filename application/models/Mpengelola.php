@@ -29,12 +29,6 @@ class Mpengelola extends CI_Model {
         $query = $this->db->get('tb_tempatwisata');
         return $query->row(); // Mengembalikan satu baris hasil query
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public function tambahTempatWisata($data) {
-        log_message('debug', 'Data to be inserted into database: ' . print_r($data, true));
-        return $this->db->insert('tb_tempatwisata', $data);
-    }
 
     public function updateTempatWisata($id_wisata, $data) {
         $this->db->where('id_wisata', $id_wisata);
@@ -46,10 +40,5 @@ class Mpengelola extends CI_Model {
         return $this->db->delete('tb_tempatwisata');
     }
 
-
-=======
->>>>>>> parent of 39ee102 (P)
-=======
->>>>>>> parent of 39ee102 (P)
 }
 ?>
