@@ -44,12 +44,12 @@
     <div class="container d-flex align-items-center">
     <h1 class="logo me-auto">
     <a href="index.html">
-        <img src="<?php echo base_url('assets/img/BaliBlissLogo.png'); ?>" alt="Balibliss Logo" style="width: 210px; height: 40px;">
+        <img src="<?php echo base_url('assets/img/BaliBlissLogo.png'); ?>" alt="Balibliss Logo">
     </a>
 </h1>
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!--<a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.html" class="logo me-auto"><img src="<?php echo base_url('assets/img/BaliBlissLogo.png'); ?>" alt="" class="img-fluid" style="width: 80px"></a> -->
 
       <nav id="navbar" class="navbar">
         <ul>
