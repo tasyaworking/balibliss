@@ -6,7 +6,7 @@ class Ctiket extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Mtiket'); 
-        $this->load->library('session'); 
+        $this->load->library('form_validation'); 
     }
 
 
@@ -317,46 +317,39 @@ public function konfirmasi_pemesanan() {
         }
     }
     public function cetakpdf() {
-        // Ambil data dari sesi
-        $data['id_pesanan'] = $this->session->flashdata('id_pesanan');
-        $data['total_harga'] = $this->session->flashdata('total_harga');
-        $data['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
-        $data['id_wisata'] = $this->session->flashdata('id_wisata');
+        $data_pembayaran['id_pesanan'] = $this->session->flashdata('id_pesanan');
+        $data_pembayaran['total_harga'] = $this->session->flashdata('total_harga');
+        $data_pembayaran['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
     
-        // Debugging: Tampilkan data yang diambil dari sesi
-        log_message('debug', 'Data ID Pesanan: ' . $data['id_pesanan']);
-        log_message('debug', 'Data Total Harga: ' . $data['total_harga']);
-        log_message('debug', 'Data Tanggal Kunjungan: ' . $data['tgl_kunjungan']);
-        log_message('debug', 'Data ID Wisata: ' . $data['id_wisata']);
-    
-        // Ambil data wisata dari model
-        $data['wisata'] = $this->Mtiket->getWisataById($data['id_wisata']);
-        
-        // Debugging: Tampilkan data wisata
-        if ($data['wisata']) {
-            log_message('debug', 'Data Wisata: ' . print_r($data['wisata'], true));
-        } else {
-            log_message('error', 'Data Wisata tidak ditemukan');
+        // Validasi apakah ada data pesanan yang diterima dari flash data
+        if (!$data_pembayaran['id_pesanan']) {
+            log_message('error', 'Data pesanan tidak ditemukan di flash data');
+            show_error('Data pesanan tidak ditemukan', 500);
+            return;
         }
     
-        // Muat view dan simpan HTML ke variabel
-        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
+        // Pastikan path ke file autoload benar
+        $dompdfPath = APPPATH . 'libraries/dompdf/autoload.inc.php';
     
-        // Load Dompdf library
-        $this->load->library('pdf');
+        if (file_exists($dompdfPath)) {
+            require_once($dompdfPath);
+        } else {
+            show_error('Library Dompdf tidak ditemukan di path yang ditentukan: ' . $dompdfPath);
+            return;
+        }
+    
         $pdf = new Dompdf\Dompdf();
         $pdf->setPaper('A4', 'portrait');
         $pdf->set_option('isRemoteEnabled', TRUE);
         $pdf->set_option('isHtml5ParserEnabled', true);
+        $pdf->set_option('isPhpEnabled', true);
+        $pdf->set_option('isFontSubsettingEnabled', true);
     
-        // Load HTML ke Dompdf
+        $html = $this->load->view('pengguna/cetak_pdf', $data_pembayaran);
         $pdf->loadHtml($html);
-    
-        // Render PDF
         $pdf->render();
-    
-        // Output PDF
-        $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);
+        $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);  
     }
+    
     
 }
