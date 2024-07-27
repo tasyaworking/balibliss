@@ -40,7 +40,7 @@
             background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
             padding: 10px;
             border-radius: 10px 10px 0 0;
-            color: #fff;
+            color: #3399ff;
         }
         .ticket-details {
             margin-top: 20px;
