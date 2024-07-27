@@ -27,6 +27,17 @@ class Mpengelola extends CI_Model {
         log_message('debug', 'Data to be inserted into database: ' . print_r($data, true));
         return $this->db->insert('tb_tempatwisata', $data);
     }
-    
+
+    public function updateTempatWisata($id_wisata, $data) {
+        $this->db->where('id_wisata', $id_wisata);
+        return $this->db->update('tb_tempatwisata', $data);
+    }
+
+    public function deleteTempatWisata($id_wisata) {
+        $this->db->where('id_wisata', $id_wisata);
+        return $this->db->delete('tb_tempatwisata');
+    }
+
+
 }
 ?>

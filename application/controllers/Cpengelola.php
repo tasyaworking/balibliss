@@ -7,7 +7,7 @@ class Cpengelola extends CI_Controller {
         parent::__construct();
         $this->load->model('Mpengelola');
         $this->load->model('Sponsorship_model');
-        $this->load->model('Mtempatwisata');
+        // $this->load->model('Mtempatwisata');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -20,7 +20,7 @@ class Cpengelola extends CI_Controller {
         $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
         $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
 
-        $data['data_tempatwisata'] = $this->Mtempatwisata->get_all();
+        $data['data_tempatwisata'] = $this->Mpengelola->get_tempat_wisata();
         $this->load->view('pengelola/table/tempat_wisata', $data);
     }
     public function dashboard() {
@@ -146,11 +146,13 @@ class Cpengelola extends CI_Controller {
     }
 }
 
-public function edit($id) {
+public function edit($id_wisata) {
     $data['header'] = $this->load->view('partials/header', NULL, TRUE);
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
+
+    $data['tempat_wisata'] = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata);
 
     // Form validation rules
     $this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required');
@@ -165,7 +167,7 @@ public function edit($id) {
     $this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
 
     if ($this->form_validation->run() == FALSE) {
-        $data['tempatwisata'] = $this->Mtempatwisata->get_by_id($id);
+        $data['tempatwisata'] = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata);
         $this->load->view('pengelola/form_edit_tempatwisata', $data);
     } else {
         // Load file helper
@@ -192,7 +194,7 @@ public function edit($id) {
             }
         } else {
             // Keep the existing photo if no new file was uploaded
-            $existingData = $this->Mtempatwisata->get_by_id($id);
+            $existingData = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata);
             $foto = $existingData->foto;
         }
 
@@ -210,7 +212,7 @@ public function edit($id) {
             'lokasi' => $this->input->post('lokasi'),
         );
 
-        if ($this->Mtempatwisata->update($id, $data)) {
+        if ($this->Mpengelola->updateTempatWisata($id_wisata, $data)) {
             $this->session->set_flashdata('pesan', 'Data tempat wisata berhasil diperbarui.');
             $this->session->set_flashdata('color', 'success');
         } else {
@@ -223,23 +225,22 @@ public function edit($id) {
 
 
     // Delete tempat wisata
-    public function delete($id) {
-        if (empty($id)) {
+    public function delete($id_wisata) {
+        if (empty($id_wisata)) {
             $this->session->set_flashdata('pesan', 'ID tidak valid.');
             $this->session->set_flashdata('color', 'danger');
             redirect('cpengelola');
         }
     
         // Optional: Check if the ID exists before attempting to delete
-        $this->load->model('Mtempatwisata');
-        $tempatWisata = $this->Mtempatwisata->get_by_id($id); // Pastikan metode ini ada
+        $tempatWisata = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata); // Pastikan metode ini ada
         if (!$tempatWisata) {
             $this->session->set_flashdata('pesan', 'Data tempat wisata tidak ditemukan.');
             $this->session->set_flashdata('color', 'danger');
             redirect('cpengelola');
         }
     
-        if ($this->Mtempatwisata->delete($id)) {
+        if ($this->Mpengelola->deleteTempatWisata($id_wisata)) {
             $this->session->set_flashdata('pesan', 'Data tempat wisata berhasil dihapus.');
             $this->session->set_flashdata('color', 'success');
         } else {
