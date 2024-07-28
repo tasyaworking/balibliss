@@ -48,15 +48,16 @@
 
         .main-content {
             flex: 1;
-            margin-top: 70px;
+            margin-top: 80px;
             margin-left: 250px;
             overflow-y: auto;
             padding: 20px;
             height: calc(100vh - 50px);
+            background: linear-gradient(to right, #e0f7ff, #ffffff); 
         }
 
         .container {
-            margin-top: 20px;
+            margin-top: 70px;
         }
 
         .card {
@@ -64,7 +65,7 @@
             background: #fff;
             border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
             position: relative;

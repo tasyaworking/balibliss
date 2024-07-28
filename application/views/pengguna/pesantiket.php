@@ -10,7 +10,7 @@
     display: flex;
     height: 100vh; /* Set the height to full viewport height */
     overflow: hidden; /* Ensure no scrolling on the main wrapper */
-     background: linear-gradient(to right, #e0f7fa, #ffffff); /* Warna gradient dari biru muda ke putih */
+    background: linear-gradient(to right, #e0f7ff, #ffffff); /* Warna gradient dari biru muda ke putih */
 }
 
 .sidebar {
@@ -48,7 +48,7 @@
     overflow-y: auto; /* Enable vertical scrolling */
     padding: 20px;
     height: calc(100vh - 90px); /* Full height minus navbar height */
-    background: linear-gradient(to right, #e0f7fa, #ffffff); /* Warna gradient dari biru muda ke putih */
+    background: linear-gradient(to right, #e0f7ff, #ffffff);  /* Warna gradient dari biru muda ke putih */
     
 }
 

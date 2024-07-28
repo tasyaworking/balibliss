@@ -42,12 +42,13 @@
 
         .main-content {
             flex: 1;
-            margin-top: 70px;
+            margin-top: 30px;
             margin-left: 250px;
             padding: 30px;
             overflow-y: auto;
             height: calc(100vh - 70px); /* Adjust for navbar height */
-            background: linear-gradient(to right, #e0f7fa, #ffffff); /* Warna gradient dari biru muda ke putih */
+            background: linear-gradient(to right, #e0f7ff, #ffffff); 
+
         }
 
         .container {

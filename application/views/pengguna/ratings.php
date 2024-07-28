@@ -23,7 +23,7 @@
         padding: 20px;
         height: calc(100vh - 90px);
         overflow-y: auto;
-        background: linear-gradient(to right, #e0f7fa, #ffffff); /* Warna gradient dari biru muda ke putih */
+        background: linear-gradient(to right, #e0f7ff, #ffffff);  /* Warna gradient dari biru muda ke putih */
     }
 
     h1, h2 {
@@ -140,7 +140,7 @@
             <?php endif; ?>
 
             <form action="<?php echo site_url('Ctiket/add_review'); ?>" method="post">
-                <label for="id_wisata">Pilih Tiket Wisata:</label>
+                <label for="id_wisata">Tiket Wisata:</label>
                 <select name="id_wisata" id="id_wisata" required>
                     <option value="">-- Pilih Wisata --</option>
                     <?php foreach ($tickets as $ticket): ?>
@@ -154,7 +154,7 @@
                 <label for="review">Tulis Ulasan Anda:</label>
                 <textarea name="review" id="review" placeholder="Bagikan pengalaman Anda dan kesan selama berkunjung..."></textarea>
 
-                <label for="tgl_kunjungan">Tanggal Kunjungan:</label>
+                <label for="tgl_kunjungan">Kapan Anda Pergi ?:</label>
                 <input type="date" name="tgl_kunjungan" id="tgl_kunjungan" required>
 
                 <button type="submit">Kirim Ulasan</button>
@@ -181,6 +181,7 @@
                                         <?php endfor; ?>
                                     </div>
                                     <p class="ulasan"><?php echo $review['review']; ?></p>
+                                    <p class="tanggal"><?php echo date('d M Y', strtotime($review['created_at'])); ?></p> <!-- Menampilkan tanggal -->
                                 </li>
                             <?php endforeach; ?>
                         </ul>

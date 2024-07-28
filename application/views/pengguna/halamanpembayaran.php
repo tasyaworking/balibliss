@@ -50,7 +50,7 @@
     padding: 20px;
     height: calc(100vh - 50px);
     text-align: center;
-    background: linear-gradient(to right, #e0f7fa, #ffffff); /* Warna gradient dari biru muda ke putih */
+    background: linear-gradient(to right, #e0f7ff, #ffffff); /* Warna gradient dari biru muda ke putih */
     font-weight: bold;
     
 }
