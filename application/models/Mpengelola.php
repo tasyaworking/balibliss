@@ -29,5 +29,16 @@ class Mpengelola extends CI_Model {
         $query = $this->db->get('tb_tempatwisata');
         return $query->row(); // Mengembalikan satu baris hasil query
     }
+
+    public function updateTempatWisata($id_wisata, $data) {
+        $this->db->where('id_wisata', $id_wisata);
+        return $this->db->update('tb_tempatwisata', $data);
+    }
+
+    public function deleteTempatWisata($id_wisata) {
+        $this->db->where('id_wisata', $id_wisata);
+        return $this->db->delete('tb_tempatwisata');
+    }
+
 }
 ?>

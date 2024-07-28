@@ -148,63 +148,65 @@ public function konfirmasi_pemesanan() {
     
     public function lakukan_pembayaran() {
         $konfirmasi = $this->session->userdata('konfirmasi_pemesanan');
-
+        
         if ($konfirmasi) {
             $id_wisata = $konfirmasi['id_wisata'];
             $total_harga = $konfirmasi['total_harga'];
     
+            // Mengambil data wisata berdasarkan id_wisata
             $wisata = $this->Mtiket->getWisataById($id_wisata);
+            log_message('debug', 'Data wisata: ' . print_r($wisata, true));
+    
+            // Mengambil nomor rekening berdasarkan id_wisata
+            $no_rek = $this->Mtiket->getNoRekByIdWisata($id_wisata);
+            log_message('debug', 'No rekening: ' . $no_rek);
         } else {
             $wisata = null; 
             $total_harga = 0; 
+            $no_rek = 'No rekening Tidak Tersedia'; 
         }
     
+        // Log data yang dikirim ke view
+        log_message('debug', 'Data yang dikirim ke view: wisata=' . print_r($wisata, true) . ', total_harga=' . $total_harga . ', no_rek=' . $no_rek);
+    
+        // Mengirim data ke view
         $this->load->view('pengguna/halamanpembayaran', [
             'wisata' => $wisata,
-            'total_harga' => $total_harga 
+            'total_harga' => $total_harga,
+            'no_rek' => $no_rek
         ]);
-    }
+    }    
     
-    public function file_check($str) {
-        $allowed_types = array('gif', 'jpg', 'png');
-        $ext = pathinfo($_FILES['userfile']['name'], PATHINFO_EXTENSION);
-    
-        if (in_array($ext, $allowed_types)) {
-            return true;
-        } else {
-            $this->form_validation->set_message('file_check', 'Jenis file yang diupload harus GIF, JPG, atau PNG.');
-            return false;
-        }
-    }
-    
+
     public function insertkonfirmasi() {
         $config['upload_path'] = 'assets/img/upload/';
         $config['allowed_types'] = 'gif|jpg|png';
+        $config['file_name'] = $this->generate_unique_filename(); // Generate unique file name
         $this->load->library('upload', $config);
-    
+
         // Validasi form
         $this->form_validation->set_rules('bank_km', 'Bank Tujuan', 'required');
         $this->form_validation->set_rules('nomrek', 'Nomor Rekening', 'required');
         $this->form_validation->set_rules('nama', 'Nama Pemilik Rekening', 'required');
         $this->form_validation->set_rules('tgl_kunjungan', 'Tanggal Kunjungan', 'required');
         $this->form_validation->set_rules('userfile', 'Bukti Transaksi', 'callback_file_check');
-    
+
         if ($this->form_validation->run() == FALSE) {
             // Jika validasi gagal, kembali ke halaman pembayaran dengan pesan error
             $this->load->view('pengguna/halamanpembayaran');
         } else {
             if ($this->upload->do_upload('userfile')) {
                 $upload_data = $this->upload->data();
-    
+
                 // Ambil data konfirmasi pemesanan dari session
                 $konfirmasi = $this->session->userdata('konfirmasi_pemesanan');
-    
+
                 if (!$konfirmasi || !isset($konfirmasi['id_pesanan'])) {
                     log_message('error', 'Data konfirmasi tidak valid');
                     show_error('Data konfirmasi tidak valid', 500);
                     return;
                 }
-    
+
                 // Validasi ID pesanan
                 $id_pesanan = $konfirmasi['id_pesanan'];
                 $pesanan = $this->Mtiket->get_pesanan_by_id($id_pesanan);
@@ -213,7 +215,7 @@ public function konfirmasi_pemesanan() {
                     show_error('ID pesanan tidak valid', 500);
                     return;
                 }
-    
+
                 // Siapkan data pembayaran untuk disimpan ke database
                 $data_pembayaran = array(
                     'bank_km' => $this->input->post('bank_km'),
@@ -221,23 +223,19 @@ public function konfirmasi_pemesanan() {
                     'tgl_kunjungan' => $this->input->post('tgl_kunjungan'),
                     'bukti_transaksi' => $upload_data['file_name'],
                     'created_at' => date('Y-m-d H:i:s'),
-                    'verified' => 0,
-                    'id_wisata' => 1 
-                     // 0: belum diverifikasi, 1: diverifikasi
+                    'verified' => 0, // 0: belum diverifikasi, 1: diverifikasi
+                    'id_wisata' => $konfirmasi['id_wisata']
                 );
-    
+
                 // Simpan data pembayaran ke database
                 $result = $this->Mtiket->insertkonfirmasi($data_pembayaran);
-    
+
                 if ($result) {
-                    // Ambil ID pesanan yang baru saja dimasukkan
-                    $id_pesanan_baru = $this->db->insert_id();
-    
                     // Set flash data untuk ditampilkan di halaman sukses
-                    $this->session->set_flashdata('id_pesanan', $id_pesanan_baru);
+                    $this->session->set_flashdata('id_pesanan', $id_pesanan);
                     $this->session->set_flashdata('total_harga', $data_pembayaran['total_harga']);
                     $this->session->set_flashdata('tgl_kunjungan', $data_pembayaran['tgl_kunjungan']);
-    
+
                     redirect('Ctiket/success');
                 } else {
                     log_message('error', 'Gagal menyimpan data pembayaran ke database');
@@ -250,24 +248,38 @@ public function konfirmasi_pemesanan() {
             }
         }
     }
-    
+
     public function success() {
         // Mengambil flash data
         $data_pembayaran['id_pesanan'] = $this->session->flashdata('id_pesanan');
         $data_pembayaran['total_harga'] = $this->session->flashdata('total_harga');
         $data_pembayaran['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
-    
+
         // Validasi apakah ada data pesanan yang diterima dari flash data
         if (!$data_pembayaran['id_pesanan']) {
             log_message('error', 'Data pesanan tidak ditemukan di flash data');
             show_error('Data pesanan tidak ditemukan', 500);
             return;
         }
-    
+
         // Menampilkan view dengan data yang diambil
         $this->load->view('pengguna/success', $data_pembayaran);
-        
     }
+
+    public function file_check($str) {
+        if (empty($_FILES['userfile']['name'])) {
+            $this->form_validation->set_message('file_check', 'The {field} field is required');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    private function generate_unique_filename() {
+        return uniqid() . '_' . time(); // Generate unique file name using uniqid and timestamp
+    }
+
+
     public function ratings() {
         // Ambil data dari tabel tb_ticket
         $data['tickets'] = $this->Mtiket->get_all_tickets();
@@ -313,13 +325,29 @@ public function konfirmasi_pemesanan() {
             }
         }
     }
-    public function cetakpdf() {
-        $data['nama_wisata'] = 'Nama Wisata'; // Ganti dengan cara Anda mengambil nama wisata
-        $data['id_pesanan'] = $this->session->flashdata('id_pesanan');
-        $data['harga_tiket'] = $this->session->flashdata('total_harga');
-        $data['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
+    public function cetakpdf($id) {
+        // Ambil data dari sesi
+        
+        $data['pesanan'] = $this->Mtiket->get_bayar($id);
+        
     
-        // Pastikan path ke file autoload benar
+        // Debugging: Tampilkan data yang diambil dari sesi
+        log_message('debug', 'Data ID Pesanan: ' . $data['pesanan']['id_pesanan']);
+        log_message('debug', 'Data Total Harga: ' . $data['pesanan']['total_harga']);
+        log_message('debug', 'Data Tanggal Kunjungan: ' . $data['pesanan']['tgl_kunjungan']);
+        log_message('debug', 'Data ID Wisata: ' . $data['pesanan']['id_wisata']);
+    
+        
+        $data['wisata'] = $this->Mtiket->ambilid($data['pesanan']['id_wisata']);
+
+        // Debugging: Tampilkan data wisata
+        if ($data['wisata']) {
+            log_message('debug', 'Data Wisata: ' . print_r($data['wisata'], true));
+        } else {
+            log_message('error', 'Data Wisata tidak ditemukan');
+        }
+    
+        // Load Dompdf library
         $dompdfPath = APPPATH . 'libraries/dompdf/autoload.inc.php';
     
         if (file_exists($dompdfPath)) {
@@ -329,18 +357,20 @@ public function konfirmasi_pemesanan() {
             return;
         }
     
-        $pdf = new Dompdf\Dompdf();
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->set_option('isRemoteEnabled', TRUE);
-        $pdf->set_option('isHtml5ParserEnabled', true);
-        $pdf->set_option('isPhpEnabled', true);
-        $pdf->set_option('isFontSubsettingEnabled', true);
-    
-        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
-        $pdf->loadHtml($html);
-        $pdf->render();
-        $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);  
+       // Load Dompdf library
+       $this->load->library('pdf');
+       $pdf = new Dompdf\Dompdf();
+       $pdf->setPaper('A4', 'portrait');
+       $pdf->set_option('isRemoteEnabled', TRUE);
+       $pdf->set_option('isHtml5ParserEnabled', true);
+
+       // Load HTML ke Dompdf
+       $pdf->loadHtml($html);
+
+       // Render PDF
+       $pdf->render();
+
+       // Output PDF
+       $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);
     }
-    
-    
 }

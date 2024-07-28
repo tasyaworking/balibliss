@@ -44,7 +44,7 @@
 
 /* Navbar CSS */
 .navbar {
-    background-color: #f0f1f1; /* Warna background navbar */
+    background-color: #f5f7f8; /* Warna background navbar */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek shadow navbar */
     position: -webkit-sticky;
     position: sticky;
@@ -80,7 +80,7 @@
 }
 
 .navbar-nav .nav-item.dropdown .dropdown-menu {
-    background-color: #0056b3; /* Dark blue */
+    background-color: #f2f4f6; /* Dark blue */
     border: none;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: #004494; /* Darker blue on hover */
+    background-color: #f2f5f7; /* Darker blue on hover */
 }
 
 .navbar-nav .nav-item .nav-icon-hover img {
