@@ -178,9 +178,7 @@
                     <p>Id Pesanan: <?= isset($id_pesanan) ? $id_pesanan : 'Data tidak tersedia'; ?></p>
                     <p>Total Harga: Rp. <?= isset($total_harga) ? number_format($total_harga, 0, ',', '.') : 'Data tidak tersedia'; ?></p>
                     <p>Tanggal Kunjungan: <?= isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></p>
-                    <p>Mohon simpan tiket ini dan tunjukkan saat tiba di lokasi wisata.</p>
-                    <a href="<?= base_url('Ctiket/cetakpdf'); ?>" class="btn-submit">Cetak Tiket</a>
-                    <a href="<?= base_url('Ctiket'); ?>" class="btn-back">Kembali ke Beranda</a>
+					<a href="<?= site_url('ctiket/cetakpdf/'.$id_pesanan); ?>">Cetak PDF</a>
                 </div>
             </div>
         </div>
