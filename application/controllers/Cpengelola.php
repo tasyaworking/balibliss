@@ -92,25 +92,20 @@ class Cpengelola extends CI_Controller {
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
-    //$this->load->view('pengelola/form_add_tempatwisata', $data);
 
     if ($this->input->post()) {
-        // Load file helper
         $this->load->helper('file');
 
-        // Ensure the upload directory exists
         $upload_path = './uploads/';
         if (!is_dir($upload_path)) {
             mkdir($upload_path, 0755, true);
         }
 
-        // Configure file upload
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
         $config['max_size'] = 2048;
         $this->load->library('upload', $config);
 
-        // Handle file upload
         if ($this->upload->do_upload('foto')) {
             $uploadData = $this->upload->data();
             $foto = $uploadData['file_name'];
@@ -118,7 +113,7 @@ class Cpengelola extends CI_Controller {
             $foto = null;
             $error = $this->upload->display_errors();
             $this->session->set_flashdata('error', $error);
-            redirect('Cpengelola/add');
+            redirect('cpengelola/add');
         }
 
         $data = array(
@@ -135,15 +130,16 @@ class Cpengelola extends CI_Controller {
             'lokasi' => $this->input->post('lokasi'),
         );
 
-        // Memanggil metode insert
-        if ($this->Mtempatwisata->insert($data)) {
+        log_message('debug', 'Data to be passed to model: ' . print_r($data, true));
+
+        if ($this->Mpengelola->tambahTempatWisata($data)) {
             $this->session->set_flashdata('pesan', 'Data berhasil ditambahkan');
             $this->session->set_flashdata('color', 'success');
-            redirect('Cpengelola');
+            redirect('cpengelola');
         } else {
             $this->session->set_flashdata('pesan', 'Gagal menambah data.');
             $this->session->set_flashdata('color', 'danger');
-            redirect('Cpengelola/add');
+            redirect('cpengelola/add');
         }
     } else {
         $this->load->view('pengelola/form_add_tempatwisata', $data);

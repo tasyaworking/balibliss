@@ -1,9 +1,9 @@
 /* Import font Poppins dari Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
 
 /* Terapkan font Poppins ke seluruh halaman */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f7f7f7; /* Soft background color for the page */
@@ -81,17 +81,22 @@ body {
 }
 
 .main-content {
-    margin-top: 70px; /* Space for the fixed navbar */
-    margin-left: 250px; /* Space for the fixed sidebar */
+    margin-top: 90px; /* Space for the fixed navbar */
+    margin-left: 300px; /* Space for the fixed sidebar */
     flex: 1;
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
-    height: calc(100vh - 70px); /* Full height minus navbar height */
+    height: calc(100vh - 10px); /* Full height minus navbar height */
+   
 }
-
+h1 {
+    text-align: center; /* Center text horizontally */
+    font-size: 32px; /* Adjust font size as needed */
+    color: #333; /* Text color */
+}
 .container {
-    margin-top: 20px;
+    margin-top: 90px;
 }
 
 /* Enhanced styling for form elements */
@@ -101,6 +106,7 @@ form {
     padding: 25px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
+    
 }
 
 form label {
@@ -120,7 +126,7 @@ form select, form input, form textarea {
 }
 
 form textarea {
-    height: 120px;
+    height: 100px;
     resize: vertical;
 }
 
@@ -139,85 +145,86 @@ form button:hover {
     background-color: #0056b3;
 }
 
-/* Enhanced ticket card styling */
-.kartu {
-    background: #ffffff;
+/* Enhanced review box styling */
+.review-box {
+    background: linear-gradient(135deg, #e2f3ff, #f7f9fc);
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 30px; /* Increased padding */
+    margin-bottom: 30px; /* Increased margin */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     overflow: hidden;
     transition: box-shadow 0.3s, transform 0.3s;
-    width: 300px; /* Reduced width */
+    width: 100%; /* Full width */
+    max-width: 800px; /* Max width */
 }
 
-.kartu:hover {
+.review-box:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
 }
 
-.kartu img {
-    width: 100%; /* Make the image take full width of the card */
+.review-box img {
+    width: 50%; /* Make the image take full width of the review box */
     height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px; /* Reduced margin */
+    border-radius: 8px;
+    margin-bottom: 15px; /* Increased margin */
 }
 
-.kartu h3 {
-    margin: 0 0 10px;
-    font-size: 20px; /* Reduced font size */
+.review-box h3 {
+    margin: 0 0 15px; /* Increased margin */
+    font-size: 24px; /* Increased font size */
     color: #333;
     text-align: center;
 }
 
-.kartu .rating {
-    margin-bottom: 10px; /* Reduced margin */
+.review-box .rating {
+    margin-bottom: 20px; /* Increased margin */
     display: flex;
     justify-content: center;
 }
 
-.kartu .rating span {
-    font-size: 20px; /* Reduced font size */
+.review-box .rating span {
+    font-size: 24px; /* Increased font size */
     color: #ffcc00;
 }
 
-.kartu .ulasan {
-    font-size: 14px; /* Reduced font size */
+.review-box .ulasan {
+    font-size: 16px; /* Increased font size */
     color: #666;
     text-align: justify;
 }
 
 /* Additional styling for better appearance */
-.kartu .reviewer-info {
+.review-box .reviewer-info {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 15px; /* Increased margin */
 }
 
-.kartu .reviewer-info img {
-    width: 40px; /* Reduced size */
-    height: 40px; /* Reduced size */
+.review-box .reviewer-info img {
+    width: 50px; /* Increased size */
+    height: 50px; /* Increased size */
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 15px; /* Increased margin */
 }
 
-.kartu .reviewer-info .name {
-    font-size: 16px; /* Reduced font size */
+.review-box .reviewer-info .name {
+    font-size: 18px; /* Increased font size */
     font-weight: 600;
     color: #333;
 }
 
-.kartu .reviewer-info .date {
-    font-size: 12px; /* Reduced font size */
+.review-box .reviewer-info .date {
+    font-size: 14px; /* Increased font size */
     color: #999;
     margin-left: auto;
 }
 
-.kartu .review-content {
+.review-box .review-content {
     text-align: center;
     color: #555;
-    font-size: 14px; /* Reduced font size */
+    font-size: 16px; /* Increased font size */
 }

@@ -351,7 +351,7 @@ public function konfirmasi_pemesanan() {
         $pdf->set_option('isPhpEnabled', true);
         $pdf->set_option('isFontSubsettingEnabled', true);
     
-        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
+        $html = $this->load->view('pengguna/cetak_pdf', $data_pembayaran);
         $pdf->loadHtml($html);
         $pdf->render();
         $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);

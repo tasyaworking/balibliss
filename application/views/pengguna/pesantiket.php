@@ -4,11 +4,13 @@
 <head>
     <?php $this->load->view('partials/header'); ?>
     <link rel="stylesheet" href="<?= base_url('assets/css/stylesform.css'); ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
 .page-wrapper {
     display: flex;
     height: 100vh; /* Set the height to full viewport height */
     overflow: hidden; /* Ensure no scrolling on the main wrapper */
+     background: linear-gradient(to right, #e0f7fa, #ffffff); /* Warna gradient dari biru muda ke putih */
 }
 
 .sidebar {
@@ -25,7 +27,7 @@
 }
 
 .navbar {
-    background-color: #fff;
+    background-color: #FFF;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 999;
     position: fixed;
@@ -41,11 +43,13 @@
 
 .main-content {
     flex: 1;
-    margin-top: 90px; /* Adjust margin to push content below navbar */
-    margin-left: 90px; /* Adjust margin to make space for sidebar */
+    margin-top: 10px; /* Adjust margin to push content below navbar */
+    margin-left: 230px; /* Adjust margin to make space for sidebar */
     overflow-y: auto; /* Enable vertical scrolling */
     padding: 20px;
-    height: calc(100vh - 40px); /* Full height minus navbar height */
+    height: calc(100vh - 90px); /* Full height minus navbar height */
+    background: linear-gradient(to right, #e0f7fa, #ffffff); /* Warna gradient dari biru muda ke putih */
+    
 }
 
 .container {
@@ -53,12 +57,17 @@
 }
 
 .card {
-    padding: 100px; /* Increased padding */
+    padding: 40px; /* Adjust padding as needed */
     background: #fff;
-    border-radius: 50px;
+    border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px; /* Set a max-width to limit the card's size */
+    max-width: 30000px; /* Set a max-width to limit the card's size */
     margin: 0 auto; /* Center the card horizontally */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow only */
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
 }
 
 .form-group {
@@ -77,7 +86,7 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .form-group select {
@@ -115,9 +124,9 @@
     background-color: #45a049;
 }
 
-    </style>
-</head>
 
+</style>
+</head>
 <body>
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">

@@ -1,7 +1,7 @@
 /* styleskonfirm.css */
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito', sans-serif;
     background-color: #f0f8ff;
     color: #333;
     margin: 0;
@@ -9,25 +9,28 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 900px; /* Memperbesar max-width container */
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Membuat border-radius lebih besar */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Memperbesar shadow */
     text-align: justify;
+    position: relative; /* Untuk posisi ikon */
 }
 
 h1 {
     color: #0056b3;
     margin-bottom: 20px;
     font-weight: bold;
+    text-align: center; /* Membuat judul di tengah */
+    font-size: 28px; /* Memperbesar ukuran font */
 }
 
 p {
     font-size: 16px;
     margin: 10px 0;
-    font-weight: bold;
+    font-weight: normal; /* Mengubah font-weight menjadi normal */
 }
 
 .form-group {
@@ -36,13 +39,14 @@ p {
 
 .button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Memperbesar padding */
     background-color: #0056b3;
     color: #fff;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
     margin-right: 10px;
+    transition: background-color 0.3s; /* Menambah transisi untuk background-color */
 }
 
 .button:hover {
@@ -51,7 +55,7 @@ p {
 
 .btn-back {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Memperbesar padding */
     background-color: #4CAF50; /* Warna hijau */
     color: #fff;
     border-radius: 5px;
@@ -59,27 +63,64 @@ p {
     font-weight: bold;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s; /* Menambah transisi untuk background-color */
 }
 
 .btn-back:hover {
-    background-color: #45a049; /* Warna hijau yang lebih gelap saat di-hover */
+    background-color: #388e3c; /* Warna hijau yang lebih gelap saat di-hover */
 }
 
 .card.note {
     margin-top: 30px;
-    padding: 15px;
+    padding: 20px; /* Memperbesar padding */
     background-color: #e3f2fd;
-    border-left: 5px solid #0056b3;
-    border-radius: 5px;
+    border-left: 8px solid #0056b3; /* Memperbesar border */
+    border-radius: 10px; /* Membuat border-radius lebih besar */
     text-align: left;
+    position: relative; /* Untuk posisi ikon */
 }
 
 .card.note h2 {
     color: #0056b3;
     margin-bottom: 10px;
     font-weight: bold;
+    font-size: 22px; /* Memperbesar ukuran font */
 }
 
 .card.note p {
     margin: 5px 0;
 }
+
+/* Menambah ikon */
+.icon {
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    background-color: #0056b3;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ikon note */
+.card.note .icon {
+    top: -20px;
+    left: -20px;
+    background-color: #004494;
+}
+
+/* Contoh penggunaan font-awesome untuk ikon */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* Ikon untuk button */
+.button i,
+.btn-back i {
+    margin-right: 8px;
+}
+

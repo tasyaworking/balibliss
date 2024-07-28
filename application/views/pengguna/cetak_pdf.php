@@ -10,6 +10,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background: #f0f0f0;
         }
         .ticket-container {
             width: 600px;
@@ -20,6 +21,7 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
+            background-clip: padding-box; /* Prevent gradient overflow */
         }
         .ticket-container::before, .ticket-container::after {
             content: '';
@@ -30,6 +32,7 @@
             left: -50%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
             transform: rotate(30deg);
+            pointer-events: none; /* Prevent interference with the ticket content */
         }
         .ticket-header {
             text-align: center;
@@ -37,7 +40,7 @@
             background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
             padding: 10px;
             border-radius: 10px 10px 0 0;
-            color: #0099ff;
+            color: #fff;
         }
         .ticket-details {
             margin-top: 20px;
@@ -59,11 +62,10 @@
             text-align: center;
             margin-top: 20px;
             font-size: 12px;
-            color: #888;
+            color: #fff;
             background-color: #4facfe;
             padding: 10px;
             border-radius: 0 0 10px 10px;
-            color: #fff;
         }
     </style>
 </head>
@@ -77,15 +79,15 @@
             <table>
                 <tr>
                     <th>ID Pesanan</th>
-                    <td><?php echo isset($id_pesanan) ? $id_pesanan : 'Data tidak tersedia'; ?></td>
+                    <td><?= isset($id_pesanan) ? $id_pesanan : 'Data tidak tersedia'; ?></td>
                 </tr>
                 <tr>
                     <th>Harga Tiket</th>
-                    <td>Rp. <?php echo isset($harga_tiket) ? number_format($harga_tiket, 0, ',', '.') : 'Data tidak tersedia'; ?></td>
+                    <td>Rp. <?= isset($total_harga) ? number_format($total_harga, 0, ',', '.') : 'Data tidak tersedia'; ?></td>
                 </tr>
                 <tr>
                     <th>Tanggal Kunjungan</th>
-                    <td><?php echo isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></td>
+                    <td><?= isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></td>
                 </tr>
             </table>
         </div>
