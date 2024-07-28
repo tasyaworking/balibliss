@@ -40,6 +40,7 @@ class Mtiket extends CI_Model {
     }    
 
     public function simpan_pemesanan($data_pemesanan) {
+        $this->db->set($data_pemesanan);
         return $this->db->insert('tb_pesanan', $data_pemesanan);
     }
     
@@ -166,6 +167,9 @@ public function get_wisata_details($id_wisata) {
     $this->db->where('id_wisata', $id_wisata);
     $query = $this->db->get();
     return $query->row_array();
+}
+public function get_bayar($id_pesanan){
+    return $this->db->get_where('tb_bayar',['id_pesanan'=>$id_pesanan])->row_array();
 }
 }
     

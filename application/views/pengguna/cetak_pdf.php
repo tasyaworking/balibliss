@@ -3,6 +3,7 @@
 <head>
     <title>Cetak Tiket</title>
     <style>
+        <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -22,6 +23,7 @@
             position: relative;
             overflow: hidden;
             background-clip: padding-box; /* Prevent gradient overflow */
+            box-sizing: border-box; /* Ensure padding is included in the width */
         }
         .ticket-container::before, .ticket-container::after {
             content: '';
@@ -72,22 +74,22 @@
 <body>
     <div class="ticket-container">
         <div class="ticket-header">
-            <h1><?php echo isset($nama_wisata) ? $nama_wisata : 'Data tidak tersedia'; ?></h1>
+            <h1><?php echo isset($wisata['nama_wisata']) ? $wisata['nama_wisata'] : 'Data tidak tersedia'; ?></h1>
             <p>Tiket Masuk</p>
         </div>
         <div class="ticket-details">
             <table>
                 <tr>
                     <th>ID Pesanan</th>
-                    <td><?= isset($id_pesanan) ? $id_pesanan : 'Data tidak tersedia'; ?></td>
+                    <td><?= isset($pesanan['id_pesanan']) ? $pesanan['id_pesanan'] : 'Data tidak tersedia'; ?></td>
                 </tr>
                 <tr>
                     <th>Harga Tiket</th>
-                    <td>Rp. <?= isset($total_harga) ? number_format($total_harga, 0, ',', '.') : 'Data tidak tersedia'; ?></td>
+                    <td>Rp. <?= isset($pesanan['total_harga']) ? number_format($pesanan['total_harga'], 0, ',', '.') : 'Data tidak tersedia'; ?></td>
                 </tr>
                 <tr>
                     <th>Tanggal Kunjungan</th>
-                    <td><?= isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></td>
+                    <td><?= isset($pesanan['tgl_kunjungan']) ? $pesanan['tgl_kunjungan'] : 'Data tidak tersedia'; ?></td>
                 </tr>
             </table>
         </div>

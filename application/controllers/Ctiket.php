@@ -316,22 +316,21 @@ public function konfirmasi_pemesanan() {
             }
         }
     }
-    public function cetakpdf() {
+    public function cetakpdf($id) {
         // Ambil data dari sesi
-        $data['id_pesanan'] = $this->session->flashdata('id_pesanan');
-        $data['total_harga'] = $this->session->flashdata('total_harga');
-        $data['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
-        $data['id_wisata'] = $this->session->flashdata('id_wisata');
+        
+        $data['pesanan'] = $this->Mtiket->get_bayar($id);
+        
     
         // Debugging: Tampilkan data yang diambil dari sesi
-        log_message('debug', 'Data ID Pesanan: ' . $data['id_pesanan']);
-        log_message('debug', 'Data Total Harga: ' . $data['total_harga']);
-        log_message('debug', 'Data Tanggal Kunjungan: ' . $data['tgl_kunjungan']);
-        log_message('debug', 'Data ID Wisata: ' . $data['id_wisata']);
+        log_message('debug', 'Data ID Pesanan: ' . $data['pesanan']['id_pesanan']);
+        log_message('debug', 'Data Total Harga: ' . $data['pesanan']['total_harga']);
+        log_message('debug', 'Data Tanggal Kunjungan: ' . $data['pesanan']['tgl_kunjungan']);
+        log_message('debug', 'Data ID Wisata: ' . $data['pesanan']['id_wisata']);
     
-        // Ambil data wisata dari model
-        $data['wisata'] = $this->Mtiket->getWisataById($data['id_wisata']);
         
+        $data['wisata'] = $this->Mtiket->ambilid($data['pesanan']['id_wisata']);
+
         // Debugging: Tampilkan data wisata
         if ($data['wisata']) {
             log_message('debug', 'Data Wisata: ' . print_r($data['wisata'], true));
@@ -342,21 +341,20 @@ public function konfirmasi_pemesanan() {
         // Muat view dan simpan HTML ke variabel
         $html = $this->load->view('pengguna/cetak_pdf', $data, true);
     
-        // Load Dompdf library
-        $this->load->library('pdf');
-        $pdf = new Dompdf\Dompdf();
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->set_option('isRemoteEnabled', TRUE);
-        $pdf->set_option('isHtml5ParserEnabled', true);
-    
-        // Load HTML ke Dompdf
-        $pdf->loadHtml($html);
-    
-        // Render PDF
-        $pdf->render();
-    
-        // Output PDF
-        $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);
+       // Load Dompdf library
+       $this->load->library('pdf');
+       $pdf = new Dompdf\Dompdf();
+       $pdf->setPaper('A4', 'portrait');
+       $pdf->set_option('isRemoteEnabled', TRUE);
+       $pdf->set_option('isHtml5ParserEnabled', true);
+
+       // Load HTML ke Dompdf
+       $pdf->loadHtml($html);
+
+       // Render PDF
+       $pdf->render();
+
+       // Output PDF
+       $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);
     }
-    
 }
