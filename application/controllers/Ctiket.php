@@ -6,7 +6,7 @@ class Ctiket extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Mtiket'); 
-        $this->load->library('session'); 
+        $this->load->library('form_validation'); 
     }
 
 
@@ -338,8 +338,15 @@ public function konfirmasi_pemesanan() {
             log_message('error', 'Data Wisata tidak ditemukan');
         }
     
-        // Muat view dan simpan HTML ke variabel
-        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
+        // Pastikan path ke file autoload benar
+        $dompdfPath = APPPATH . 'libraries/dompdf/autoload.inc.php';
+    
+        if (file_exists($dompdfPath)) {
+            require_once($dompdfPath);
+        } else {
+            show_error('Library Dompdf tidak ditemukan di path yang ditentukan: ' . $dompdfPath);
+            return;
+        }
     
        // Load Dompdf library
        $this->load->library('pdf');
