@@ -27,14 +27,14 @@ class Mtempatwisata extends CI_Model {
     }
 
     // Metode untuk memperbarui data tempat wisata
-    public function update($id, $data) {
-        $this->db->where('id_wisata', $id);
+    public function update($id_wisata, $data) {
+        $this->db->where('id_wisata', $id_wisata);
         return $this->db->update('tb_tempatwisata', $data);
     }
 
     // Metode untuk menghapus data tempat wisata
-    public function delete($id) {
-        $this->db->where('id_wisata', $id);
+    public function delete($id_wisata) {
+        $this->db->where('id_wisata', $id_wisata);
         return $this->db->delete('tb_tempatwisata');
     }
 }

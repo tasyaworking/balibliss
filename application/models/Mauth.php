@@ -54,8 +54,8 @@ class Mauth extends CI_Model {
         return $result;
     }
     
-    public function get_user_by_id($user_id) {
-        $this->db->where('id', $user_id);
+    public function get_user_by_id($id_user) {
+        $this->db->where('id_user', $id_user);
         $query = $this->db->get('tb_pengguna');
         return $query->row();
     }
@@ -69,13 +69,13 @@ class Mauth extends CI_Model {
         return $this->db->insert('tb_pengguna', $data);
     }
 
-    public function update_user($user_id, $data) {
-        $this->db->where('id', $user_id);
+    public function update_user($id_user, $data) {
+        $this->db->where('id_user', $id_user);
         return $this->db->update('tb_pengguna', $data);
     }
 
-    public function delete_user($user_id) {
-        $this->db->where('id', $user_id);
+    public function delete_user($id_user) {
+        $this->db->where('id_user', $id_user);
         return $this->db->delete('tb_pengguna');
     }
 }

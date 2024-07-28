@@ -7,7 +7,7 @@ class Cpengelola extends CI_Controller {
         parent::__construct();
         $this->load->model('Mpengelola');
         $this->load->model('Sponsorship_model');
-        $this->load->model('Mtempatwisata');
+        // $this->load->model('Mtempatwisata');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -20,7 +20,7 @@ class Cpengelola extends CI_Controller {
         $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
         $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
 
-        $data['data_tempatwisata'] = $this->Mtempatwisata->get_all();
+        $data['data_tempatwisata'] = $this->Mpengelola->get_tempat_wisata();
         $this->load->view('pengelola/table/tempat_wisata', $data);
     }
     public function dashboard() {
@@ -92,20 +92,25 @@ class Cpengelola extends CI_Controller {
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
+    //$this->load->view('pengelola/form_add_tempatwisata', $data);
 
     if ($this->input->post()) {
+        // Load file helper
         $this->load->helper('file');
 
+        // Ensure the upload directory exists
         $upload_path = './uploads/';
         if (!is_dir($upload_path)) {
             mkdir($upload_path, 0755, true);
         }
 
+        // Configure file upload
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
         $config['max_size'] = 2048;
         $this->load->library('upload', $config);
 
+        // Handle file upload
         if ($this->upload->do_upload('foto')) {
             $uploadData = $this->upload->data();
             $foto = $uploadData['file_name'];
@@ -113,7 +118,7 @@ class Cpengelola extends CI_Controller {
             $foto = null;
             $error = $this->upload->display_errors();
             $this->session->set_flashdata('error', $error);
-            redirect('cpengelola/add');
+            redirect('Cpengelola/add');
         }
 
         $data = array(
@@ -130,27 +135,28 @@ class Cpengelola extends CI_Controller {
             'lokasi' => $this->input->post('lokasi'),
         );
 
-        log_message('debug', 'Data to be passed to model: ' . print_r($data, true));
-
-        if ($this->Mpengelola->tambahTempatWisata($data)) {
+        // Memanggil metode insert
+        if ($this->Mtempatwisata->insert($data)) {
             $this->session->set_flashdata('pesan', 'Data berhasil ditambahkan');
             $this->session->set_flashdata('color', 'success');
-            redirect('cpengelola');
+            redirect('Cpengelola');
         } else {
             $this->session->set_flashdata('pesan', 'Gagal menambah data.');
             $this->session->set_flashdata('color', 'danger');
-            redirect('cpengelola/add');
+            redirect('Cpengelola/add');
         }
     } else {
         $this->load->view('pengelola/form_add_tempatwisata', $data);
     }
 }
 
-public function edit($id) {
+public function edit($id_wisata) {
     $data['header'] = $this->load->view('partials/header', NULL, TRUE);
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
+
+    $data['tempat_wisata'] = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata);
 
     // Form validation rules
     $this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required');
@@ -165,7 +171,7 @@ public function edit($id) {
     $this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
 
     if ($this->form_validation->run() == FALSE) {
-        $data['tempatwisata'] = $this->Mtempatwisata->get_by_id($id);
+        $data['tempatwisata'] = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata);
         $this->load->view('pengelola/form_edit_tempatwisata', $data);
     } else {
         // Load file helper
@@ -192,7 +198,7 @@ public function edit($id) {
             }
         } else {
             // Keep the existing photo if no new file was uploaded
-            $existingData = $this->Mtempatwisata->get_by_id($id);
+            $existingData = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata);
             $foto = $existingData->foto;
         }
 
@@ -210,7 +216,7 @@ public function edit($id) {
             'lokasi' => $this->input->post('lokasi'),
         );
 
-        if ($this->Mtempatwisata->update($id, $data)) {
+        if ($this->Mpengelola->updateTempatWisata($id_wisata, $data)) {
             $this->session->set_flashdata('pesan', 'Data tempat wisata berhasil diperbarui.');
             $this->session->set_flashdata('color', 'success');
         } else {
@@ -223,23 +229,22 @@ public function edit($id) {
 
 
     // Delete tempat wisata
-    public function delete($id) {
-        if (empty($id)) {
+    public function delete($id_wisata) {
+        if (empty($id_wisata)) {
             $this->session->set_flashdata('pesan', 'ID tidak valid.');
             $this->session->set_flashdata('color', 'danger');
             redirect('cpengelola');
         }
     
         // Optional: Check if the ID exists before attempting to delete
-        $this->load->model('Mtempatwisata');
-        $tempatWisata = $this->Mtempatwisata->get_by_id($id); // Pastikan metode ini ada
+        $tempatWisata = $this->Mpengelola->get_tempat_wisata_by_id($id_wisata); // Pastikan metode ini ada
         if (!$tempatWisata) {
             $this->session->set_flashdata('pesan', 'Data tempat wisata tidak ditemukan.');
             $this->session->set_flashdata('color', 'danger');
             redirect('cpengelola');
         }
     
-        if ($this->Mtempatwisata->delete($id)) {
+        if ($this->Mpengelola->deleteTempatWisata($id_wisata)) {
             $this->session->set_flashdata('pesan', 'Data tempat wisata berhasil dihapus.');
             $this->session->set_flashdata('color', 'success');
         } else {
