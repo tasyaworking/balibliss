@@ -57,7 +57,7 @@
 
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="about.html">Daftar sebagai pengelola</a></li>
+              <li><a href="services.html">Daftar sebagai pengelola</a></li>
               <li><a href="team.html">Ajukan Sponsor</a></li>
               <li><a href="testimonials.html">Rating Destination</a></li>
             </ul>

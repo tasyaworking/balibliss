@@ -4,6 +4,7 @@
 <head>
     <?php $this->load->view('partials/header', ['title' => 'Tempat Wisata']); ?>
     <link rel="stylesheet" href="<?= base_url('assets/css/stylestiket.css'); ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
         .page-wrapper {
             display: flex;
@@ -46,6 +47,7 @@
             overflow-y: auto; /* Enable vertical scrolling */
             padding: 20px;
             height: calc(100vh - 70px); /* Full height minus navbar height */
+            background: linear-gradient(to right, #e0f7fa, #ffffff); /* Warna gradient dari biru muda ke putih */
         }
 
         .container {
