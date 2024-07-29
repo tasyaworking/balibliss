@@ -110,7 +110,7 @@ public function add() {
         // Configure file upload
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = 2048;
+        $config['max_size'] =  5120;
         $this->load->library('upload', $config);
 
         // Handle file upload
@@ -155,7 +155,6 @@ public function add() {
     }
 }
 
-
 public function edit($id_wisata) {
     $data['header'] = $this->load->view('partials/header', NULL, TRUE);
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
@@ -187,7 +186,7 @@ public function edit($id_wisata) {
         // Configure file upload
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = 2048;
+        $config['max_size'] =  5120;
         $this->upload->initialize($config);
 
         // Check if a new file was uploaded
@@ -200,7 +199,7 @@ public function edit($id_wisata) {
                 $error = $this->upload->display_errors();
                 $this->session->set_flashdata('pesan', $error);
                 $this->session->set_flashdata('color', 'danger');
-                redirect('cpengelola/edit/'.$id);
+                redirect('cpengelola/edit/' . $id_wisata);
             }
         } else {
             // Keep the existing photo if no new file was uploaded
@@ -232,6 +231,7 @@ public function edit($id_wisata) {
         redirect('cpengelola');
     }
 }
+
 public function read($id_wisata) {
     $data['header'] = $this->load->view('partials/header', [], true);
     $data['sidebar'] = $this->load->view('pengelola/sidebar', [], true);

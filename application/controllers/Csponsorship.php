@@ -15,6 +15,11 @@ class Csponsorship extends CI_Controller {
     }
 
     public function submit() {
+         $data['header'] = $this->load->view('partials/header', [], true);
+         $data['sidebar'] = $this->load->view('pengelola/sidebar', [], true);
+         $data['navbar'] = $this->load->view('partials/navbar', [], true);
+         $data['footer'] = $this->load->view('partials/footer', [], true);
+
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('telepon', 'Telepon', 'required');
@@ -33,10 +38,10 @@ class Csponsorship extends CI_Controller {
 
             if ($this->Msponsorship->insert($data)) {
                 $this->session->set_flashdata('message', 'Pendaftaran sponsorship berhasil!');
-                redirect('Cpengelola/dashboard');
+                redirect('Cpengelola/sponsor');
             } else {
                 $this->session->set_flashdata('message', 'Gagal mendaftar sponsorship.');
-                redirect('Cpengelola/dashboard');
+                redirect('Cpengelola/sponsor');
             }
         }
     }
