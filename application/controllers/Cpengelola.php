@@ -232,7 +232,15 @@ public function edit($id_wisata) {
         redirect('cpengelola');
     }
 }
+public function read($id_wisata) {
+    $data['header'] = $this->load->view('partials/header', [], true);
+    $data['sidebar'] = $this->load->view('pengelola/sidebar', [], true);
+    $data['navbar'] = $this->load->view('partials/navbar', [], true);
+    $data['footer'] = $this->load->view('partials/footer', [], true);
 
+    $data['data_tempatwisata'] = $this->Mpengelola->get_tempatwisata_by_id($id_wisata);
+    $this->load->view('pengelola/form_lihat_tempatwisata', $data);
+}
 
     // Delete tempat wisata
     public function delete($id_wisata) {
