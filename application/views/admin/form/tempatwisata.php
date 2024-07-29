@@ -14,9 +14,14 @@
 			<p class="section-content"><?= $data_tempat_wisata_by_id->fasilitas ?></p>
 	</div>
 
-	<div id="lokasi" class="detail-section">
+	<div id="alamat" class="detail-section">
 		<h5 class="section-title">Alamat</h5>
 		    <p class="section-content"><?= $data_tempat_wisata_by_id->alamat_wisata ?></p>
+	</div>
+
+	<div id="lokasi" class="detail-section">
+		<h5 class="section-title">Lokasi</h5>
+		    <p class="section-content"><?= $data_tempat_wisata_by_id->lokasi ?></p>
 	</div>
 
 	<div id="jam_operasional" class="detail-section">
@@ -27,6 +32,16 @@
 	<div id="nomor_telepon" class="detail-section">
 		<h5 class="section-title">No. Telp</h5>
 		<p class="section-content"><?= $data_tempat_wisata_by_id->no_hp_wisata ?></p>
+	</div>
+
+	<div id="rekening" class="detail-section">
+		<h5 class="section-title">No. Rekening </h5>
+		<p class="section-content"><?= $data_tempat_wisata_by_id->no_rek ?></p>
+	</div>
+
+	<div id="harga_tiket" class="detail-section">
+		<h5 class="section-title">Harga Tiket</h5>
+		<p class="section-content">Rp<?= number_format($data_tempat_wisata_by_id->harga_tiket, 0, ',', '.') ?></p>
 	</div>
 
 	<div id="sosial_media" class="detail-section">
