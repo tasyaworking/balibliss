@@ -93,6 +93,8 @@ class Cpengelola extends CI_Controller {
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
     //$this->load->view('pengelola/form_add_tempatwisata', $data);
+    $data['tempat_wisata'] = $this->Mpengelola->tambahtempatWisata($data);
+
 
     if ($this->input->post()) {
         // Load file helper

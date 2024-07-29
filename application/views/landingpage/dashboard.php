@@ -49,20 +49,13 @@
 </h1>
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="<?php echo base_url('assets/img/BaliBlissLogo.png'); ?>" alt="" class="img-fluid" style="width: 80px"></a> -->
+      <!--<a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
 
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="about.html">Daftar sebagai pengelola</a></li>
-              <li><a href="team.html">Ajukan Sponsor</a></li>
-              <li><a href="testimonials.html">Rating Destination</a></li>
-            </ul>
-          </li>
-
+          
           <li><a href="contact.html">Contact</a></li>
           <li><a href="<?php echo base_url('ctampil/login');?>" class="getstarted" type="button" onclick="login()">Login</a></li>
         </ul>
@@ -86,7 +79,7 @@
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Danau Buyan</h2>
               <p class="animate__animated animate__fadeInUp">Jelajahi keindahan Danau Buyan Bali, sebuah destinasi alam yang memukau dengan lokasi strategis di dekat Botanical Garden. Nikmati suasana tenang dan asri sambil menjelajahi keindahan flora yang melimpah. Di sekitar danau, terdapat banyak pedagang lokal yang menawarkan berbagai kuliner dan kerajinan khas Bali, menjadikan tempat ini sebagai lokasi sempurna untuk persinggahan Anda. Datanglah dan rasakan pesonanya!</p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+              <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -98,7 +91,7 @@
             <h2 class="animate__animated animate__fadeInDown">Bali Farm <span>House</span></h2>
             <p class="animate__animated animate__fadeInUp">Nikmati keseruan bersama alpaka dan hewan lucu lainnya seperti burung unta, kelinci, kambing, dan kuda poni. Beri makan hewan-hewan ramah ini dan abadikan momen dengan foto indah berlatar pemandangan menakjubkan.
                 Akhiri hari dengan makan di suasana rustik yang nyaman. Cocok untuk rekreasi keluarga!</p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>
@@ -109,7 +102,7 @@
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Kelingking Beach</h2>
               <p class="animate__animated animate__fadeInUp">Temukan surga tersembunyi di Kelingking Beach, Bali. Nikmati panorama spektakuler dari tebing yang menjulang tinggi dengan bentuk unik menyerupai kelingking tangan. Dari atas, pemandangan laut biru jernih yang membentang luas akan memukau hati Anda.</p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+              <a href="<?php echo base_url('ctampil/login'); ?>" class="btn btn-primary" title="Login">Pesan Sekarang</a>
             </div>
           </div>
         </div>

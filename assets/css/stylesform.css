@@ -1,7 +1,7 @@
 /* stylesform.css */
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito', sans-serif;
     background-color: #f0f8ff;
     color: #0056b3;
     margin: 0;
@@ -14,22 +14,17 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
+    padding-top: 40px; /* Sesuaikan dengan tinggi navbar */
     padding-left: 100px; /* Sesuaikan dengan lebar sidebar */
 }
 
 .card {
     background-color: #fff;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 60px;
-    max-width: 900px; /* Memperbesar max-width card */
+    border-radius: 20px; /* Membuat border-radius lebih kecil */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Memperbesar shadow */
+    padding: 40px; /* Sesuaikan padding */
+    max-width: 1000px; /* Membuat max-width lebih kecil */
     width: 100%;
-    transition: all 0.3s ease; /* Menambahkan animasi transisi */
-}
-
-.card:hover {
-    transform: scale(2.05); /* Membuat card sedikit membesar saat dihover */
 }
 
 h1 {
@@ -40,12 +35,12 @@ h1 {
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px; /* Memperbesar jarak label dengan input */
     color: #0056b3;
 }
 
@@ -55,11 +50,12 @@ input[type="tel"],
 input[type="number"],
 input[type="date"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px; /* Menambah padding */
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Menambah jarak antara input */
+    font-size: 16px; /* Memperbesar font */
 }
 
 input[type="text"]:read-only,
@@ -70,16 +66,26 @@ input[type="date"]:read-only {
     background-color: #e9ecef;
 }
 
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus {
+    border-color: #0056b3; /* Mengubah warna border saat fokus */
+}
+
 .button-group {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px; /* Menambah jarak antara button dan form */
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 24px; /* Memperbesar padding */
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px; /* Memperbesar font */
 }
 
 .btn-back {
@@ -89,7 +95,7 @@ button {
 }
 
 .btn-back:hover {
-    background-color: #bbb;
+    background-color: #388e3c; /* Mengubah warna saat hover */
 }
 
 .btn-submit {
@@ -99,5 +105,5 @@ button {
 }
 
 .btn-submit:hover {
-    background-color: #004494;
+    background-color: #004494; /* Mengubah warna saat hover */
 }
