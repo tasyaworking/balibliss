@@ -44,7 +44,7 @@
     <div class="container d-flex align-items-center">
     <h1 class="logo me-auto">
     <a href="index.html">
-        <img src="<?php echo base_url('assets/img/BaliBlissLogo.png'); ?>" alt="Balibliss Logo" style="width: 210px; height: 40px;">
+        <img src="<?php echo base_url('assets/img/BaliBlissLogo.png'); ?>" alt="Balibliss Logo">
     </a>
 </h1>
 
