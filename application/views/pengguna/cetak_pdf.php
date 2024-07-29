@@ -21,11 +21,7 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
-<<<<<<< HEAD
-=======
-            background-clip: padding-box; /* Prevent gradient overflow */
-            box-sizing: border-box; /* Ensure padding is included in the width */
->>>>>>> 2c445578e2502835667518e6195441299070f99a
+
         }
         .ticket-container::before, .ticket-container::after {
             content: '';
@@ -73,43 +69,4 @@
         }
     </style>
 </head>
-<body>
-    <div class="ticket-container">
-        <div class="ticket-header">
-            <h1><?php echo isset($wisata['nama_wisata']) ? $wisata['nama_wisata'] : 'Data tidak tersedia'; ?></h1>
-            <p>Tiket Masuk</p>
-        </div>
-        <div class="ticket-details">
-            <table>
-                <tr>
-                    <th>ID Pesanan</th>
-<<<<<<< HEAD
-                    <td><?php echo isset($id_pesanan) ? $id_pesanan : 'Data tidak tersedia'; ?></td>
-                </tr>
-                <tr>
-                    <th>Harga Tiket</th>
-                    <td>Rp. <?php echo isset($harga_tiket) ? number_format($harga_tiket, 0, ',', '.') : 'Data tidak tersedia'; ?></td>
-                </tr>
-                <tr>
-                    <th>Tanggal Kunjungan</th>
-                    <td><?php echo isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></td>
-=======
-                    <td><?= isset($pesanan['id_pesanan']) ? $pesanan['id_pesanan'] : 'Data tidak tersedia'; ?></td>
-                </tr>
-                <tr>
-                    <th>Harga Tiket</th>
-                    <td>Rp. <?= isset($pesanan['total_harga']) ? number_format($pesanan['total_harga'], 0, ',', '.') : 'Data tidak tersedia'; ?></td>
-                </tr>
-                <tr>
-                    <th>Tanggal Kunjungan</th>
-                    <td><?= isset($pesanan['tgl_kunjungan']) ? $pesanan['tgl_kunjungan'] : 'Data tidak tersedia'; ?></td>
->>>>>>> 2c445578e2502835667518e6195441299070f99a
-                </tr>
-            </table>
-        </div>
-        <div class="ticket-footer">
-            <p>Terima kasih atas kunjungan Anda!</p>
-        </div>
-    </div>
-</body>
 </html>
