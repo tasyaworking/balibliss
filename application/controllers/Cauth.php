@@ -135,16 +135,16 @@ class Cauth extends CI_Controller {
       //  }
     
         // Jika berhasil login
-        $this->session->set_userdata('user_id', $user->id);
+        $this->session->set_userdata('id_user', $user->id_user);
         $this->session->set_userdata('level', $user->level);
         $this->session->set_flashdata('pesan', 'Login berhasil!');
         $this->session->set_flashdata('color', 'success');
     
         // Redirect sesuai dengan level pengguna
         if ($user->level == 'admin') {
-            redirect('views/admin/dashboard');
+            redirect('Cadmin/dashboard');
         } elseif ($user->level == 'pengelola') {
-            redirect('views/pengelola/dashboard');
+            redirect('Cpengelola/dashboard');
         } else {
             redirect('Cpengguna/dashboard');
         }
