@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Sponsorship extends CI_Controller {
+class Csponsorship extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Sponsorship_model');
+        $this->load->model('Msponsorship');
         $this->load->library('form_validation');
     }
 
     public function index() {
         echo "Attempting to load sponsorship/form";  // Debug statement
-        $this->load->view('sponsorship/form');
+        $this->load->view('pengelola/sponsorship/form');
     }
 
     public function submit() {
@@ -21,7 +21,7 @@ class Sponsorship extends CI_Controller {
         $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'required');
         
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('sponsorship/form');
+            $this->load->view('pengelola/sponsorship/form');
         } else {
             $data = array(
                 'nama' => $this->input->post('nama'),
@@ -31,12 +31,12 @@ class Sponsorship extends CI_Controller {
                 'created_at' => date('Y-m-d H:i:s'),
             );
 
-            if ($this->Sponsorship_model->insert($data)) {
+            if ($this->Msponsorship->insert($data)) {
                 $this->session->set_flashdata('message', 'Pendaftaran sponsorship berhasil!');
-                redirect('sponsorship');
+                redirect('Cpengelola/dashboard');
             } else {
                 $this->session->set_flashdata('message', 'Gagal mendaftar sponsorship.');
-                redirect('sponsorship');
+                redirect('Cpengelola/dashboard');
             }
         }
     }

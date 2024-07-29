@@ -9,7 +9,7 @@
     <p><?php echo $this->session->flashdata('message'); ?></p>
 <?php endif; ?>
 
-<?php echo form_open('sponsorship/submit'); ?>
+<?php echo form_open('Csponsorship/submit'); ?>
 
 <p>
     <label for="nama">Nama:</label>

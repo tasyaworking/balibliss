@@ -6,7 +6,7 @@ class Cpengelola extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Mpengelola');
-        $this->load->model('Sponsorship_model');
+        $this->load->model('Msponsorship');
         // $this->load->model('Mtempatwisata');
         $this->load->helper('url');
         $this->load->helper('form');
@@ -87,17 +87,18 @@ class Cpengelola extends CI_Controller {
 
     // Add new tempat wisata
    // Method untuk menambah data tempat wisata
-   public function add() {
+// Add new tempat wisata
+// Method untuk menambah data tempat wisata
+public function add() {
     $data['header'] = $this->load->view('partials/header', NULL, TRUE);
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
-    //$this->load->view('pengelola/form_add_tempatwisata', $data);
-    $data['tempat_wisata'] = $this->Mpengelola->tambahtempatWisata($data);
 
-
+   
     if ($this->input->post()) {
         // Load file helper
+        
         $this->load->helper('file');
 
         // Ensure the upload directory exists
@@ -122,8 +123,10 @@ class Cpengelola extends CI_Controller {
             $this->session->set_flashdata('error', $error);
             redirect('Cpengelola/add');
         }
-
-        $data = array(
+    
+        
+        // Data to be inserted into the database
+        $tempatWisataData = array(
             'nama_wisata' => $this->input->post('nama_wisata'),
             'sosmed' => $this->input->post('sosmed'),
             'jam_operasional' => $this->input->post('jam_operasional'),
@@ -138,7 +141,7 @@ class Cpengelola extends CI_Controller {
         );
 
         // Memanggil metode insert
-        if ($this->Mtempatwisata->insert($data)) {
+        if ($this->Mpengelola->tambahTempatWisata($tempatWisataData)) {
             $this->session->set_flashdata('pesan', 'Data berhasil ditambahkan');
             $this->session->set_flashdata('color', 'success');
             redirect('Cpengelola');
@@ -151,6 +154,7 @@ class Cpengelola extends CI_Controller {
         $this->load->view('pengelola/form_add_tempatwisata', $data);
     }
 }
+
 
 public function edit($id_wisata) {
     $data['header'] = $this->load->view('partials/header', NULL, TRUE);
