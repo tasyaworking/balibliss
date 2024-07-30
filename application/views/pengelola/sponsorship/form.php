@@ -24,20 +24,21 @@
                         <?php echo form_input('nama', set_value('nama'), ['class' => 'form-control', 'id' => 'nama']); ?>
                     </div>
                     <div class="mb-3">
-                        <?php echo form_label('Email Sponsor', 'email'); ?>
-                        <?php echo form_input('email', set_value('email'), ['class' => 'form-control', 'id' => 'email']); ?>
+    <?php echo form_label('Tanggal Mulai', 'tanggal_mulai'); ?>
+    <?php echo form_input('tanggal_mulai', set_value('tanggal_mulai'), ['type' => 'date', 'class' => 'form-control', 'id' => 'tanggal_mulai']); ?>
+</div>
+<div class="mb-3">
+    <?php echo form_label('Tanggal Selesai', 'tanggal_selesai'); ?>
+    <?php echo form_input('tanggal_selesai', set_value('tanggal_selesai'), ['type' => 'date', 'class' => 'form-control', 'id' => 'tanggal_selesai']); ?>
+</div>
+
+                    <div class="mb-3">
+                        <?php echo form_label('Total Pembayaran', 'pembayaran'); ?>
+                        <?php echo form_input('pembayaran', set_value('pembayaran'), ['class' => 'form-control', 'id' => 'pembayaran']); ?>
                     </div>
                     <div class="mb-3">
-                        <?php echo form_label('No Telp', 'telepon'); ?>
-                        <?php echo form_input('telepon', set_value('telepon'), ['class' => 'form-control', 'id' => 'telepon']); ?>
-                    </div>
-                    <div class="mb-3">
-                        <?php echo form_label('Nama Perusahaan', 'perusahaan'); ?>
-                        <?php echo form_input('perusahaan', set_value('perusahaan'), ['class' => 'form-control', 'id' => 'perusahaan']); ?>
-                    </div>
-                    <div class="mb-3">
-                        <?php echo form_label('Bukti Pembayaran', 'buktipembayaran'); ?>
-                        <?php echo form_upload('buktipembayaran', '', ['class' => 'form-control', 'id' => 'buktipembayaran']); ?>
+                        <?php echo form_label('Bukti Pembayaran', 'bukti_pembayaran'); ?>
+                        <?php echo form_upload('bukti_pembayaran', '', ['class' => 'form-control', 'id' => 'bukti_pembayaran']); ?>
                     </div>
                     <button type="submit" class="btn btn-primary">Daftar</button>
                     <?php echo form_close(); ?>
