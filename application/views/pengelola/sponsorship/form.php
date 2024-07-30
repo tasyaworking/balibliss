@@ -25,17 +25,19 @@
                     </div>
                     <div class="mb-3">
                         <?php echo form_label('Email Sponsor', 'email'); ?>
-                        <?php echo form_textarea('email', set_value('email'), ['class' => 'form-control', 'id' => 'email']); ?>
+                        <?php echo form_input('email', set_value('email'), ['class' => 'form-control', 'id' => 'email']); ?>
                     </div>
-
                     <div class="mb-3">
                         <?php echo form_label('No Telp', 'telepon'); ?>
                         <?php echo form_input('telepon', set_value('telepon'), ['class' => 'form-control', 'id' => 'telepon']); ?>
                     </div>
-
                     <div class="mb-3">
                         <?php echo form_label('Nama Perusahaan', 'perusahaan'); ?>
                         <?php echo form_input('perusahaan', set_value('perusahaan'), ['class' => 'form-control', 'id' => 'perusahaan']); ?>
+                    </div>
+                    <div class="mb-3">
+                        <?php echo form_label('Bukti Pembayaran', 'buktipembayaran'); ?>
+                        <?php echo form_upload('buktipembayaran', '', ['class' => 'form-control', 'id' => 'buktipembayaran']); ?>
                     </div>
                     <button type="submit" class="btn btn-primary">Daftar</button>
                     <?php echo form_close(); ?>
