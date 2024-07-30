@@ -24,7 +24,7 @@
 				?>
 					<tr>
 						<td><?=$no++?></td>
-						<td><?=$row->nama_wisata?></td>
+						<td><?=$row->nama?></td>
 						<td><?=$row->tanggal_mulai?></td>
 						<td><?=$row->tanggal_selesai?></td>
 						<!-- <td>Rp<?=$row->pembayaran?></td> -->
