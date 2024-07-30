@@ -7,6 +7,7 @@ class Cadmin extends CI_Controller {
 		{
 			parent::__construct();
 			$this->load->model('madmin');
+			$this->load->model('mvalidasi');
 		}
 
 	// load dashboard	

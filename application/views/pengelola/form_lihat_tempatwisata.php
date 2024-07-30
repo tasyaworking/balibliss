@@ -30,52 +30,61 @@
                 }
             } else {
             ?>
-            <h4 class="mb-4">Tabel Data Tempat Wisata</h4>
-            <div class="card">
-                <div class="card-header d-flex justify-content-end">
-                    <a href="<?= site_url('cpengelola/add'); ?>" class="btn btn-success">Tambah Data</a>
-                </div>
-                <div class="card-body">
-                    <div style="overflow-x:auto;">
-                        <table id="myTable" class="table table-bordered display table-striped">
-                            <thead class="table-light">
-                                <tr>
-                                    <th class="text-center">No</th>
-                                    <th class="text-center">Nama Destinasi</th>
-                                    <th class="text-center">Jam Operasional</th>
-                                    <th class="text-center">Foto</th>
-                                    <th class="text-center">Harga Tiket</th>
-                                    <th class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-light">
-                                <?php 
-                                $no = 1;
-                                foreach ($data_tempatwisata as $row): ?>
-                                    <tr>
-                                        <td><?= $no++ ?></td>
-                                        <td><?= htmlspecialchars($row->nama_wisata) ?></td>
-                                        <td><?= htmlspecialchars($row->jam_operasional) ?></td>
-                                        <td><img src="<?= base_url('uploads/' . $row->foto) ?>" alt="Gambar" width="100"></td>
-                                        <td><?= htmlspecialchars($row->harga_tiket) ?></td>
-                                        <td class="text-center">
-                                            <a href="<?= site_url('cpengelola/edit/' . $row->id_wisata); ?>" class="btn btn-warning">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </a>
-                                            <a href="<?= site_url('cpengelola/delete/' . $row->id_wisata); ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                            <a href="<?= site_url('cpengelola/read/' . $row->id_wisata); ?>" class="btn btn-primary">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+         <h4 class="mb-4">Detail Data Tempat Wisata</h4>
+<div class="card">
+    <div class="card-header d-flex justify-content-end">
+        <a href="<?= site_url('cpengelola/tempatwisata'); ?>" class="btn btn-danger">Kembali</a>
+    </div>
+    <div class="card-body">
+        <div style="overflow-x:auto;">
+            <table id="myTable" class="table table-bordered display table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Nama Destinasi</th>
+                        <th class="text-center">Sosial Media</th>
+                        <th class="text-center">Jam Operasional</th>
+                        <th class="text-center">Foto</th>
+                        <th class="text-center">Alamat Lengkap Wisata</th>
+                        <th class="text-center">Lokasi Wisata</th>
+                        <th class="text-center">No Telp</th>
+                        <th class="text-center">No Rekening</th>
+                        <th class="text-center">Harga Tiket</th>
+                        <th class="text-center">Deskripsi Singkat</th>
+                        <th class="text-center">Detail Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody class="table-light">
+                    <?php 
+                    $no = 1;
+                    if (!empty($data_tempatwisata)):
+                        foreach ($data_tempatwisata as $row): ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= htmlspecialchars($row->nama_wisata) ?></td>
+                                <td><?= htmlspecialchars($row->sosmed) ?></td>
+                                <td><?= htmlspecialchars($row->jam_operasional) ?></td>
+                                <td><img src="<?= base_url('uploads/' . $row->foto) ?>" alt="Gambar" width="100"></td>
+                                <td><?= htmlspecialchars($row->alamat_wisata) ?></td>
+                                <td><?= htmlspecialchars($row->lokasi) ?></td>
+                                <td><?= htmlspecialchars($row->no_hp_wisata) ?></td>
+                                <td><?= htmlspecialchars($row->no_rek) ?></td>
+                                <td><?= htmlspecialchars($row->harga_tiket) ?></td>
+                                <td><?= htmlspecialchars($row->deskripsi_singkat) ?></td>
+                                <td><?= htmlspecialchars($row->deskripsi) ?></td>
+                            </tr>
+                        <?php endforeach;
+                    else: ?>
+                        <tr>
+                            <td colspan="12" class="text-center">Data tidak ditemukan.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
             <?php
             }
             ?>
@@ -98,7 +107,7 @@
         /* Gaya khusus jika diperlukan */
         table.dataTable {
             border-collapse: collapse;
-            width: 100%; /* Mengatur lebar tabel */
+            width: 100%;
             background-color: #fff; /* Background putih */
         }
         table.dataTable thead th {
@@ -115,7 +124,7 @@
             background-color: #e0e0e0; /* Background hover */
         }
         table.dataTable td, table.dataTable th {
-            padding: 100%; /* Mengatur padding untuk memperbesar ukuran tabel */
+            padding: 95px; /* Mengatur padding untuk memperbesar ukuran tabel */
             text-align: left;
             border-bottom: 1px solid #ddd;
         }

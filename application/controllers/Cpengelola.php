@@ -6,7 +6,7 @@ class Cpengelola extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Mpengelola');
-        $this->load->model('Sponsorship_model');
+        $this->load->model('Msponsorship');
         // $this->load->model('Mtempatwisata');
         $this->load->helper('url');
         $this->load->helper('form');
@@ -87,15 +87,18 @@ class Cpengelola extends CI_Controller {
 
     // Add new tempat wisata
    // Method untuk menambah data tempat wisata
-   public function add() {
+// Add new tempat wisata
+// Method untuk menambah data tempat wisata
+public function add() {
     $data['header'] = $this->load->view('partials/header', NULL, TRUE);
     $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
     $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);
     $data['footer'] = $this->load->view('partials/footer', NULL, TRUE);
-    //$this->load->view('pengelola/form_add_tempatwisata', $data);
 
+   
     if ($this->input->post()) {
         // Load file helper
+        
         $this->load->helper('file');
 
         // Ensure the upload directory exists
@@ -107,7 +110,7 @@ class Cpengelola extends CI_Controller {
         // Configure file upload
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = 2048;
+        $config['max_size'] =  5120;
         $this->load->library('upload', $config);
 
         // Handle file upload
@@ -120,8 +123,10 @@ class Cpengelola extends CI_Controller {
             $this->session->set_flashdata('error', $error);
             redirect('Cpengelola/add');
         }
-
-        $data = array(
+    
+        
+        // Data to be inserted into the database
+        $tempatWisataData = array(
             'nama_wisata' => $this->input->post('nama_wisata'),
             'sosmed' => $this->input->post('sosmed'),
             'jam_operasional' => $this->input->post('jam_operasional'),
@@ -136,7 +141,7 @@ class Cpengelola extends CI_Controller {
         );
 
         // Memanggil metode insert
-        if ($this->Mtempatwisata->insert($data)) {
+        if ($this->Mpengelola->tambahTempatWisata($tempatWisataData)) {
             $this->session->set_flashdata('pesan', 'Data berhasil ditambahkan');
             $this->session->set_flashdata('color', 'success');
             redirect('Cpengelola');
@@ -181,7 +186,7 @@ public function edit($id_wisata) {
         // Configure file upload
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = 2048;
+        $config['max_size'] =  5120;
         $this->upload->initialize($config);
 
         // Check if a new file was uploaded
@@ -194,7 +199,7 @@ public function edit($id_wisata) {
                 $error = $this->upload->display_errors();
                 $this->session->set_flashdata('pesan', $error);
                 $this->session->set_flashdata('color', 'danger');
-                redirect('cpengelola/edit/'.$id);
+                redirect('cpengelola/edit/' . $id_wisata);
             }
         } else {
             // Keep the existing photo if no new file was uploaded
@@ -227,6 +232,15 @@ public function edit($id_wisata) {
     }
 }
 
+public function read($id_wisata) {
+    $data['header'] = $this->load->view('partials/header', [], true);
+    $data['sidebar'] = $this->load->view('pengelola/sidebar', [], true);
+    $data['navbar'] = $this->load->view('partials/navbar', [], true);
+    $data['footer'] = $this->load->view('partials/footer', [], true);
+
+    $data['data_tempatwisata'] = $this->Mpengelola->get_tempatwisata_by_id($id_wisata);
+    $this->load->view('pengelola/form_lihat_tempatwisata', $data);
+}
 
     // Delete tempat wisata
     public function delete($id_wisata) {

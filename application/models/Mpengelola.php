@@ -17,7 +17,7 @@ class Mpengelola extends CI_Model {
     public function daftarsponsor($data) {
         return $this->db->insert('sponsorship', $data);
     }
-
+    
     public function get_tempat_wisata() {
         $this->db->select('*');
         $this->db->from('tb_tempatwisata');
@@ -39,6 +39,15 @@ class Mpengelola extends CI_Model {
         $this->db->where('id_wisata', $id_wisata);
         return $this->db->delete('tb_tempatwisata');
     }
-
+   
+    public function get_all_tempatwisata() {
+        return $this->db->get('tb_tempatwisata')->result();
+    }
+    public function get_tempatwisata_by_id($id_wisata) {
+        $this->db->where('id_wisata', $id_wisata);
+        $query = $this->db->get('tb_tempatwisata');
+        return $query->result(); // Change to result() if you expect multiple rows, row() for a single row
+    }
+    
 }
 ?>
