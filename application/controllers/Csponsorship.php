@@ -7,42 +7,52 @@ class Csponsorship extends CI_Controller {
         parent::__construct();
         $this->load->model('Msponsorship');
         $this->load->library('form_validation');
+        $this->load->library('upload');
     }
 
     public function index() {
-        echo "Attempting to load sponsorship/form";  // Debug statement
-        $this->load->view('pengelola/sponsorship/form');
+        $data['header'] = $this->load->view('partials/header', [], true);
+        $data['sidebar'] = $this->load->view('pengelola/sidebar', [], true);
+        $data['navbar'] = $this->load->view('partials/navbar', [], true);
+        $data['footer'] = $this->load->view('partials/footer', [], true);
+
+        $this->load->view('pengelola/sponsorship/form', $data);
     }
 
     public function submit() {
-         $data['header'] = $this->load->view('partials/header', [], true);
-         $data['sidebar'] = $this->load->view('pengelola/sidebar', [], true);
-         $data['navbar'] = $this->load->view('partials/navbar', [], true);
-         $data['footer'] = $this->load->view('partials/footer', [], true);
+        $data['header'] = $this->load->view('partials/header', [], true);
+        $data['sidebar'] = $this->load->view('pengelola/sidebar', [], true);
+        $data['navbar'] = $this->load->view('partials/navbar', [], true);
+        $data['footer'] = $this->load->view('partials/footer', [], true);
 
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('telepon', 'Telepon', 'required');
-        $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'required');
-        
+        $this->form_validation->set_rules('nama', 'Nama Sponsor', 'required');
+        $this->form_validation->set_rules('email', 'Email Sponsor', 'required');
+        $this->form_validation->set_rules('telepon', 'No Telp', 'required');
+        $this->form_validation->set_rules('perusahaan', 'Nama Perusahaan', 'required');
+
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('pengelola/sponsorship/form');
+            $this->load->view('pengelola/sponsorship/form', $data);
         } else {
+            $upload_data = $this->upload->data();
             $data = array(
                 'nama' => $this->input->post('nama'),
                 'email' => $this->input->post('email'),
+                //'alamat' => $this->input->post('alamat'),
                 'telepon' => $this->input->post('telepon'),
                 'perusahaan' => $this->input->post('perusahaan'),
                 'created_at' => date('Y-m-d H:i:s'),
             );
 
             if ($this->Msponsorship->insert($data)) {
-                $this->session->set_flashdata('message', 'Pendaftaran sponsorship berhasil!');
-                redirect('Cpengelola/sponsor');
+                $this->session->set_flashdata('pesan', 'Pendaftaran sponsorship berhasil!');
+                $this->session->set_flashdata('color', 'success');
+                redirect('Csponsorship');
             } else {
-                $this->session->set_flashdata('message', 'Gagal mendaftar sponsorship.');
-                redirect('Cpengelola/sponsor');
+                $this->session->set_flashdata('pesan', 'Gagal mendaftar sponsorship.');
+                $this->session->set_flashdata('color', 'danger');
+                redirect('Csponsorship/submit');
             }
         }
     }
 }
+?>

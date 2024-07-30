@@ -27,13 +27,13 @@ class Msponsorship extends CI_Model {
 
     // Update sponsor data by ID
     public function update($id_sponsor, $data) {
-        $this->db->where('id', $id_sponsor);
+        $this->db->where('id_sponsor', $id_sponsor); // Perbaiki nama kolom yang digunakan
         return $this->db->update('sponsorship', $data);
     }
 
     // Delete sponsor by ID
     public function delete($id_sponsor) {
-        $this->db->where('id_sponsor', $iid_sponsord);
+        $this->db->where('id_sponsor', $id_sponsor); // Perbaiki nama variabel yang digunakan
         return $this->db->delete('sponsorship');
     }
 }
