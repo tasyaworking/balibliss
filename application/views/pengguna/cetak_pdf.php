@@ -26,7 +26,6 @@
             padding: 20px;
             position: relative;
             top: 25%;
-            background: #DCDCDC
             overflow: hidden;
             margin: auto; /* Ensure container is centered horizontally and vertically */
             page-break-inside: avoid;
