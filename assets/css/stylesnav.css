@@ -51,8 +51,7 @@
     top: 0;
     z-index: 999; /* Pastikan navbar berada di bawah sidebar */
     left: 300px; /* Sesuaikan left dengan lebar sidebar */
-    width: calc(100% - 300px); /* Atur lebar navbar */
-    height: 60px;
+
 }
 
 .navbar-brand img {

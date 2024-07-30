@@ -169,6 +169,36 @@ public function get_wisata_details($id_wisata) {
 }
 public function get_bayar($id_pesanan){
     return $this->db->get_where('tb_bayar',['id_pesanan'=>$id_pesanan])->row_array();
+
+}
+
+public function get_pesanan($id_pesanan) {
+    $this->db->where('id_pesanan', $id_pesanan);
+    $query = $this->db->get('tb_pesanan'); // Ganti 'tb_pesanan' dengan nama tabel yang sesuai
+    if ($query->num_rows() > 0) {
+        return $query->row_array(); // Mengembalikan hasil sebagai array
+    } else {
+        return false; // Pesanan tidak ditemukan
+    }
+}
+
+   // Menambahkan data pesanan ke keranjang
+   public function add_to_cart($data_pesanan) {
+    // Ambil data pesanan dari database
+    $this->db->insert('tb_pesanan', $data_pesanan);
+}
+
+// Mengambil data keranjang dari database
+public function get_cart_data() {
+    $this->db->select('*');
+    $this->db->from('tb_pesanan');
+    $query = $this->db->get();
+    return $query->result_array(); // Mengembalikan data sebagai array
+}
+
+// Menghapus item dari keranjang
+public function remove_from_cart($id) {
+    $this->db->delete('tb_pesanan', array('id_pesanan' => $id));
 }
 }
     
