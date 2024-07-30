@@ -9,10 +9,10 @@
 			<p class="section-content"><?php echo nl2br($data_tempat_wisata_by_id->deskripsi); ?></p>
 	</div>
 
-	<div id="fasilitas" class="detail-section">
+	<!-- <div id="fasilitas" class="detail-section">
 		<h5 class="section-title">Fasilitas</h5>
 			<p class="section-content"><?= $data_tempat_wisata_by_id->fasilitas ?></p>
-	</div>
+	</div> -->
 
 	<div id="alamat" class="detail-section">
 		<h5 class="section-title">Alamat</h5>
