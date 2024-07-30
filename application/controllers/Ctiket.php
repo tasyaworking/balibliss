@@ -361,7 +361,7 @@ public function konfirmasi_pemesanan() {
     public function cetakpdf($id) {
         // Ambil data pesanan dari database
         $data['pesanan'] = $this->Mtiket->get_bayar($id);
-        #var_dump($data['pesanan']); die;
+        //var_dump($data['pesanan']); die;
     
         if (!$data['pesanan']) {
             show_error('Pesanan tidak ditemukan');
@@ -375,6 +375,8 @@ public function konfirmasi_pemesanan() {
     
         // Ambil data wisata berdasarkan id_wisata dari pesanan
         $data['wisata'] = $this->Mtiket->getWisataById($data['pesanan']['id_wisata']);
+        //var_dump($data['wisata']); die;
+
         
         // Debugging: Tampilkan data wisata
         if ($data['wisata']) {
@@ -394,7 +396,7 @@ public function konfirmasi_pemesanan() {
         // Load Dompdf library
         $this->load->library('pdf');
         $pdf = new Dompdf\Dompdf();
-        $pdf->setPaper('A4', 'portrait');
+        $pdf->setPaper('A4', 'landscape');
         $pdf->set_option('isRemoteEnabled', TRUE);
         $pdf->set_option('isHtml5ParserEnabled', true);
     
