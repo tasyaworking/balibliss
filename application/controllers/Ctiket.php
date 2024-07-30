@@ -261,9 +261,7 @@ public function konfirmasi_pemesanan() {
             show_error('Data pesanan tidak ditemukan', 500);
             return;
         }
-    
-     
-    
+
         // Menampilkan view dengan data yang diambil
         $this->load->view('pengguna/success', $data_pembayaran);
     }
