@@ -28,7 +28,7 @@
                         <td><img src="<?php echo base_url('uploads/' . $row->foto);?>" width="120"></td>
 						<td><?=$row->nama?></td>
 						<td><?=$row->nama_wisata?></td>
-						<td><?=$row->alamat_wisata?></td>
+						<td width="25%"><?=$row->alamat_wisata?></td>
 						<td><?=$row->no_hp_wisata?></td>
 						<td class="text-center">
 						<a href="<?= site_url('cadmin/view_tempatwisata_id/'.$row->id_wisata) ?>" class="btn btn-primary">
