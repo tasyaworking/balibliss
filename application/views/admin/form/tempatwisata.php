@@ -1,7 +1,7 @@
 <div class="container-fluid">
     
     <h3 class="title"><?= $data_tempat_wisata_by_id->nama_wisata ?></h3>
-		<img class="wisata-img" src="<?php echo base_url('assets/img/wisata/' . $data_tempat_wisata_by_id->foto);?>"
+		<img class="wisata-img" src="<?php echo base_url('uploads/' . $data_tempat_wisata_by_id->foto);?>"
 			width="45%" alt="<?= $data_tempat_wisata_by_id->nama_wisata ?>">
 
 	<div id="overview" class="detail-section">
