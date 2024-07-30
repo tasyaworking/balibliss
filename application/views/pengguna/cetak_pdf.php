@@ -21,12 +21,6 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
-<<<<<<< Updated upstream
-
-=======
-            background-clip: padding-box; 
-            box-sizing: border-box;
->>>>>>> Stashed changes
         }
         .ticket-container::before, .ticket-container::after {
             content: '';
@@ -37,10 +31,6 @@
             left: -50%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
             transform: rotate(30deg);
-<<<<<<< Updated upstream
-=======
-            pointer-events: none;
->>>>>>> Stashed changes
         }
         .ticket-header {
             text-align: center;
@@ -48,11 +38,7 @@
             background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
             padding: 10px;
             border-radius: 10px 10px 0 0;
-<<<<<<< Updated upstream
             color: #0099ff;
-=======
-            color: #3399ff;
->>>>>>> Stashed changes
         }
         .ticket-details {
             margin-top: 20px;
@@ -82,8 +68,6 @@
         }
     </style>
 </head>
-<<<<<<< Updated upstream
-=======
 <body>
     <div class="ticket-container">
         <div class="ticket-header">
@@ -111,5 +95,4 @@
         </div>
     </div>
 </body>
->>>>>>> Stashed changes
 </html>

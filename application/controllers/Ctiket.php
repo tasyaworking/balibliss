@@ -407,9 +407,4 @@ public function konfirmasi_pemesanan() {
         // Output PDF
         $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);
     }
-<<<<<<< Updated upstream
-
-=======
-    
->>>>>>> Stashed changes
 }
