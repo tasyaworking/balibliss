@@ -146,7 +146,7 @@ class Cauth extends CI_Controller {
         } elseif ($user->level == 'pengelola') {
             redirect('Cpengelola/dashboard');
         } else {
-            redirect('Cpengguna/dashboard');
+            redirect('Cpengguna/index');
         }
     }       
 }

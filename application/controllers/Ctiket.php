@@ -254,7 +254,7 @@ public function konfirmasi_pemesanan() {
         $data_pembayaran['id_pesanan'] = $this->session->flashdata('id_pesanan');
         $data_pembayaran['total_harga'] = $this->session->flashdata('total_harga');
         $data_pembayaran['tgl_kunjungan'] = $this->session->flashdata('tgl_kunjungan');
-
+    
         // Validasi apakah ada data pesanan yang diterima dari flash data
         if (!$data_pembayaran['id_pesanan']) {
             log_message('error', 'Data pesanan tidak ditemukan di flash data');
@@ -265,7 +265,39 @@ public function konfirmasi_pemesanan() {
         // Menampilkan view dengan data yang diambil
         $this->load->view('pengguna/success', $data_pembayaran);
     }
+    
+    public function keranjang() {
+        // Ambil data keranjang dari model
+        $data['cart_data'] = $this->Mtiket->get_cart_data();
 
+        // Periksa apakah data keranjang ada
+        if (empty($data['cart_data'])) {
+            // Jika tidak ada data keranjang, Anda bisa mengatur pesan atau redirect ke halaman lain
+            $data['message'] = 'Keranjang kosong';
+        }
+
+        // Muat view dengan data keranjang
+        $this->load->view('pengguna/keranjang', $data);
+    }
+
+    public function remove($id) {
+        // Pastikan ID valid sebelum menghapus
+        if (!is_numeric($id) || $id <= 0) {
+            // Jika ID tidak valid, kembalikan pesan kesalahan
+            echo json_encode(['status' => 'error', 'message' => 'ID tidak valid.']);
+            return;
+        }
+    
+        // Panggil model untuk menghapus item dari keranjang
+        if ($this->Mtiket->remove_from_cart($id)) {
+            // Set pesan sukses jika penghapusan berhasil
+            echo json_encode(['status' => 'success', 'message' => 'Item berhasil dihapus dari keranjang.']);
+        } else {
+            // Set pesan kesalahan jika penghapusan gagal
+            echo json_encode(['status' => 'error', 'message' => 'Item berhasil dihapus dari keranjang.']);
+        }
+    }    
+    
     public function file_check($str) {
         if (empty($_FILES['userfile']['name'])) {
             $this->form_validation->set_message('file_check', 'The {field} field is required');
@@ -324,5 +356,55 @@ public function konfirmasi_pemesanan() {
                 redirect('Ctiket/ratings');
             }
         }
+    }
+
+    public function cetakpdf($id) {
+        // Ambil data pesanan dari database
+        $data['pesanan'] = $this->Mtiket->get_bayar($id);
+        #var_dump($data['pesanan']); die;
+    
+        if (!$data['pesanan']) {
+            show_error('Pesanan tidak ditemukan');
+        }
+    
+        // Debugging: Tampilkan data yang diambil dari database
+        log_message('debug', 'Data ID Pesanan: ' . $data['pesanan']['id_pesanan']);
+        log_message('debug', 'Data Total Harga: ' . $data['pesanan']['total_harga']);
+        log_message('debug', 'Data Tanggal Kunjungan: ' . $data['pesanan']['tgl_kunjungan']);
+        log_message('debug', 'Data ID Wisata: ' . $data['pesanan']['id_wisata']);
+    
+        // Ambil data wisata berdasarkan id_wisata dari pesanan
+        $data['wisata'] = $this->Mtiket->getWisataById($data['pesanan']['id_wisata']);
+        
+        // Debugging: Tampilkan data wisata
+        if ($data['wisata']) {
+            log_message('debug', 'Data Wisata: ' . print_r($data['wisata'], true));
+        } else {
+            log_message('error', 'Data Wisata tidak ditemukan');
+            show_error('Data wisata tidak ditemukan');
+        }
+    
+        // Gabungkan data pesanan dan wisata
+        $data = array_merge($data['pesanan'], $data['wisata']);
+    
+        // Muat view dan simpan HTML ke variabel
+        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
+        $data['pesanan'] = $this->Mtiket->get_bayar($id);
+
+        // Load Dompdf library
+        $this->load->library('pdf');
+        $pdf = new Dompdf\Dompdf();
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->set_option('isRemoteEnabled', TRUE);
+        $pdf->set_option('isHtml5ParserEnabled', true);
+    
+        // Load HTML ke Dompdf
+        $pdf->loadHtml($html);
+    
+        // Render PDF
+        $pdf->render();
+    
+        // Output PDF
+        $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);
     }
 }

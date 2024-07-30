@@ -154,9 +154,6 @@
                 <label for="review">Tulis Ulasan Anda:</label>
                 <textarea name="review" id="review" placeholder="Bagikan pengalaman Anda dan kesan selama berkunjung..."></textarea>
 
-                <label for="tgl_kunjungan">Kapan Anda Pergi ?:</label>
-                <input type="date" name="tgl_kunjungan" id="tgl_kunjungan" required>
-
                 <button type="submit">Kirim Ulasan</button>
             </form>
 

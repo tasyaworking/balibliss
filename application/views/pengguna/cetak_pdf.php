@@ -3,7 +3,7 @@
 <head>
     <title>Cetak Tiket</title>
     <style>
-        <style>
+       
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -21,7 +21,6 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
-
         }
         .ticket-container::before, .ticket-container::after {
             content: '';
@@ -69,4 +68,31 @@
         }
     </style>
 </head>
+<body>
+    <div class="ticket-container">
+        <div class="ticket-header">
+            <h1><?php echo isset($nama_wisata) ? $nama_wisata : 'Data tidak tersedia'; ?></h1>
+            <p>Tiket Masuk</p>
+        </div>
+        <div class="ticket-details">
+            <table>
+                <tr>
+                    <th>ID Pesanan</th>
+                    <td><?= isset($id_pesanan) ? $id_pesanan : 'Data tidak tersedia'; ?></td>
+                </tr>
+                <tr>
+                    <th>Harga Tiket</th>
+                    <td>Rp. <?= isset($total_harga) ? number_format($total_harga, 0, ',', '.') : 'Data tidak tersedia'; ?></td>
+                </tr>
+                <tr>
+                    <th>Tanggal Kunjungan</th>
+                    <td><?= isset($tgl_kunjungan) ? $tgl_kunjungan : 'Data tidak tersedia'; ?></td>
+                </tr>
+            </table>
+        </div>
+        <div class="ticket-footer">
+            <p>Terima kasih atas kunjungan Anda!</p>
+        </div>
+    </div>
+</body>
 </html>

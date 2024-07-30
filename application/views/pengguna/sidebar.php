@@ -7,8 +7,8 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td><img src="<?=base_url()?>assets/img/BaliBlissLogo.png" height="40"
-                                    width="140"></td>
+                            <td><img src="<?=base_url()?>assets/img/BaliBlissLogo.png" 
+                                    width="150"></td>
                             <td class="text-dark fs-3"><b> </b></td>
                         </tr>
                     </tbody>
@@ -21,31 +21,23 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
             <ul id="sidebarnav">
-                <!-- <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Home</span>
-                </li> -->
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="<?=base_url('Cpengguna/dashboard')?>" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-layout-dashboard"></i>
-                        </span>
-                        <span class="hide-menu">Dashboard</span>
-                    </a>
-                </li>
-                <!-- <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Fitur</span>
-                </li> -->
                 
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="<?=base_url('Cpengguna/index')?>" aria-expanded="false">
                         <span>
-                            <i class="ti ti-user"></i>
+                        <i class="ti ti-layout-dashboard"></i>
                         </span>
-                        <span class="hide-menu">Beli Tiket Wisata</span>
+                        <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+    					<a class="sidebar-link" href="<?=base_url('Ctiket/keranjang')?>" aria-expanded="false">
+    						<span>
+    							<i class="ti ti-user-check"></i>
+    						</span>
+    						<span class="hide-menu">Riwayat</span>
+    					</a>
+    				</li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="<?=base_url('Ctiket/ratings')?>" aria-expanded="false">
                         <span>

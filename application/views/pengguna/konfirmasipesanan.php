@@ -43,7 +43,7 @@
 
         .main-content {
             flex: 1;
-            margin-top: 50px;
+            margin-top: 90px;
             margin-left: 280px;
             overflow-y: auto;
             padding: 20px;
@@ -60,24 +60,44 @@
             background: #fff;
             border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .card h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
+        .card-content {
+            display: flex;
+            justify-content: space-between;
         }
 
-        .card p {
-            font-size: 18px;
+        .info {
+            flex: 1;
+        }
+
+        .note {
+            flex: 0 0 300px;
+            margin-left: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 5px solid #007bff;
+            border-radius: 5px;
+        }
+
+        .note h2 {
+            font-size: 20px;
             margin-bottom: 10px;
         }
 
-        .form-group {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
+        .note p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .fa-ticket-alt {
+            color: #007bff;
+            margin-right: 10px;
         }
 
         .btn-submit,
@@ -105,29 +125,6 @@
         .btn-back:hover {
             background-color: #45a049;
         }
-
-        .note {
-            margin-top: 20px;
-            padding: 20px;
-            background: #f9f9f9;
-            border-left: 5px solid #007bff;
-            border-radius: 5px;
-        }
-
-        .note h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .note p {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .fa-ticket-alt {
-            color: #007bff;
-            margin-right: 10px;
-        }
     </style>
 </head>
 
@@ -139,34 +136,37 @@
             <?php $this->load->view('pengguna/navbar'); ?>
             <div class="main-container">
                 <div class="container">
-                    <div class="card">
                         <h1><i class="fas fa-ticket-alt"></i> Konfirmasi Pemesanan Tiket</h1>
-                        <?php if (isset($konfirmasi)) { ?>
-                            <p><strong>Nama Pemesan:</strong> <?php echo $konfirmasi['nama_pemesan']; ?></p>
-                            <p><strong>Jenis Kelamin:</strong> <?php echo $konfirmasi['jenis_kelamin']; ?></p>
-                            <p><strong>Jumlah Tiket:</strong> <?php echo $konfirmasi['jumlah_tiket']; ?></p>
-                            <p><strong>Tanggal Kunjungan:</strong> <?php echo $konfirmasi['tgl_kunjungan']; ?></p>
-                            <p><strong>Total Harga:</strong> Rp
-                                <?php echo isset($konfirmasi['total_harga']) ? number_format($konfirmasi['total_harga'], 0, ',', '.') : ''; ?>
-                            </p>
-                        <?php } else { ?>
-                            <p>Data pemesanan tidak ditemukan.</p>
-                        <?php } ?>
+                        <div class="card-content">
+                            <div class="info">
+                                <?php if (isset($konfirmasi)) { ?>
+                                    <p><strong>Nama Pemesan:</strong> <?php echo $konfirmasi['nama_pemesan']; ?></p>
+                                    <p><strong>Jenis Kelamin:</strong> <?php echo $konfirmasi['jenis_kelamin']; ?></p>
+                                    <p><strong>Jumlah Tiket:</strong> <?php echo $konfirmasi['jumlah_tiket']; ?></p>
+                                    <p><strong>Tanggal Kunjungan:</strong> <?php echo $konfirmasi['tgl_kunjungan']; ?></p>
+                                    <p><strong>Total Harga:</strong> Rp
+                                        <?php echo isset($konfirmasi['total_harga']) ? number_format($konfirmasi['total_harga'], 0, ',', '.') : ''; ?>
+                                    </p>
+                                <?php } else { ?>
+                                    <p>Data pemesanan tidak ditemukan.</p>
+                                <?php } ?>
+                            </div>
+                            <div class="note">
+                                <h2>Catatan Penting</h2>
+                                <p><i class="fas fa-info-circle"></i> Tiket tidak bisa refund.</p>
+                                <p><i class="fas fa-calendar-alt"></i> Tiket hanya berlaku di tanggal yang terpilih.</p>
+                                <p><i class="fas fa-check-circle"></i> Konfirmasi instan setelah pembayaran.</p>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <a href="<?php echo base_url('Ctiket/lakukan_pembayaran'); ?>" class="btn-submit">Lanjutkan
                                 Pembayaran</a>
                             <button type="button" class="btn-back" onclick="history.back()">Batal</button>
                         </div>
-                        <div class="card note">
-                            <h2>Catatan Penting</h2>
-                            <p><i class="fas fa-info-circle"></i> Tiket tidak bisa refund.</p>
-                            <p><i class="fas fa-calendar-alt"></i> Tiket hanya berlaku di tanggal yang terpilih.</p>
-                            <p><i class="fas fa-check-circle"></i> Konfirmasi instan setelah pembayaran.</p>
-                        </div>
                     </div>
-                </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>
