@@ -6,7 +6,10 @@ class Mpengelola extends CI_Model {
     }
 
     public function data_pengguna() {
-        $query = $this->db->get('tb_pengguna');
+        $this->db->select('*');
+        $this->db->from('tb_pengguna');
+        $this->db->where('tb_pengguna.level', 'user');
+        $query = $this->db->get();
         return $query->result();
     }
 
