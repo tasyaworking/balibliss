@@ -53,10 +53,10 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <!-- <li><a href="index.html" class="active">Home</a></li> -->
 
           
-          <li><a href="contact.html">Contact</a></li>
+          <!-- <li><a href="contact.html">Contact</a></li> -->
           <li><a href="<?php echo base_url('ctampil/login');?>" class="getstarted" type="button" onclick="login()">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -380,7 +380,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/sailor-free-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">Team</a>
+        Designed by Team
       </div>
     </div>
   </footer><!-- End Footer -->

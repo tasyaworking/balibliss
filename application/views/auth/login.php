@@ -34,13 +34,13 @@
                     <i class="ri-lock-2-fill" onclick="showpassword()" id="icon"></i>
                 </div>
             </div>
-            <div class="login__check">
+            <!-- <div class="login__check">
                 <div class="login__check-box">
                     <input type="checkbox" class="login__check-input" id="id_user">
                     <label for="id_user" class="login__check-label">Remember me</label>
                 </div>
                 <a href="#" class="login__forgot">Forgot Password?</a>
-            </div>
+            </div> -->
             <button type="submit" class="login__button">Login</button>
             <div class="login__register">
                 Don't have an account? <a href="<?= base_url('cauth/register') ?>">Register</a>
