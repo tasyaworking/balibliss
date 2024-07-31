@@ -10,6 +10,7 @@ class Msponsorship extends CI_Model {
 
     // Insert sponsor data into the database
     public function insert($data) {
+        $data['diterima'] = 'tidak';
         return $this->db->insert('tb_sponsor', $data);
     }
 
