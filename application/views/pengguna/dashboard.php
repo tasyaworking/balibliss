@@ -51,7 +51,7 @@
         .main-content {
             flex: 1;
             margin-top: 40px;
-            margin-left: 300px;
+            margin-left: 90px;
             overflow-y: auto;
             padding: 20px 40px;
             background-color: #f0f4f8;
@@ -78,7 +78,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            width: 300px;
+            width: 700px;
             text-align: center;
             transition: transform 0.2s;
         }

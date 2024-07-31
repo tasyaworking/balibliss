@@ -52,7 +52,7 @@ body {
 .main-content {
     flex: 1;
     margin-top: 60px; /* Adjusted for navbar */
-    margin-left: 600px;
+    margin-left: 300px;
     overflow-y: auto;
     padding: 80px;
    
