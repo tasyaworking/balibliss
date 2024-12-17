@@ -49,13 +49,17 @@
 		
 		function terima(id_sponsor) {
 			if(confirm("Apakah yakin menerima sponsor ini?")) {
-				window.open("<?php echo base_url(); ?>cadmin/terima_sponsor/"+id_sponsor,"_self");
+				var csrf_token = '<?php echo $this->security->get_csrf_hash(); ?>';
+        		window.open("<?php echo base_url(); ?>cadmin/terima_sponsor/"+id_sponsor+"?<?php echo $this->security->get_csrf_token_name(); ?>="+csrf_token,"_self");
+				// window.open("<?php echo base_url(); ?>cadmin/terima_sponsor/"+id_sponsor,"_self");
 			}	
 		}
 
 		function tolak(id_sponsor) {
 			if(confirm("Apakah yakin menolak sponsor ini?")) {
-				window.open("<?php echo base_url(); ?>cadmin/tolak_sponsor/"+id_sponsor,"_self");
+				var csrf_token = '<?php echo $this->security->get_csrf_hash(); ?>';
+        window.open("<?php echo base_url(); ?>cadmin/tolak_sponsor/"+id_sponsor+"?<?php echo $this->security->get_csrf_token_name(); ?>="+csrf_token,"_self");
+				// window.open("<?php echo base_url(); ?>cadmin/tolak_sponsor/"+id_sponsor,"_self");
 			}	
 		}
 

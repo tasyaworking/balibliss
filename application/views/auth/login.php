@@ -11,6 +11,8 @@
     <div class="login">
         <img src="<?=base_url()?>assets/img/login.png" alt="image" class="login__bg">
         <form action="<?= base_url('cauth/proseslogin') ?>" method="post" class="login__form">
+            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+
             <h1 class="login__title">Login</h1>
             <?php
                 $pesan = $this->session->flashdata('pesan');
