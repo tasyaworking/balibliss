@@ -20,8 +20,6 @@
             <div class="card">
                 <div class="card-body">
                     <form action="<?= site_url('cpengelola/edit/' . ($tempatwisata->id_wisata ?? '')); ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-
                         <div class="mb-3">
                             <label for="nama_wisata" class="form-label">Nama Wisata</label>
                             <input type="text" class="form-control" id="nama_wisata" name="nama_wisata" value="<?= htmlspecialchars($tempatwisata->nama_wisata ?? ''); ?>" required>
