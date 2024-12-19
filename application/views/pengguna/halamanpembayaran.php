@@ -261,7 +261,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="tgl_kunjungan">Tanggal Kunjungan:</label>
+                            <label for="tgl_kunjungan">Tanggal :</label>
                             <input type="date" name="tgl_kunjungan" id="tgl_kunjungan" required>
                         </div>
 
