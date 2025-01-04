@@ -20,9 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <?php echo form_open_multipart('cpengelola/daftarsponsor'); ?>
-                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">                          
-
-
+                        
                         <div class="mb-3">
                             <?php echo form_label('Nama Sponsor', 'nama_sponsor'); ?>
                             <?php echo form_input('nama_sponsor', set_value('nama_sponsor'), ['class' => 'form-control', 'id' => 'nama_sponsor']); ?>
