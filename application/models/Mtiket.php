@@ -51,6 +51,7 @@ class Mtiket extends CI_Model {
 
     public function get_pesanan_by_id($id_pesanan) {
         return $this->db->get_where('tb_pesanan', array('id_pesanan' => $id_pesanan))->row_array();
+        #return $this->db->get_where('tb_bayar', array('id_pesanan' => $id_pesanan))->row_array();
     }
     
     // Fungsi callback untuk validasi file bukti transaksi

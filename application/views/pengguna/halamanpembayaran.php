@@ -261,7 +261,11 @@
                         </div>
 
                         <div class="form-group">
+<<<<<<< HEAD
                             <label for="tgl_kunjungan">Tanggal :</label>
+=======
+                            <label for="tgl_kunjungan">Tanggal:</label>
+>>>>>>> 6d4a60061b160b32da6f09a910f80099942a9059
                             <input type="date" name="tgl_kunjungan" id="tgl_kunjungan" required>
                         </div>
 

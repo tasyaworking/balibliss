@@ -139,7 +139,8 @@ public function add() {
             'harga_tiket' => $this->input->post('harga_tiket'),
             'lokasi' => $this->input->post('lokasi'),
         );
-
+ 
+        
         // Memanggil metode insert
         if ($this->Mpengelola->tambahTempatWisata($tempatWisataData)) {
             $this->session->set_flashdata('pesan', 'Data berhasil ditambahkan');

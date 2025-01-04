@@ -35,9 +35,8 @@ class Madmin extends CI_Model {
 
     // di table pengajuan sponsor
     public function data_pengajuan_sponsor() {
-        $this->db->select('tb_sponsor.*, tb_tempatwisata.*');
+        $this->db->select('tb_sponsor.*');
         $this->db->from('tb_sponsor');
-        $this->db->join('tb_tempatwisata', 'tb_tempatwisata.id_wisata = tb_sponsor.id_wisata');
         $this->db->where('tb_sponsor.diterima', 'tidak');
         $query = $this->db->get();
         return $query->result();

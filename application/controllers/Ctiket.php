@@ -359,52 +359,54 @@ public function konfirmasi_pemesanan() {
     }
 
     public function cetakpdf($id) {
-        // Ambil data dari sesi
-        
+        // Ambil data pesanan dari database
         $data['pesanan'] = $this->Mtiket->get_bayar($id);
-        
+        //var_dump($data['pesanan']); die;
     
-        // Debugging: Tampilkan data yang diambil dari sesi
+        if (!$data['pesanan']) {
+            show_error('Pesanan tidak ditemukan');
+        }
+    
+        // Debugging: Tampilkan data yang diambil dari database
         log_message('debug', 'Data ID Pesanan: ' . $data['pesanan']['id_pesanan']);
         log_message('debug', 'Data Total Harga: ' . $data['pesanan']['total_harga']);
         log_message('debug', 'Data Tanggal Kunjungan: ' . $data['pesanan']['tgl_kunjungan']);
         log_message('debug', 'Data ID Wisata: ' . $data['pesanan']['id_wisata']);
     
-        
-        $data['wisata'] = $this->Mtiket->ambilid($data['pesanan']['id_wisata']);
+        // Ambil data wisata berdasarkan id_wisata dari pesanan
+        $data['wisata'] = $this->Mtiket->getWisataById($data['pesanan']['id_wisata']);
+        //var_dump($data['wisata']); die;
 
+        
         // Debugging: Tampilkan data wisata
         if ($data['wisata']) {
             log_message('debug', 'Data Wisata: ' . print_r($data['wisata'], true));
         } else {
             log_message('error', 'Data Wisata tidak ditemukan');
+            show_error('Data wisata tidak ditemukan');
         }
     
+        // Gabungkan data pesanan dan wisata
+        $data = array_merge($data['pesanan'], $data['wisata']);
+    
+        // Muat view dan simpan HTML ke variabel
+        $html = $this->load->view('pengguna/cetak_pdf', $data, true);
+        $data['pesanan'] = $this->Mtiket->get_bayar($id);
+
         // Load Dompdf library
-        $dompdfPath = APPPATH . 'libraries/dompdf/autoload.inc.php';
+        $this->load->library('pdf');
+        $pdf = new Dompdf\Dompdf();
+        $pdf->setPaper('A4', 'landscape');
+        $pdf->set_option('isRemoteEnabled', TRUE);
+        $pdf->set_option('isHtml5ParserEnabled', true);
     
-        if (file_exists($dompdfPath)) {
-            require_once($dompdfPath);
-        } else {
-            show_error('Library Dompdf tidak ditemukan di path yang ditentukan: ' . $dompdfPath);
-            return;
-        }
+        // Load HTML ke Dompdf
+        $pdf->loadHtml($html);
     
-       // Load Dompdf library
-       $this->load->library('pdf');
-       $pdf = new Dompdf\Dompdf();
-       $pdf->setPaper('A4', 'portrait');
-       $pdf->set_option('isRemoteEnabled', TRUE);
-       $pdf->set_option('isHtml5ParserEnabled', true);
-
-       // Load HTML ke Dompdf
-       $pdf->loadHtml($html);
-
-       // Render PDF
-       $pdf->render();
-
-       // Output PDF
-       $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);
+        // Render PDF
+        $pdf->render();
+    
+        // Output PDF
+        $pdf->stream('TiketWisata.pdf', ['Attachment' => false]);
     }
-
 }

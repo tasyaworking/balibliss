@@ -43,7 +43,7 @@
         .main-content {
             flex: 1;
             margin-top: 50px; /* Adjust margin to push content below navbar */
-            margin-left: 250px; /* Adjust margin to make space for sidebar */
+            margin-left: 200px; /* Adjust margin to make space for sidebar */
             overflow-y: auto; /* Enable vertical scrolling */
             padding: 20px;
             height: calc(100vh - 70px); /* Full height minus navbar height */

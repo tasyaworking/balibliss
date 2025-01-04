@@ -123,19 +123,47 @@ class Cadmin extends CI_Controller {
 
 	// terima & tolak pengelola di pengajuan pengelola
 	public function terima_pengelola($id_wisata) {
+
+		// Cek token CSRF
+		$csrf_token = $this->input->post($this->security->get_csrf_token_name());
+		if ($csrf_token !== $this->security->get_csrf_hash()) {
+			show_error('Token CSRF tidak valid.', 403);
+		}
+
 		$this->madmin->terima_pengelola($id_wisata);
 	}
 
 	public function tolak_pengelola($id_wisata) {
+
+		// Cek token CSRF
+		$csrf_token = $this->input->post($this->security->get_csrf_token_name());
+		if ($csrf_token !== $this->security->get_csrf_hash()) {
+			show_error('Token CSRF tidak valid.', 403);
+		}
+
 		$this->madmin->tolak_pengelola($id_wisata);
 	}
 
 	 // terima & tolak sponsor di pengajuan sponsor
 	 public function terima_sponsor($id_sponsor) {
+
+		// Cek token CSRF
+		$csrf_token = $this->input->post($this->security->get_csrf_token_name());
+		if ($csrf_token !== $this->security->get_csrf_hash()) {
+			show_error('Token CSRF tidak valid.', 403);
+		}
+
 		$this->madmin->terima_sponsor($id_sponsor);
 	 }
  
 	 public function tolak_sponsor($id_sponsor) {
+
+		// Cek token CSRF
+		$csrf_token = $this->input->post($this->security->get_csrf_token_name());
+		if ($csrf_token !== $this->security->get_csrf_hash()) {
+			show_error('Token CSRF tidak valid.', 403);
+		}
+		
 		$this->madmin->tolak_sponsor($id_sponsor);
 	 }
 }

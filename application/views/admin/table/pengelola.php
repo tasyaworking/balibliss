@@ -25,10 +25,10 @@
 				?>
 					<tr>
 						<td><?=$no++?></td>
-                        <td><img src="<?php echo base_url('assets/img/upload/' . $row->foto);?>" width="120" height="120"></td>
+                        <td><img src="<?php echo base_url('uploads/' . $row->foto);?>" width="120"></td>
 						<td><?=$row->nama?></td>
 						<td><?=$row->nama_wisata?></td>
-						<td><?=$row->alamat_wisata?></td>
+						<td width="20%"><?=$row->alamat_wisata?></td>
 						<td><?=$row->no_hp_wisata?></td>
 						<td class="text-center">
 							<a href="<?= site_url('cadmin/view_tempatwisata_id/'.$row->id_wisata) ?>" class="btn btn-primary">
@@ -58,43 +58,18 @@
 
 		function terima(id_wisata) {
 			if(confirm("Apakah yakin menerima tempat wisata ini?")) {
-				window.open("<?php echo base_url(); ?>cadmin/terima_pengelola/"+id_wisata,"_self");
+				var csrf_token = '<?php echo $this->security->get_csrf_hash(); ?>';
+        		window.open("<?php echo base_url(); ?>cadmin/terima_pengelola/"+id_wisata+"?<?php echo $this->security->get_csrf_token_name(); ?>="+csrf_token,"_self");
+				// window.open("<?php echo base_url(); ?>cadmin/terima_pengelola/"+id_wisata,"_self");
 			}	
 		}
 
 		function tolak(id_wisata) {
 			if(confirm("Apakah yakin menolak tempat wisata ini?")) {
-				window.open("<?php echo base_url(); ?>cadmin/tolak_pengelola/"+id_wisata,"_self");
+				var csrf_token = '<?php echo $this->security->get_csrf_hash(); ?>';
+        		window.open("<?php echo base_url(); ?>cadmin/tolak_pengelola/"+id_wisata+"?<?php echo $this->security->get_csrf_token_name(); ?>="+csrf_token,"_self");
+				// window.open("<?php echo base_url(); ?>cadmin/tolak_pengelola/"+id_wisata,"_self");
 			}	
 		}
-
-		// function view(id_user) {
-		// 	load("cadmin/view_pengelola" + id_user, "#script");
-		// }
-
-		// function hideShow() {
-		// 	if (display == 1) {
-		// 		btn.textContent = 'Form Hide'
-		// 		div.style.display = 'block';
-		// 		display = 0;
-		// 	} else {
-		// 		btn.textContent = 'Form Show'
-		// 		div.style.display = 'none';
-		// 		display = 1;
-		// 	}
-		// }
-
-		// function editdata(id_pengguna) {
-		// 	btn.textContent = 'Form Hide'
-		// 	div.style.display = 'block';
-		// 	display = 0;
-		// 	load("csuperadmin/edit_jurusan/" + id_jurusan, "#script");
-		// }
-
-		// function hapus(id_jurusan) {
-		// 	if (confirm("Apakah yakin menghapus data ini?")) {
-		// 		window.open("<?=base_url('csuperadmin/delete_jurusan/')?>" + id_jurusan, '_self');
-		// 	}
-		// }
 
 	</script>

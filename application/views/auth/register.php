@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
     <link rel="stylesheet" href="<?=base_url()?>assets/css/styles.css">
-    <title>Register form - Bedimcode</title>
+    <title>Register form Balibliss</title>
 </head>
 <body>
     <div class="login">
         <img src="<?=base_url()?>assets/img/login.png" alt="image" class="login__bg">
         <form action="<?= base_url('cauth/prosesregister') ?>" method="post" class="login__form">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">                          
+            
             <h1 class="login__title">Register</h1>
             <?php
                 $pesan = $this->session->flashdata('pesan');

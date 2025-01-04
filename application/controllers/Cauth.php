@@ -93,8 +93,25 @@ class Cauth extends CI_Controller {
             'level' => 'user'
         ];
 
+        $subject = 'Aktivasi Akun';
+        $message = '<html>
+                    <h2>Aktivasi Akun</h2>
+                    <p>Mohon untuk aktivasi akun Anda dengan klik tombol berikut:</p>
+                    <button>Aktivasi</button>
+                    </html>';
+
+        if (empty($subject)) {
+            $subject = 'Aktivasi Akun';  // Tentukan subjek default jika kosong
+        }
+
+        $from = $this->config->item('smtp_user');
+        if (empty($from)) {
+            $from = 'anastasyaa2004@gmail.com';  // Tentukan alamat email default jika kosong
+        }
+
         $result = $this->Mauth->register($data);
         if ($result) {
+            $this->send_email($email, $from, $subject, $message);
             $this->session->set_flashdata('pesan', 'Registrasi berhasil! Silakan login.');
             $this->session->set_flashdata('color', 'success');
             redirect('cauth/login');
@@ -104,6 +121,23 @@ class Cauth extends CI_Controller {
             redirect('cauth/register');
         }
     }
+
+    public function send_email($to, $from, $subject, $message){
+        $from = $this->config->item('smtp_user');
+
+        $this->email->set_newline("\r\n");
+        $this->email->from($from, 'Pengirim');
+        $this->email->to($to);
+        $this->email->subject($subject);
+        $this->email->message($message);
+
+        if ($this->email->send()){
+            return 'success';
+        } else {
+            return show_error($this->email->print_debugger());
+        }
+    }
+
     public function proseslogin() {
         $email = $this->input->post('email');
         $password = $this->input->post('password');

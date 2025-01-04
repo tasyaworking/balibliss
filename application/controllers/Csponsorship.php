@@ -25,9 +25,9 @@ class Csponsorship extends CI_Controller {
         $data['footer'] = $this->load->view('partials/footer', [], true);
 
         $this->form_validation->set_rules('nama', 'Nama Sponsor', 'required');
-        $this->form_validation->set_rules('email', 'Email Sponsor', 'required');
-        $this->form_validation->set_rules('telepon', 'No Telp', 'required');
-        $this->form_validation->set_rules('perusahaan', 'Nama Perusahaan', 'required');
+        $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'required');
+        $this->form_validation->set_rules('tanggal_selesai', 'Tanggal Selesai', 'required');
+        $this->form_validation->set_rules('pembayaran', 'Total Pembayaran', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('pengelola/sponsorship/form', $data);
@@ -43,18 +43,17 @@ class Csponsorship extends CI_Controller {
            
             $this->upload->initialize($config);
 
-            if (!$this->upload->do_upload('buktipembayaran')) {
+            if (!$this->upload->do_upload('bukti_pembayaran')) {
                 $data['error'] = $this->upload->display_errors();
                 $this->load->view('pengelola/sponsorship/form', $data);
             } else {
                 $upload_data = $this->upload->data();
                 $data = array(
                     'nama' => $this->input->post('nama'),
-                    'email' => $this->input->post('email'),
-                    'telepon' => $this->input->post('telepon'),
-                    'perusahaan' => $this->input->post('perusahaan'),
-                    'buktipembayaran' => $upload_data['file_name'],
-                    'created_at' => date('Y-m-d H:i:s'),
+                    'tanggal_mulai' => $this->input->post('tanggal_mulai'),
+                    'tanggal_selesai' => $this->input->post('tanggal_selesai'),
+                    'pembayaran' => $this->input->post('pembayaran'),
+                    'bukti_pembayaran' => $upload_data['file_name'],
                 );
                 if ($this->Msponsorship->insert($data)) {
                     $this->session->set_flashdata('pesan', 'Pendaftaran sponsorship berhasil!');

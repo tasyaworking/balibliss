@@ -30,61 +30,65 @@
                 }
             } else {
             ?>
-         <h4 class="mb-4">Detail Data Tempat Wisata</h4>
-<div class="card">
-    <div class="card-header d-flex justify-content-end">
-        <a href="<?= site_url('cpengelola/tempatwisata'); ?>" class="btn btn-danger">Kembali</a>
-    </div>
-    <div class="card-body">
-        <div style="overflow-x:auto;">
-            <table id="myTable" class="table table-bordered display table-striped">
-                <thead class="table-light">
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Nama Destinasi</th>
-                        <th class="text-center">Sosial Media</th>
-                        <th class="text-center">Jam Operasional</th>
-                        <th class="text-center">Foto</th>
-                        <th class="text-center">Alamat Lengkap Wisata</th>
-                        <th class="text-center">Lokasi Wisata</th>
-                        <th class="text-center">No Telp</th>
-                        <th class="text-center">No Rekening</th>
-                        <th class="text-center">Harga Tiket</th>
-                        <th class="text-center">Deskripsi Singkat</th>
-                        <th class="text-center">Detail Deskripsi</th>
-                    </tr>
-                </thead>
-                <tbody class="table-light">
-                    <?php 
-                    $no = 1;
-                    if (!empty($data_tempatwisata)):
-                        foreach ($data_tempatwisata as $row): ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= htmlspecialchars($row->nama_wisata) ?></td>
-                                <td><?= htmlspecialchars($row->sosmed) ?></td>
-                                <td><?= htmlspecialchars($row->jam_operasional) ?></td>
-                                <td><img src="<?= base_url('uploads/' . $row->foto) ?>" alt="Gambar" width="100"></td>
-                                <td><?= htmlspecialchars($row->alamat_wisata) ?></td>
-                                <td><?= htmlspecialchars($row->lokasi) ?></td>
-                                <td><?= htmlspecialchars($row->no_hp_wisata) ?></td>
-                                <td><?= htmlspecialchars($row->no_rek) ?></td>
-                                <td><?= htmlspecialchars($row->harga_tiket) ?></td>
-                                <td><?= htmlspecialchars($row->deskripsi_singkat) ?></td>
-                                <td><?= htmlspecialchars($row->deskripsi) ?></td>
-                            </tr>
-                        <?php endforeach;
-                    else: ?>
-                        <tr>
-                            <td colspan="12" class="text-center">Data tidak ditemukan.</td>
-                        </tr>
+            <h4 class="mb-4">Detail Data Tempat Wisata</h4>
+            <div class="card">
+                <div class="card-header d-flex justify-content-end">
+                    <a href="<?= site_url('cpengelola/tempatwisata'); ?>" class="btn btn-danger">Kembali</a>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($data_tempatwisata)): ?>
+                        <?php foreach ($data_tempatwisata as $row): ?>
+                            <div class="mb-3">
+                                <h5>Nama Destinasi:</h5>
+                                <p><?= htmlspecialchars($row->nama_wisata) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>Sosial Media:</h5>
+                                <p><?= htmlspecialchars($row->sosmed) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>Jam Operasional:</h5>
+                                <p><?= htmlspecialchars($row->jam_operasional) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>Foto:</h5>
+                                <img src="<?= base_url('uploads/' . $row->foto) ?>" alt="Gambar" width="100">
+                            </div>
+                            <div class="mb-3">
+                                <h5>Alamat Lengkap Wisata:</h5>
+                                <p><?= htmlspecialchars($row->alamat_wisata) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>Lokasi Wisata:</h5>
+                                <p><?= htmlspecialchars($row->lokasi) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>No Telp:</h5>
+                                <p><?= htmlspecialchars($row->no_hp_wisata) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>No Rekening:</h5>
+                                <p><?= htmlspecialchars($row->no_rek) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>Harga Tiket:</h5>
+                                <p><?= htmlspecialchars($row->harga_tiket) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>Deskripsi Singkat:</h5>
+                                <p><?= htmlspecialchars($row->deskripsi_singkat) ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <h5>Detail Deskripsi:</h5>
+                                <p><?= htmlspecialchars($row->deskripsi) ?></p>
+                            </div>
+                            <hr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="text-center">Data tidak ditemukan.</p>
                     <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
+                </div>
+            </div>
             <?php
             }
             ?>
@@ -93,64 +97,3 @@
     <!-- Main -->
 </div>
 <?=$footer?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Data Tempat Wisata</title>
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/DataTables/datatables.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Gaya khusus jika diperlukan */
-        table.dataTable {
-            border-collapse: collapse;
-            width: 100%;
-            background-color: #fff; /* Background putih */
-        }
-        table.dataTable thead th {
-            background-color: #f8f9fa; /* Background header */
-            color: #000; /* Teks header */
-        }
-        table.dataTable tbody tr {
-            background-color: #fff; /* Background baris */
-        }
-        table.dataTable tbody tr:nth-child(even) {
-            background-color: #f2f2f2; /* Background baris genap */
-        }
-        table.dataTable tbody tr:hover {
-            background-color: #e0e0e0; /* Background hover */
-        }
-        table.dataTable td, table.dataTable th {
-            padding: 95px; /* Mengatur padding untuk memperbesar ukuran tabel */
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .container-fluid {
-            padding: 20px;
-        }
-        .card {
-            margin: 30px 0;
-        }
-        .card-header {
-            background-color: #f8f9fa;
-            padding: 15px;
-        }
-        .btn {
-            margin-left: 5px;
-        }
-    </style>
-</head>
-<body>
-    <script src="<?= base_url(); ?>assets/DataTables/datatables.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let table = new DataTable('#myTable', {
-                scrollX: true // Mengaktifkan scrollbar horizontal
-            });
-        });
-    </script>
-</body>
-</html>
