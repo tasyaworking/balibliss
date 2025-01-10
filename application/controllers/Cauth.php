@@ -24,11 +24,17 @@ class Cauth extends CI_Controller {
 
     public function logout() {
         $this->session->sess_destroy();
-        $this->login();
-    }
+        redirect('cauth/login');
+    }    
 
     public function dashboard() {
         $level = $this->session->userdata('level');
+        
+        if (!$level) {
+            $this->session->set_flashdata('pesan', 'Anda harus login terlebih dahulu.');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('cauth/login');
+        }
     
         switch ($level) {
             case 'admin':
@@ -37,11 +43,15 @@ class Cauth extends CI_Controller {
             case 'pengelola':
                 $this->load->view('pengelola/dashboard');
                 break;
-            default:
+            case 'user':
                 $this->load->view('pengguna/dashboard');
                 break;
+            default:
+                $this->session->set_flashdata('pesan', 'Role tidak valid.');
+                $this->session->set_flashdata('color', 'danger');
+                redirect('cauth/login');
         }
-    }    
+    }
     public function prosesregister() {
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');
@@ -182,6 +192,16 @@ class Cauth extends CI_Controller {
         } else {
             redirect('Cpengguna/index');
         }
-    }       
+    }    
+    
+    private function check_access($required_level) {
+        $user_level = $this->session->userdata('level');
+        if ($user_level !== $required_level) {
+            $this->session->set_flashdata('pesan', 'Anda tidak memiliki akses ke halaman ini.');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('cauth/login');
+        }
+    }
+
 }
 ?>

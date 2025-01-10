@@ -78,5 +78,13 @@ class Mauth extends CI_Model {
         $this->db->where('id_user', $id_user);
         return $this->db->delete('tb_pengguna');
     }
+
+    public function get_role($email) {
+        $this->db->select('level');
+        $this->db->where('email', $email);
+        $query = $this->db->get('users');
+        return $query->row()->level ?? null;
+    }
+    
 }
 ?>

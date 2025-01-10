@@ -5,6 +5,9 @@ class Cpengelola extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('session');
+        $this->load->helper('url');
+        $this->check_access();
         $this->load->model('Mpengelola');
         $this->load->model('Msponsorship');
         // $this->load->model('Mtempatwisata');
@@ -14,7 +17,16 @@ class Cpengelola extends CI_Controller {
         $this->load->library('session');
     }
     
-     public function index() {
+    private function check_access() {
+        $level = $this->session->userdata('level');
+        if ($level !== 'pengelola') {
+            $this->session->set_flashdata('pesan', 'Akses ditolak! Anda bukan pengelola.');
+            $this->session->set_flashdata('color', 'danger');
+            redirect('cauth/login');
+        }
+    }
+
+    public function index() {
         $data['header'] = $this->load->view('partials/header', NULL, TRUE);
         $data['sidebar'] = $this->load->view('pengelola/sidebar', NULL, TRUE);
         $data['navbar'] = $this->load->view('partials/navbar', NULL, TRUE);

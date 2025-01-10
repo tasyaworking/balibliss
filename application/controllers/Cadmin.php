@@ -6,9 +6,20 @@ class Cadmin extends CI_Controller {
 	public function __construct()
 		{
 			parent::__construct();
+			$this->load->library('session');
+			$this->load->helper('url');
+			$this->check_access();
 			$this->load->model('madmin');
 			$this->load->model('mvalidasi');
 		}
+	private function check_access() {
+			$level = $this->session->userdata('level');
+			if ($level !== 'admin') {
+				$this->session->set_flashdata('pesan', 'Akses ditolak! Anda bukan admin.');
+				$this->session->set_flashdata('color', 'danger');
+				redirect('cauth/login');
+			}
+	}
 
 	// load dashboard	
 	public function dashboard() {
