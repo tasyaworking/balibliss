@@ -1,0 +1,7 @@
+.bg-custom {
+	background-repeat: no-repeat;
+	/* width: 100%; */
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: center;
+}

@@ -1,0 +1,188 @@
+/* Mengimpor font Poppins dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+
+/* Gaya dasar untuk seluruh halaman */
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Gaya untuk container utama */
+.main-container {
+    display: flex;
+}
+
+/* Gaya untuk sidebar */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #343a40;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #495057;
+}
+
+/* Gaya untuk container konten */
+.content-container {
+    margin-left: 90px; /* Sesuaikan nilai ini berdasarkan lebar sidebar */
+    padding: 10px;
+    flex: 5;
+}
+
+/* Gaya untuk container wisata */
+.wisata-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk kartu wisata */
+.wisata-card {
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wisata-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.wisata-card img {
+    width: 100%;
+    height: 300px; /* Menetapkan tinggi tetap untuk gambar */
+    object-fit: cover; /* Menyesuaikan gambar agar sesuai dengan area */
+}
+
+.wisata-card h3 {
+    margin: 0;
+    padding: 15px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.wisata-card p {
+    padding: 15px;
+    color: #333;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.pesan-button {
+    display: block;
+    text-align: center;
+    margin: 10px auto 20px auto;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pesan-button:hover {
+    background-color: #0056b3;
+}
+
+/* Gaya untuk halaman dashboard */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    width: calc(33% - 20px);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 200px; /* Menetapkan tinggi tetap untuk gambar */
+    object-fit: cover; /* Menyesuaikan gambar agar sesuai dengan area */
+    border-bottom: 1px solid #eee;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h2 {
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+    color: #007bff;
+}
+
+.card-content p {
+    font-size: 1rem;
+    margin: 0 0 10px 0;
+    color: #555;
+}
+
+.rating {
+    color: #f39c12;
+}
+
+.rating .fa {
+    margin-right: 5px;
+}

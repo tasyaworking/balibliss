@@ -1,0 +1,109 @@
+/* stylesform.css */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f0f8ff;
+    color: #0056b3;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 40px; /* Sesuaikan dengan tinggi navbar */
+    padding-left: 100px; /* Sesuaikan dengan lebar sidebar */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 20px; /* Membuat border-radius lebih kecil */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Memperbesar shadow */
+    padding: 40px; /* Sesuaikan padding */
+    max-width: 1000px; /* Membuat max-width lebih kecil */
+    width: 100%;
+}
+
+h1 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px; /* Memperbesar jarak label dengan input */
+    color: #0056b3;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 12px; /* Menambah padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px; /* Menambah jarak antara input */
+    font-size: 16px; /* Memperbesar font */
+}
+
+input[type="text"]:read-only,
+input[type="email"]:read-only,
+input[type="tel"]:read-only,
+input[type="number"]:read-only,
+input[type="date"]:read-only {
+    background-color: #e9ecef;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus {
+    border-color: #0056b3; /* Mengubah warna border saat fokus */
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Menambah jarak antara button dan form */
+}
+
+button {
+    padding: 12px 24px; /* Memperbesar padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Memperbesar font */
+}
+
+.btn-back {
+    background-color: #45a049;
+    color: #faf8f8;
+    font-weight: bold;
+}
+
+.btn-back:hover {
+    background-color: #388e3c; /* Mengubah warna saat hover */
+}
+
+.btn-submit {
+    background-color: #0056b3;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-submit:hover {
+    background-color: #004494; /* Mengubah warna saat hover */
+}
